@@ -22,7 +22,7 @@ FIG-Bioinformatics-Course/
 
 *ALWAYS RESET YOUR PATH* 
 
-Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
 
 1. Ask Grimoire to describe the different types of machine learning models that can be used to predict the presence of a disease based on metagenomic data. Specifically mention that you are interested in classification methods such as the "random forest" model.
 
@@ -97,7 +97,7 @@ and the information associated with the run:
 Once you have installed the SRA toolkit, you can use the following command to download the data. **NOTE: Be sure to replace the dummy-ID "SRR12345678" with your own SRA run accession number**:
 
 ```
-prefetch SRR12345678
+prefetch SRR28748153
 ```
 
 ![alt text](SRAFASTQtoobig.png)

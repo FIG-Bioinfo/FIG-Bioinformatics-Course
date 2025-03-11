@@ -28,7 +28,7 @@ FIG-Bioinformatics-Course/
 
 *ALWAYS RESET YOUR PATH* 
 
-Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
 
 
 1. Ask Grimoire to describe to you each of the following errors. Make sure that you ask follow up questions and request examples for each type of error that you think would be hard to identify.

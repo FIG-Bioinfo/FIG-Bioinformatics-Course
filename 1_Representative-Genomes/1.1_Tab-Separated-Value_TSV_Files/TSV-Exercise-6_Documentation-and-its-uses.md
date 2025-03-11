@@ -26,7 +26,7 @@ FIG-Bioinformatics-Course/
 
 *ALWAYS RESET YOUR PATH* 
 
-Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
 
 1. Before we work on documentation for our code, we must figure out how to make sure that the user does not break it.  This means giving careful consideration to possible incorrect invocations that you did not intend. Tell Grimoire that you are attaching program `tsv_headers.py` (for instruction on how to "attach" a file, see TSV-Exercise-3, "Modifying Code"), and that you wish to protect users against possible invocation errors such as missing mandatory arguments, nonexistent data-files, etc. Ask Grimoire to recommend revisions to the program that will protect against each of the possible error-producing scenarios that it finds within the program, and remind it that warning and error messages should go to `STDERR`, not `STDOUT`. Be sure to ask it to explain how it has protected against each possible problem "line-by-line" to ensure that you understand all of its suggested improvements. 
 

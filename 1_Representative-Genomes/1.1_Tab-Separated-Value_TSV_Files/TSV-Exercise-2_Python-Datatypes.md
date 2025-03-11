@@ -29,7 +29,7 @@ FIG-Bioinformatics-Course/
 
 *ALWAYS RESET YOUR PATH* 
 
-Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
 
 
 1. The following is the list of data types that we will be discussing in this lesson. Ask Grimoire to explain each type and its uses to you. Make sure you specify that they are Python Datatypes.

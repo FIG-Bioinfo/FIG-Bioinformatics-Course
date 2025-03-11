@@ -37,7 +37,7 @@ You will use the CLI to fetch the PheS sequence from a "Mystery Genome" and then
 
 *ALWAYS RESET YOUR PATH* 
 
-Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
 
 1. Please install the `BV-BRC Command-Line Interface` application if you have not already done so.
 Instuctions for installing the BV-BRC app are located in `O_Getting-Stated/0_Installing-the-BV-BRC-app`.

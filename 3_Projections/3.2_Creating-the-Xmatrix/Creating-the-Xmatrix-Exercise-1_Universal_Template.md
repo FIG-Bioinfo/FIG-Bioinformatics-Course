@@ -16,45 +16,52 @@ FIG-Bioinformatics-Course/
 ├── 3_Projections/
     └── 3.2_Creating-the-Xmatrix/
         └── Creating-the-Xmatrix-Exercise-1_Universal_Template.md (you are here)
+└── Code/
+    └── xmatrix_feature_set.py
+    └── xmatrix_populate_samples.py
 └── Data/
     └── Controls/
-        └── hammer_report_controls.tsv
     └── Diseased/
-        └── hammer_report_diseased.tsv
 ```
 
 ## Exercise
 
 *ALWAYS RESET YOUR PATH* 
 
-Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
 
-1. The idea of the random forest classifier is that it takes a large number of decision trees and averages their results. Each decision tree looks at a random subset of the data and makes a prediction. The more trees there are, the more accurate the prediction is. This means that we need to give the machine learning algorithm a large set of data so that it can make more decision trees which gives us a more accurate prediction. 
+The idea of the random forest classifier is that it takes a large number of decision trees and averages their results. Each decision tree looks at a random subset of the data and makes a prediction. The more trees there are, the more accurate the prediction is. This means that we need to give the machine learning algorithm a large set of data so that it can make more decision trees which gives us a more accurate prediction. 
 
-This is where your hammer reports come in. Each report contains a list of genomes that are present in the sample. We need to create a table that contains every possible genome that we have in our dataset so that the machine learning algorithm can use this to make more decision trees. Luckily, we already have a list of all the genomes that could possibly show up in our dataset. This is the power of the representative genome set. We will use the complete list of genomes in our representative genome set as our column headers for the XMatrix. In traditional data science, the columns of the XMatrix are called features. So another name for our representative genome set is the feature set for our model.
+This is where your hammer reports come in. Each report contains a list of genomes that are present in the sample. We need to create a table for our classifier that contains every possible genome that we have in our dataset. Luckily, we already have a list of all the genomes that could possibly show up in our dataset with the representative genome set. We will use the complete list of genomes in our representative genome set as our column headers for the XMatrix since those are the only ones that can be present. In traditional data science, the columns of the XMatrix are called features. So another name for our representative genome set is the feature set for our model.  The rows of the xmatrix will be the contents of each individual sample and is our data set. 
 
-Once we have an xmatrix template, we can populate it with the presence or absence of the genomes in each sample making our dataset ready for machine learning. After we have the xmatrix populated, we can then explore it programmatically to find the best parameters for our model. And hopefully tease out a pattern that we can use to classify new samples.
+Your goal is to create a blank xmatrix template with the feature set (representative genome set) as the columns and the samples as the rows. As an example, you can look up the `Data/xmatrix_empty_example.tsv` file to see an example of what your xmatrix should look like.
 
-Create a blank xmatrix template with the feature set (representative genome set) as the columns.
+1. Firstly, we need to curate our feature set. Open `Data/xmatrix_features_example.tsv` and look at the first row. This is the feature set of our model and has two columns that are not genome IDs. The first column is called "sample" to leave room for the SRA run accession number from each of our hammer reports. The last column is called "disease label" and is our target variable; diseased or control. Feel free to change the name of this column to your project's target variable name.
 
-2. We will now need to populate the xmatrix with the presence or absence of the genomes in each sample. We will do this by using the hammer reports for each sample and populating them into the xmatrix. Using Grimoire to support your work, write a program that will take a hammer report and populate a new row in the xmatrix for each sample. It must have the following requirements:
+2. Now open `Data/rep10.list.tbl` and look at the first column. This is the list of genome IDs that we will be using as our feature set. This, as well as "sample" and "disease label" need to become the columns of your xmatrix. 
 
-- It must take the hammer reports from two directories, one for the controls and one for the diseased.
-- It must open up each file in that directory and read the sample's genome data. This is recommended to be done with a dictionary data structure to maximize the look up speed.
-- It must then populate the xmatrix template with the presence or absence of the representative genomes in each sample by using 0 for absent and 1 for present. (This voting structure may not be the best for your specific model, but it is a good place to start.)
-- The first column of the xmatrix should be the sample name.
-- The last column should be the label for the sample, either 'control' or 'diseased'. (This information is called the target variable in machine learning. It is the variable that we are trying to predict and will be used explicitly in our model's metadata.)
+3. Write a prompt for Grimoire to write a program called `xmatrix_feature_set.py` that will take as input the `Data/rep10.list.tbl` file and use the genome ids to create a new file called `Data/xmatrix.tsv`. Don't forget to add a "Sample" column to the beginning of the row and your "disease label" column to the end of the row. Use `Data/xmatrix_features_example.tsv` as an example of what your goal should look like. 
 
-3. Run your program and confirm that the xmatrix is populated correctly with all of your samples. You can do this by checking that the number of rows in the xmatrix is equal to the number of samples in each directory. Also you can check the last column of the data to ensure that it is labeled correctly.
+4. Run your program and confirm that the xmatrix is populated correctly with all of your features. You can do this by checking that the number of columns in the xmatrix is equal to the number of genome IDs in your rep10.list.tbl file + 2 for your extra columns. 
 
-4. We have now created a table of data that includes all of the information that we need to begin our machine learning analysis. Save the file as `xmatrix.tsv`. We will be using this file in the next exercise.
+**If you are missing a genome ID, you can add it from the `Data/rep10.list.tbl` file**
+
+5. Now we need to populate the xmatrix with the SRA run accession numbers from each of our hammer reports. We will do this by writing a program that looks at the names of the files in the `Data/Controls` and `Data/Diseased` directories and extracts the SRA run accession numbers. If you have grabbed your data from a publication and have a metadata table, you can instead copy the SRA run accession numbers from the first column of the metadata table and paste them into the "Sample" column of the xmatrix.
+
+6. Write a prompt for Grimoire to write a program called `xmatrix_populate_samples.py` that will take the names of the files in the `Data/Controls` and `Data/Diseased` directories and extract the SRA run accession numbers. Use `Data/xmatrix_empty_example.tsv` as an example of what your goal should look like. You will most likely need to program in the absolute path of both directories, and use the `os` library to iterate through the files. It is also recommended to create a new file as a copy from your old xmatrix file so that you can compare the new xmatrix to the old one and repair from any errors that may occur.
+
+7. Run your program and confirm that the xmatrix is populated correctly with all of your samples. You can do this by checking that the number of rows in the xmatrix is equal to the number of samples in both Control and Diseased directories combined. Also you can check the first column of the data to ensure that it is labeled correctly.
+
+**If you are missing a sample, you can add it's SRA run accession number from the `Data/Controls` and `Data/Diseased` directories directly to the xmatrix.**
 
 ## Self-Check
 Audit your `xmatrix.tsv` file to ensure that it is populated correctly. 
-1. Pick 10 of your samples and check that the number of 1s and 0s in the columns are correct. 
+1. Pick 10 of your samples and check that they are included in the xmatrix. 
 2. Check that the first column is labeled correctly and that the last column is labeled correctly (Samples and Disease Label).
-3. Check that the number of rows in the xmatrix is equal to the number of samples in each directory.
-
+3. Pick 5 Control samples from your directory and make sure that they are labeled as Control in the xmatrix's last column.
+4. Pick 5 Diseased samples from your directory and make sure that they are labeled as Diseased in the xmatrix's last column.
+5. Pick 10 genome IDs from the middle of `Data/rep10.list.tbl` and check that they are included in the xmatrix.
+6. Look at the formatting in `Data/xmatrix_empty_example.tsv` and ensure that your xmatrix is formatted the same way. 
 
 
 

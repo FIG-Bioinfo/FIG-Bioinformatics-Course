@@ -48,7 +48,7 @@ The observation of a "Hammer" within a genome serves as strong evidence that it 
 
 *ALWAYS RESET YOUR PATH* 
 
-Type `cd $COURSE_DIR` into your command line to reset your path to the Course directory before starting each exercise.
+Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
 
 In this exercise, we will work through a simplified "toy problem" that will illustrate the steps involved in constructing a set of hammers.
 You will first fetch the set of `PheS` DNA sequences from BV-BRC, for the RepGenSet `myrep10` that you constructed in `RepGen-Exercise-1`. (Recall that `PheS`, the gene for "Phenylalanine tRNA Synthase", is an instance of a SOUR.)

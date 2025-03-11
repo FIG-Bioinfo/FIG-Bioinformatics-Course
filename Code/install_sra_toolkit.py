@@ -4,8 +4,6 @@ import os
 import shutil
 from pathlib import Path
 from urllib.request import urlopen
-from zipfile import ZipFile
-from tarfile import open as taropen
 from io import BytesIO
 
 if sys.platform == "win32":
@@ -44,7 +42,7 @@ def install_sra_toolkit_user(top_dir):
         print("EDirect tools are already installed.")
     else:
         print("Installing EDirect tools in user mode...")
-        if sys.platform.startswith == "win":
+        if sys.platform == "win32":
             subprocess.run(["powershell", "-Command", f"cd {bin_dir} ; Invoke-WebRequest -Uri https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/edirect.zip -OutFile edirect.zip ; Expand-Archive -Path edirect.zip -DestinationPath {bin_dir} ; Remove-Item edirect.zip"], check=True)
         else:
             subprocess.run(["sh", "-c", f"mkdir -p {bin_dir} && cd {bin_dir} && curl -O https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/edirect.zip && unzip -o edirect.zip && rm edirect.zip"], check=True)
@@ -135,7 +133,7 @@ def process_path(arguments):
         try:
             # Determine the base path based on the operating system
             if sys.platform.startswith("win"):
-                base_path = os.environ.get("LOCALAPPDATA") + "\Programs"
+                base_path = os.environ.get("LOCALAPPDATA") + "\\Programs"
             elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
                 base_path = os.path.expanduser('~')
             else:
