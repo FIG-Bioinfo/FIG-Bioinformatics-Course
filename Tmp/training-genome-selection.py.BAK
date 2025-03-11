@@ -156,34 +156,16 @@ df["genome_id"] = df["genome_id"].astype(str)
 df["score"] = df["score"].astype(float)
 df["num_roles"] = df["num_roles"].astype(int)
 
-### **Step 1: Normalize Scores Per Sample**
-df["normalized_score"] = df["score"] / df.groupby("sampleID")["score"].transform("sum")
-
-### **Step 2: Compute Summary Statistics (Now Using Normalized Scores)**
+### Compute Summary Statistics ###
 summary_stats = {
     "Total Samples": len(df["sampleID"].unique()),
     "Total Genomes": len(df["genome_id"].unique()),
-    "Mean Normalized Score": df["normalized_score"].mean(),
-    "Median Normalized Score": df["normalized_score"].median(),
-    "Std Dev Normalized Score": df["normalized_score"].std(),
+    "Mean Score": df["score"].mean(),
+    "Median Score": df["score"].median(),
+    "Std Dev Score": df["score"].std(),
     "Mean Num Roles": df["num_roles"].mean(),
     "Median Num Roles": df["num_roles"].median()
 }
-
-# Compute geometric mean of **normalized scores** separately for disease and control groups
-disease_scores = df[df["label"] == 1]["normalized_score"].values
-control_scores = df[df["label"] == 0]["normalized_score"].values
-
-# Avoid errors by checking for empty sets before applying geometric mean
-if len(disease_scores) > 0:
-    summary_stats["Geometric Mean Normalized Score (Disease)"] = gmean(disease_scores)
-else:
-    summary_stats["Geometric Mean Normalized Score (Disease)"] = np.nan
-
-if len(control_scores) > 0:
-    summary_stats["Geometric Mean Normalized Score (Control)"] = gmean(control_scores)
-else:
-    summary_stats["Geometric Mean Normalized Score (Control)"] = np.nan
 
 # Output summary statistics as TSV
 sys.stdout.write("Metric\tValue\n")
@@ -215,7 +197,7 @@ significant_genomes = []  # To store significant genomes per sample
 sample_groups = df.groupby("sampleID")
 
 for sample, group in sample_groups:
-    scores = group["normalized_score"].values  # **Use Normalized Scores**
+    scores = group["score"].values
     genome_ids = group["genome_id"].values  # Genome IDs for mapping
     num_roles = group["num_roles"].values
 

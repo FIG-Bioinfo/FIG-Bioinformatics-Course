@@ -66,29 +66,30 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.metrics import accuracy_score, roc_auc_score
 
-# Parse command-line arguments
+# Argument Parsing
 parser = argparse.ArgumentParser(description="Train a Random Forest classifier and save the model.")
 parser.add_argument("-F", "--feature-file", type=str, required=True, help="Filename of extracted feature dataset (TSV format).")
 parser.add_argument("-C", "--classifier-file", type=str, required=True, help="Filename to save the trained classifier as a pickle file.")
 parser.add_argument("-T", "--training-statistics", type=str, help="Optional: Filename to save training statistics. If omitted, stats are printed to STDOUT.")
+parser.add_argument("-I", "--importance-file", type=str, default="feature_importance.tsv", help="Filename to save feature importance scores.")
 args = parser.parse_args()
 
 # Print progress message to STDERR
 sys.stderr.write(f"Loading extracted features from {args.feature_file}...\n")
 sys.stderr.flush()
 
-### **Step 1: Extract the Correct Block from the TSV File**
+### **Fix: Extract the Correct Block from the TSV File**
 with open(args.feature_file, "r") as f:
     lines = f.readlines()
 
-# Find the block containing the extracted features
+# Find the block containing extracted features
 feature_lines = []
 inside_features_block = False
 
 for line in lines:
     if "//" in line:  # End of a TSV block
         if inside_features_block:
-            break  # Stop when the extracted features block ends
+            break  # Stop reading after the feature block ends
         inside_features_block = True  # Start reading the next block
     elif inside_features_block:
         feature_lines.append(line)
@@ -97,10 +98,9 @@ for line in lines:
 from io import StringIO
 feature_data = StringIO("".join(feature_lines))
 
-sys.stderr.write(f"Parsing extracted features...\n")
+sys.stderr.write("Parsing extracted features...\n")
 sys.stderr.flush()
 
-# Read extracted features, ensuring it has the correct column structure
 try:
     feature_df = pd.read_csv(feature_data, sep="\t")
 except pd.errors.ParserError as e:
@@ -167,6 +167,31 @@ if args.training_statistics:
         f.write(training_stats)
 else:
     sys.stdout.write(training_stats)
+
+sys.stderr.write("Computing feature importance...\n")
+sys.stderr.flush()
+
+# Get feature importance scores from Random Forest
+feature_importance = clf.feature_importances_
+feature_names = X_train.columns
+
+# Create DataFrame for feature importance
+importance_df = pd.DataFrame({"Feature": feature_names, "Importance": feature_importance})
+
+# Sort features by importance (descending)
+importance_df = importance_df.sort_values(by="Importance", ascending=False)
+
+# Save feature importance to file
+importance_df.to_csv(args.importance_file, sep="\t", index=False)
+
+sys.stderr.write(f"Feature importance saved to {args.importance_file}\n")
+sys.stderr.flush()
+
+# Print top 10 most important features to STDERR for quick debugging
+sys.stderr.write("Top 10 Most Important Features:\n")
+for _, row in importance_df.head(10).iterrows():
+    sys.stderr.write(f"{row['Feature']}: {row['Importance']:.4f}\n")
+sys.stderr.flush()
 
 sys.stderr.write(f"Saving trained classifier to {args.classifier_file}...\n")
 sys.stderr.flush()
