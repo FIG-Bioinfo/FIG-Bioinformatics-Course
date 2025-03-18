@@ -128,12 +128,12 @@ import pandas as pd
 import numpy as np
 import sys
 from scipy.stats import gmean
-from scipy.optimize import curve_fit
 
 # Argument Parsing
 parser = argparse.ArgumentParser(description="Feature Extraction for Disease & Control Genomes")
-parser.add_argument("disease_file", type=str, help="Path to the disease dataset (TSV format)")
-parser.add_argument("control_file", type=str, help="Path to the control dataset (TSV format)")
+parser.add_argument("-D", "--disease-file", type=str, required=True, help="Path to the disease dataset (TSV format)")
+parser.add_argument("-C", "--control-file", type=str, required=True, help="Path to the control dataset (TSV format)")
+parser.add_argument("-N", "--num-genomes", type=int, default=20, help="Number of top genomes to include as features")
 args = parser.parse_args()
 
 # Load disease and control datasets
@@ -156,25 +156,91 @@ df["genome_id"] = df["genome_id"].astype(str)
 df["score"] = df["score"].astype(float)
 df["num_roles"] = df["num_roles"].astype(int)
 
-### **Step 1: Normalize Scores Per Sample**
-df["normalized_score"] = df["score"] / df.groupby("sampleID")["score"].transform("sum")
+### **Step 1: Filter to Keep Only `num_roles == 5`**
+sys.stderr.write("Filtering genomes to keep only `num_roles == 5`...\n")
+sys.stderr.flush()
 
-### **Step 2: Compute Summary Statistics (Now Using Normalized Scores)**
+df = df[df["num_roles"] == 5]
+
+### **Step 2: Compute Read Count Features**
+sys.stderr.write("Computing total read counts per sample...\n")
+sys.stderr.flush()
+
+df["total_reads"] = df.groupby("sampleID")["score"].transform("sum")
+df["log_total_reads"] = np.log1p(df["total_reads"])  # log(1 + total_reads)
+
+### **Step 3: Normalize Scores Per Sample**
+sys.stderr.write("Normalizing scores by read count...\n")
+sys.stderr.flush()
+
+df["read_normalized_score"] = df["score"] / df["total_reads"]
+
+### **Step 4: Rank Scores Within Each Sample**
+sys.stderr.write("Computing ranked scores per sample...\n")
+sys.stderr.flush()
+
+df["genome_rank"] = df.groupby("sampleID")["read_normalized_score"].rank(method="first", ascending=False)
+
+### **Step 5: Determine Significant Genomes Using Adaptive Cutoff**
+def adaptive_threshold(scores):
+    """Use a percentile-based adaptive cutoff for significance."""
+    if len(scores) == 0:
+        return np.nan  # Handle empty case
+    return np.percentile(scores, 90)  # Top 10% as significant
+
+sys.stderr.write("Determining significant genomes...\n")
+sys.stderr.flush()
+
+df["sig_threshold"] = df.groupby("sampleID")["read_normalized_score"].transform(adaptive_threshold)
+df["is_significant"] = df["read_normalized_score"] >= df["sig_threshold"]
+
+### **Step 6: Identify Top N Genomes Based on Rank Position**
+sys.stderr.write(f"Selecting genomes based on top-{args.num_genomes} rankings per sample...\n")
+sys.stderr.flush()
+
+# Keep only the genomes that are ranked within the top-N in each sample
+top_genomes_per_sample = df[df["genome_rank"] <= args.num_genomes]
+
+# Count how many times each genome appears in the top-N rankings across samples
+top_genome_counts = top_genomes_per_sample.groupby("genome_id")["sampleID"].nunique()
+
+# Select the genomes that appear most frequently in top-N rankings
+top_genomes = top_genome_counts.sort_values(ascending=False).head(args.num_genomes).index.tolist()
+
+# Print to STDERR how many disease and control samples contain each genome in top-N
+sys.stderr.write("\nTop-N Genomes Presence in Disease and Control Samples:\n")
+sys.stderr.write("Genome_ID\tDisease_Count\tControl_Count\n")
+
+for genome in top_genomes:
+    disease_count = df[(df["genome_id"] == genome) & (df["label"] == 1) & (df["genome_rank"] <= args.num_genomes)]["sampleID"].nunique()
+    control_count = df[(df["genome_id"] == genome) & (df["label"] == 0) & (df["genome_rank"] <= args.num_genomes)]["sampleID"].nunique()
+    
+    sys.stderr.write(f"{genome}\t{disease_count}\t{control_count}\n")
+
+sys.stderr.flush()
+
+# Create presence/absence features for each genome in the top-N
+for genome in top_genomes:
+    df[f"genome_{genome}"] = (df["genome_id"] == genome).astype(int)
+
+# Aggregate these genome-level features per sample
+genome_features = df.groupby("sampleID")[[f"genome_{g}" for g in top_genomes]].sum().reset_index()
+
+### **Step 7: Compute Summary Statistics**
 summary_stats = {
     "Total Samples": len(df["sampleID"].unique()),
     "Total Genomes": len(df["genome_id"].unique()),
-    "Mean Normalized Score": df["normalized_score"].mean(),
-    "Median Normalized Score": df["normalized_score"].median(),
-    "Std Dev Normalized Score": df["normalized_score"].std(),
-    "Mean Num Roles": df["num_roles"].mean(),
-    "Median Num Roles": df["num_roles"].median()
+    "Mean Normalized Score": df["read_normalized_score"].mean(),
+    "Median Normalized Score": df["read_normalized_score"].median(),
+    "Std Dev Normalized Score": df["read_normalized_score"].std(),
+    "Mean Log Total Reads": df["log_total_reads"].mean(),
+    "Median Log Total Reads": df["log_total_reads"].median(),
 }
 
 # Compute geometric mean of **normalized scores** separately for disease and control groups
-disease_scores = df[df["label"] == 1]["normalized_score"].values
-control_scores = df[df["label"] == 0]["normalized_score"].values
+disease_scores = df[df["label"] == 1]["read_normalized_score"].values
+control_scores = df[df["label"] == 0]["read_normalized_score"].values
 
-# Avoid errors by checking for empty sets before applying geometric mean
 if len(disease_scores) > 0:
     summary_stats["Geometric Mean Normalized Score (Disease)"] = gmean(disease_scores)
 else:
@@ -191,76 +257,46 @@ for key, value in summary_stats.items():
     sys.stdout.write(f"{key}\t{value}\n")
 sys.stdout.write("//\n")  # End of summary statistics block
 
-### Adaptive Threshold Selection ###
-def fit_power_law(scores):
-    """Fits a Zipf/Pareto distribution to genome scores and finds threshold."""
-    def power_law(x, a, b):
-        return b * x ** (-a)
+### **Step 8: Extract Features for Classifier**
+sys.stderr.write("Extracting features for classification...\n")
+sys.stderr.flush()
 
-    x = np.arange(1, len(scores) + 1)
-    y = np.sort(scores)[::-1]  # Sort in descending order
-
-    try:
-        popt, _ = curve_fit(power_law, x, y, maxfev=10000)
-        alpha = popt[0]  # Exponent of power law
-        cutoff = np.nanpercentile(scores, 100 * (1 - 1/alpha))  # Tail cutoff
-    except:
-        cutoff = np.nanpercentile(scores, 90)  # Fallback threshold
-
-    return cutoff
-
-### Feature Extraction ###
 features = []
-significant_genomes = []  # To store significant genomes per sample
+significant_genomes = []  # List for storing significant genome records
 sample_groups = df.groupby("sampleID")
 
 for sample, group in sample_groups:
-    scores = group["normalized_score"].values  # **Use Normalized Scores**
-    genome_ids = group["genome_id"].values  # Genome IDs for mapping
-    num_roles = group["num_roles"].values
+    scores = group["read_normalized_score"].values
 
-    # Determine adaptive threshold
-    threshold = fit_power_law(scores)
+    # Extract only significant genomes
+    significant = group[group["is_significant"]]
+    num_significant = len(significant)
+    significant_genome_ids = significant["genome_id"].tolist()  # Extract genome IDs
 
-    # Extract significant genomes
-    significant_indices = np.where(scores >= threshold)[0]  # Indices of significant genomes
-    significant = scores[significant_indices]
-    significant_genome_ids = genome_ids[significant_indices]  # Extract genome IDs
+    # Compute feature values
+    mean_normalized = gmean(scores) if len(scores) > 0 else 0
+    score_entropy = -np.sum((scores / np.sum(scores)) * np.log2(scores / np.sum(scores)))
 
-    high_confidence = scores[num_roles >= 4]  # Confidence-based filtering
-
-    # Compute feature values using geometric mean
-    mean_significant = gmean(significant) if len(significant) > 0 else 0
-    mean_high_conf = gmean(high_confidence) if len(high_confidence) > 0 else 0
-
-    num_significant = len(significant)  # How many genomes exceed threshold?
-    num_high_conf = len(high_confidence)  # Count of confident genomes
-    score_entropy = -np.sum((scores / np.sum(scores)) * np.log2(scores / np.sum(scores)))  # Diversity metric
-
-    # Store extracted features for classification
-    features.append([sample, num_significant, mean_significant, num_high_conf, mean_high_conf, score_entropy])
+    # Store extracted features
+    features.append([
+        sample, num_significant, mean_normalized, score_entropy,
+        group["log_total_reads"].values[0]
+    ])
 
     # Store significant genome records
     for genome_id in significant_genome_ids:
         significant_genomes.append([sample, genome_id])
 
-# Convert features to a structured dataset
-feature_df = pd.DataFrame(features, columns=["sampleID", "num_significant", "mean_significant", "num_high_conf", "mean_high_conf", "score_entropy"])
+# Convert features into a DataFrame
+feature_df = pd.DataFrame(features, columns=[
+    "sampleID", "num_significant", "mean_normalized", "score_entropy", "log_total_reads"
+])
 
-# Merge with sample labels
+# Merge with genome presence features and sample labels
+feature_df = feature_df.merge(genome_features, on="sampleID", how="left").fillna(0)
 sample_labels = df[["sampleID", "label"]].drop_duplicates()
 feature_df = feature_df.merge(sample_labels, on="sampleID")
 
 # Output extracted features as TSV
 feature_df.to_csv(sys.stdout, sep="\t", index=False)
-
-# End of extracted features block
-sys.stdout.write("//\n")
-
-# Output significant genomes as TSV
-sys.stdout.write("sampleID\tgenome_id\n")
-for row in significant_genomes:
-    sys.stdout.write(f"{row[0]}\t{row[1]}\n")
-
-# End of significant genomes block
-sys.stdout.write("//\n")
+sys.stdout.write("//\n")  # End of feature block

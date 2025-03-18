@@ -67,18 +67,17 @@ from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.metrics import accuracy_score, roc_auc_score
 
 # Argument Parsing
-parser = argparse.ArgumentParser(description="Train a Random Forest classifier and save the model.")
+parser = argparse.ArgumentParser(description="Train a Random Forest classifier while normalizing for read count variations.")
 parser.add_argument("-F", "--feature-file", type=str, required=True, help="Filename of extracted feature dataset (TSV format).")
 parser.add_argument("-C", "--classifier-file", type=str, required=True, help="Filename to save the trained classifier as a pickle file.")
 parser.add_argument("-T", "--training-statistics", type=str, help="Optional: Filename to save training statistics. If omitted, stats are printed to STDOUT.")
 parser.add_argument("-I", "--importance-file", type=str, default="feature_importance.tsv", help="Filename to save feature importance scores.")
 args = parser.parse_args()
 
-# Print progress message to STDERR
 sys.stderr.write(f"Loading extracted features from {args.feature_file}...\n")
 sys.stderr.flush()
 
-### **Fix: Extract the Correct Block from the TSV File**
+### **Fix: Extract the Correct Feature Block from the TSV File**
 with open(args.feature_file, "r") as f:
     lines = f.readlines()
 
@@ -111,8 +110,16 @@ sys.stderr.write(f"Dataset loaded with {len(feature_df)} samples.\n")
 sys.stderr.flush()
 
 # Extract feature columns and labels
-X = feature_df.drop(columns=["sampleID", "label"])  # Features
+X = feature_df.drop(columns=["sampleID", "label", "num_significant", "log_total_reads"])  # Features
 y = feature_df["label"]  # Labels (1 = disease, 0 = control)
+
+### **Step 1: Verify Data Integrity & Handle Missing Values**
+sys.stderr.write("Checking for missing values...\n")
+sys.stderr.flush()
+
+if X.isnull().sum().sum() > 0:
+    sys.stderr.write("Warning: Missing values found in feature set. Imputing with mean values...\n")
+    X = X.fillna(X.mean())
 
 sys.stderr.write("Splitting dataset into training (80%) and testing (20%)...\n")
 sys.stderr.flush()
@@ -154,7 +161,7 @@ sys.stderr.flush()
 
 # Generate training statistics output
 training_stats = (
-    f"Cross-Validation AUC: {np.mean(cv_scores):.4f} ± {np.std(cv_scores):.4f}\n"
+    f"Cross-Validation AUC: {np.mean(cv_scores):.4f} +/- {np.std(cv_scores):.4f}\n"
     f"Test Accuracy: {test_accuracy:.4f}\n"
     f"Test AUC-ROC: {test_auc:.4f}\n"
 )
