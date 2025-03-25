@@ -5,17 +5,22 @@ Objective: Learn how to run a random forest classifier on genomic data and inter
 This lesson will be the beginning steps of creating a machine learning model. We will be using the xmatrix that we created in the previous unit to train a random forest classifier. Know that whether you choose to use an xmatrix on presence and absence or scaled for population, the process is relatively the same. 
 
 ## Materials
-[Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-[Scikit-learn Random Forest Documentation](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
-[Pandas DataFrame Documentation](https://pandas.pydata.org/docs/reference/frame.html)
-[NCBI](https://www.ncbi.nlm.nih.gov/)
-[SRAToolkit Download FASTA Documentation](https://www.ncbi.nlm.nih.gov/books/NBK242621/)
+
+* [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
+
+* [Scikit-learn Random Forest Documentation](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
+
+* [Pandas DataFrame Documentation](https://pandas.pydata.org/docs/reference/frame.html)
+
+* [NCBI](https://www.ncbi.nlm.nih.gov/)
+
+* [SRAToolkit Download FASTA Documentation](https://www.ncbi.nlm.nih.gov/books/NBK242621/)
 
 ```
 FIG-Bioinformatics-Course/
 ├── 3_Projections
-    └── 3.3_Machine-Learning-Classifier/
-        └── Machine-Learning-Classifier-Exercise-1_Run_the_Classifier.md (you are here)
+│   └── 3.3_Machine-Learning-Classifier/
+│       └── Machine-Learning-Classifier-Exercise-1_Run_the_Classifier.md (you are here)
 └── Data/
     └── xmatrix.tsv
 ```
