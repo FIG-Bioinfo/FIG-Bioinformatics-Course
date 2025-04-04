@@ -1,0 +1,33 @@
+{
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.defaultProfile.linux": "Bash",
+  "terminal.integrated.defaultProfile.osx": "Bash",
+
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": [
+        "--rcfile",
+        "${workspaceFolder}/Scripts/course_env.sh"
+      ]
+    }
+  },
+  "terminal.integrated.profiles.linux": {
+    "Bash": {
+      "path": "/bin/bash",
+      "args": [
+        "--rcfile",
+        "${workspaceFolder}/Scripts/course_env.sh"
+      ]
+    }
+  },
+  "terminal.integrated.profiles.osx": {
+    "Bash": {
+      "path": "/bin/bash",
+      "args": [
+        "--rcfile",
+        "${workspaceFolder}/Scripts/course_env.sh"
+      ]
+    }
+  }
+}
