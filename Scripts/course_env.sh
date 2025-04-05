@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 shopt -s expand_aliases
 
-# Use /etc/bach.bashrc as it works on all platforms.
-for f in /etc/bash.bashrc; do
-  if [ -f "$f" ]; then
-    source "$f"
-  fi
-done
-
 export COURSE_HOME="${COURSE_HOME:-$PWD}"
 cd "$COURSE_HOME"
 
