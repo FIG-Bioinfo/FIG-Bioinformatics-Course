@@ -399,6 +399,16 @@ FodyWeavers.xsd
 
 # Mac DSstore ignore
 .DS_Store
+
+# Ignore all Emacs auto-save files
+*#*
+
+# Ignore all Emacs lockfiles
+.#*
+
+# Ignores specific to the course
+/Code/*
+!Code/.keep
 Tmp/hammer-creator_prompt.txt
 Tmp/build_representative_set_prompt.txt
 Tmp/build_representative_set_solution.py
@@ -408,7 +418,5 @@ Tmp/foo.faa
 Tmp/hammer_creator_solution.py
 Tmp/foo.fna
 Tmp/foo.hammers
-Data/#Universe.fasta#
-Data/.#Universe.fasta
 Tmp/tsv2md.pl
 Tmp/course-update-notes.txt

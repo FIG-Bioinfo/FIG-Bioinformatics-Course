@@ -2,14 +2,17 @@
 
 Objective: Learn how to gather data from the NCBI database to create a sample set of genomes for a specific research topic.
 
-Bioinformatics research involves using comparative analysis between genomes to search for correlations bteween reoccurring patterns in the growing body of genetic sequence and the characterics of the organisms that contain these genetic sequences. Often this is done by creating a model that uses features of the genomes to make a prediction about the organism. The features are often derived from the genetic material itself (for example Kmers), or from other sources such as gene expression data. Since these sequence patterns can be quite small compared to a genome or metagenome, it is often difficult to find them without machine assistance, so we use bioinformatics tools to help us find them and analyze them.
+Bioinformatics research involves using comparative analysis between genomes to search for correlations between reoccurring patterns in the growing body of genetic sequences and the characterics of the organisms that contain these genetic sequences. Often this is done by creating a model that uses features of the genomes to make a prediction about the organism. The features are often derived from the genetic material itself (for example Kmers), or from other sources such as gene expression data. Since these sequence patterns can be quite small compared to a genome or metagenome, it is often difficult to find them without machine assistance, so we use bioinformatics tools to help us find them and analyze them.
 
-One of these tools is the representative genome set that you created in the first unit. Another tool is the hammer set that you created in the second unit. The [Bacterial and Viral Bioinformatics Resource Center (BV-BRC)](https://bv-brc.org/) supports many bioinformatics analysis tools in addition to being a repository of nearly all sequences bacterial and viral genomes. The [National Center for Biotechnology Information (NCBI)](https://www.ncbi.nlm.nih.gov/) is a repository of both genomic and metagenomic information, which can be programmatically access via the tools within the `sratoolkit` that you installed at the beginning of this course. We are now going to use these tools to create a simple version of an even more powerful class of tools: A machine-learning model that we can use to either diagnose a disease or create a treatment to target the disease. To do this, we will need to gather data from the NCBI database that is relevant to the research topic we are interested in.
+One of these tools is the representative genome set that you created in the first unit. Another tool is the hammer set that you created in the second unit. The [Bacterial and Viral Bioinformatics Resource Center (BV-BRC)](https://bv-brc.org/) supports many bioinformatics analysis tools in addition to being a repository of nearly all sequenced bacterial and viral genomes. The [National Center for Biotechnology Information (NCBI)](https://www.ncbi.nlm.nih.gov/) is a repository of both genomic and metagenomic information, which can be programmatically accessed via the tools within the `sratoolkit` that you installed at the beginning of this course. We are now going to use these tools to create a simple version of an even more powerful class of tools: A machine-learning model that we can use to either diagnose a disease or create a treatment to target the disease. To do this, we will need to gather data from the NCBI database that is relevant to the research topic we are interested in.
 
 ## Materials
-[Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-[NCBI](https://www.ncbi.nlm.nih.gov/)
-[SRAToolkit Download FASTA Documentation](https://www.ncbi.nlm.nih.gov/books/NBK242621/)
+
+* [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
+
+* [NCBI](https://www.ncbi.nlm.nih.gov/)
+
+* [The SRAToolkit's "Download FASTA" Documentation](https://www.ncbi.nlm.nih.gov/books/NBK242621/)
 
 ```
 FIG-Bioinformatics-Course/
@@ -20,9 +23,7 @@ FIG-Bioinformatics-Course/
 
 ## Exercise
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+**ALWAYS RESET YOUR PATH** --- Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
 
 1. Ask Grimoire to describe the different types of machine learning models that can be used to predict the presence of a disease based on metagenomic data. Specifically mention that you are interested in classification methods such as the "random forest" model.
 
