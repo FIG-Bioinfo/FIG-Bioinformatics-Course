@@ -14,7 +14,7 @@ If you are unsure of how to find this setting, please refer to the "Download Ins
 
 ```
 FIG-Bioinformatics-Course/
-├── Code/
+├── Scripts/
 │   └── python_datatypes_interactive_exercise.py
 │   └── dictionary_interactive_exercise.py
 └── 1_Representative-Genomes/
@@ -38,6 +38,7 @@ to the course home.
 
 
 1. The following is the list of data types that we will be discussing in this lesson. Ask Grimoire to explain each type and its uses to you. Make sure you specify that they are Python Datatypes.
+
     * Boolean
     * Integer
     * Float
@@ -47,20 +48,38 @@ to the course home.
     * Tuple
     * Dictionary
 
-2. A program called `python_datatypes_interactive_exercise.py` has been provided that will return the above list, and that for each datatype will provide a short definition for that type of data, followed by a code example that uses that type of data within a bioinformatics contex. You can run this program at any time during the course if you need to refresh your memory regarding a particular datatype and how it is used within the code. If the example provided within any section of this program is not clear to you, you can paste that section into Grimoire and ask it to explain the code to you "line-by-line". Likewise, if what any line does is not clear to you, ask Grimoire to explain that line to you "step-by-step".
+2. A program called `python_datatypes_interactive_exercise.py`
+has been provided in the `Scripts` directory that will return
+the above list, and that for each datatype will provide a
+short definition for that type of data, followed by a code example
+that uses that type of data within a bioinformatics context.
+You can run this program at any time during the course
+if you need to refresh your memory regarding a particular datatype
+and how it is used within the code.
+If the example provided within any section of this program is not clear
+to you, you can paste that section into Grimoire and ask it to explain
+the code to you "line-by-line".
+Likewise, if what any line does is not clear to you,
+ask Grimoire to explain that line to you "step-by-step".
 
-3. Three of the most basic data-types are `boolean`, `integer`, and `string`. More complex data-types can be constructed from these basic data-types. Run the program `python_datatypes_interactive_exercise.py` for each of these three basic datatypes to see examples of the data that they contain:
+3. Three of the most basic data-types are `boolean`, `integer`, and `string`.
+More complex data-types can be constructed from these basic data-types.
+Run the program `python_datatypes_interactive_exercise.py` for each of these three basic datatypes to see examples of the data that they contain:
 
-* `python Code/python_datatypes_interactive_exercise.py boolean`
+* `python Scripts/python_datatypes_interactive_exercise.py boolean`
 
-* `python Code/python_datatypes_interactive_exercise.py integer`
+* `python Scripts/python_datatypes_interactive_exercise.py integer`
 
-* `python Code/python_datatypes_interactive_exercise.py string`
+* `python Scripts/python_datatypes_interactive_exercise.py string`
 
-NOTE: The words that follow a program's name are called `arguments`. The `arguments` of a program are passed to the program to control its behavior or to provide it with necessary information. If you are unfamiliar with the concept of a "program argument", please ask Grimoire to explain it to you.
+**NOTE:** The words that follow a program's name are called `arguments`.
+The `arguments` of a program are passed to the program to control its behavior or to provide it with necessary information.
+If you are unfamiliar with the concept of a "program argument",
+please ask Grimoire to explain it to you.
 
-4. Run the program `python_datatypes_interactive_exercise.py`, with an argument of `list`.
-    * Hint: You can access and move back and forward through the previous commands you have entered onto the command line by using the up-arrow and down-arrow keys on your keyboard, and you can edit a previous command before resubmitting it. This trick will save you lots of typing!
+4. Now run the program `python_datatypes_interactive_exercise.py`, with an argument of `list`.
+
+**Hint:** You can access and move back and forward through the previous commands you have entered onto the command line by using the up-arrow and down-arrow keys on your keyboard, and you can edit a previous command before resubmitting it. This trick will save you lots of typing!
 
 Notice that one of the list examples has a duplicated data item,
 and that both instances of the data-item are printed out. 
@@ -75,7 +94,7 @@ while the `set` is displayed with curly brackets.
 
 6. Ask Grimoire to explain to you the difference between a `list`, a `set`, and a `tuple`. The tuple's main feature is that it is immutable. Ask Grimoire to explain to you what "immutable data" is and why it is important to use within programming code.
 
-7. Print the tupleexample by running the `python_datatypes_interactive_exercise.py` program with the datatype-argument `tuple`.
+7. Print the `tuple` example by running the `python_datatypes_interactive_exercise.py` program with the datatype-argument `tuple`.
 
 8. The last datatype is called a `dictionary`. This datatype acts like a traditional dictionary because you can "look up" data by using a "key" that will return an associated "value". For our purposes, the "key" in this sense is a string or an integer that provides a "name" or "identifier" that can be used to refer to its associated data-value. (Python does allow some data-types besides strings and integers to be used as "keys", but the rules governing keys are complicated, and will not be needed for this course.) The value associated with a key can be any python datatype, including sets, lists, or even another dictionary, which allows one to build up an arbitrariy complex data-structure. Ask Grimoire to explain to you what is meant by "key-value" pairs within a python dictionary. 
 
@@ -86,12 +105,12 @@ Reentering an old key with a new value will update the key's value.
 
 10. Because "dictionaries" are such an important tool for writing programs, we have included a separate interactive exercise on use of dictionaries. Please launch this exercise as follows:
 ```
-    python3 Code/dictionary_interactive_exercise.py
+    python3 Scripts/dictionary_interactive_exercise.py
 ```
 The execise will welcome you, provide a brief description of what a "dictionary" is, and then prompt you regarding whether you wish to `add a key-value pair`, `delete a key`, or `quit`. After each operation that you enter, the program will display the new contents of the dictionary. Please experiment by adding an assortment of key-value pairs, deleting keys (and their associated values),
 and re-adding old keys with new values, and observe how the contents of the dictionary changes after each operation. Once you think you have a good understanding of how the "add" and "delete" operations alter the contents of the dictionary, you can leave the exercise by typing `q` or `quit`.
 
-We encourage you to open the program `Code/dictionary_interactive_exercise.py` and have a look inside. If there is any part of the program that you feel you don't understand, you can paste it into Grimoire and ask Grimoire to explain the code to you "line-by-line". If there are parts that you feel you still don't understand, ask Grimoire to explain those lines "step-by-step".
+We encourage you to open the program `Scripts/dictionary_interactive_exercise.py` and have a look inside. If there is any part of the program that you feel you don't understand, you can paste it into Grimoire and ask Grimoire to explain the code to you "line-by-line". If there are parts that you feel you still don't understand, ask Grimoire to explain those lines "step-by-step".
 
 ## Solution Check instructions:
 If you are successful, the program should return output that matches the following.
