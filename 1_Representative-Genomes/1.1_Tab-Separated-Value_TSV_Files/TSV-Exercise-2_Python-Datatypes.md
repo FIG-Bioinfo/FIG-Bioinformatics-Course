@@ -14,14 +14,12 @@ If you are unsure of how to find this setting, please refer to the "Download Ins
 
 ```
 FIG-Bioinformatics-Course/
-├── Scripts/
-│   └── python_datatypes_interactive_exercise.py
-│   └── dictionary_interactive_exercise.py
-└── 1_Representative-Genomes/
-    └── 1.1_Tab-Separated-Value_(TSV)_Files/
-        ├── TSV-Exercise-Exercise-2_Python-Datatypes.md  (you are here)
-        └── Solutions/
-            └── tsv_headers_solution.py
+├── 1_Representative-Genomes/
+│   └── 1.1_Tab-Separated-Value_(TSV)_Files/
+│       └── TSV-Exercise-Exercise-2_Python-Datatypes.md  (you are here)
+└── Scripts/
+    ├── python_datatypes_interactive_exercise.py
+    └── dictionary_interactive_exercise.py 
 ```
 
 
@@ -29,7 +27,7 @@ FIG-Bioinformatics-Course/
 
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
-Then got to the terminal-windown if it is open,
+Then got to the terminal-window if it is open,
 else launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the

@@ -24,7 +24,7 @@ FIG-Bioinformatics-Course/
 
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
-Then got to the terminal-windown if it is open,
+Then got to the terminal-window if it is open,
 else launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
