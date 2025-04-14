@@ -23,21 +23,25 @@ The script must support the following command-line arguments:
    if no cache directory is provided).
 3. Ensure that the downloaded ".sra" file exists in the expected location
    before proceeding.
-4. Use "fastq-dump --fasta 0 --split-files" to convert the downloaded
-   SRA file into a pair of FASTA files (for paired-end reads)
-   or a single FASTA file (for single-end reads).
-5. Store the resulting FASTA files in a subdirectory under the specified
-   download directory, named after the corresponding SRA ID.
-6. Perform error handling at every step:
+4. Extract the contents of the .sra file, determine if they are FASTQ or FASTA,
+   inform the user of the contents of the .sra file, and 
+   - if FASTQ, store them in the subdirectory "FASTQ/sraID",
+   under the specified download directory, with "sraID" replaced
+   by the SRA-ID being downloaded;
+   - elsif FASTA, store them in the a subdirectory "FASTA/sraID",
+   under the specified download directory, where again "sraID"
+   is replaced by the SRA-ID being downloaded;
+5. Perform error handling at every step:
    - If "prefetch" fails, print a warning and move to the next SRA ID.
-   - If "fastq-dump" succeeds, delete the cached .sra file;
-     elseif "fastq-dump" fails, print a warning and move to the next SRA ID.
-   - If no FASTA files are created, print a warning.
-7. Ensure all informational messages (`[INFO]`) and debugging messages
+   - If the extraction of the contents of the .sra file succeeds,
+   delete the cached .sra file;
+   elseif "fastq-dump" fails, print a warning and move to the next SRA ID.
+   - If no FASTQ or FASTA files are created, print a warning.
+6. Ensure all informational messages (`[INFO]`) and debugging messages
    (`[DEBUG]`) are printed to STDERR.
-8. Debug messages should only be printed if the script is invoked with the
+7. Debug messages should only be printed if the script is invoked with the
    `-D` or `--Debug` flag.
-9. After processing all SRA IDs, print a summary that includes:
+8. After processing all SRA IDs, print a summary that includes:
    - The total number of SRA entries requested.
    - The number of successful conversions.
    - The count of single-end and paired-end datasets.
