@@ -86,6 +86,9 @@ The key-phrases "line-by-line" and "step-by-step" trigger a particular mode of r
 cp Templates/tsv_headers.py Code/
 ```
 
+`cp` is an example of a `command`,
+and `Templates/tsv_headers.py` and `Code/`
+are called the first and second "arguments" of the `cp` command.
 You should read the command `cp` as "copy", because it copies
 its first argument (in this case the file `Templates/tsv_headers.py`)
 to its second argument (in this case into the Code-directory `Code/`).
@@ -93,6 +96,8 @@ When the second arument is a filename the new copy will have that name,
 for example, `cp file1 file2` will make a copy of `file1` that is named `file2`,
 whereas when the second argumant is a directory, the copy will have
 the same filename as the original file.
+We will discuss the concepts of "commands" and "arguments" further
+in later exercises.
 
 8. Use Grimoire's "clipboard" icon at the upper-right of its code-window to copy the program to your clipboard. Then go to "File Explorer",
 which is the icon in the left toolbar that looks like two overlapping
