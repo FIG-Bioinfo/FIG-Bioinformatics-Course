@@ -24,9 +24,14 @@ FIG-Bioinformatics-Course/
 
 ## Exercises:
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then got to the terminal-windown if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 1. Ask Grimoire to tell you how `tsv_headers.py` works by "attaching" the file to your question regarding how the code works before submitting it. (You "attach" a file to a prompt by saying _"I am going to attach a program that I would like to work on with you",_ then click on the "paperclip" icon at the left of the "Messages" box (AKA the "prompt"), select the program to upload, and finally click the "enter" icon at the right of the prompt.) If attaching the file does not work, try copying and pasting the contents of the file into the "Messages" box. Then, ask Grimoire to translate the attached code into "pseudocode", and explain the program to you "line-by-line". Insert the pseudocode and Grimoire's explanation into the beginning of `tsv_headers.py` as a "block-comment" for future reference.
 * NOTE: "single-line comments" consist of anything that follows a `#` character through the end of the current line.

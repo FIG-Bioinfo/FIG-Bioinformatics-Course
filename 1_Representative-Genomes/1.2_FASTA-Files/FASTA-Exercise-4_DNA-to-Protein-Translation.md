@@ -29,9 +29,14 @@ FIG-Bioinformatics-Course/
 
 ## Exercises:
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then got to the terminal-windown if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 
 1. With only a few exceptions (most notably during the replication of "retroviruses" such as HIV), information in cells flows in one direction: From DNA, to RNA, to Proteins. This one-way flow of molecular information has become known as the "Fundamental Dogma of Molecular Biology". Ask Grimoire to explain this "Fundamental Dogma" to you in more detail. If Grimoire uses terms that are unfamiliar to you, ask it to explain those terms as well.

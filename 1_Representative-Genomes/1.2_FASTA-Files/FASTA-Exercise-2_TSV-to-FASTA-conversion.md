@@ -26,9 +26,14 @@ FIG-Bioinformatics-Course/
 
 #### Exercise: 
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then got to the terminal-windown if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 1. In bioinformatics we are often faced with the need to extract data from files and convert these data from the format produced by one program to a different format that is needed by some other program.
 In this exercise, you will first create a program that will reformat a 3-column tab-separated file into a FASTA-formatted file. You will then use the program `cmd_tsv_select_columns.py` that you created in `TSV-Ex-3` to extract 3 selected columns from a tab-separated file that contains both genome and sequence-data, and "pipe" them to the program that converts the 3-column data into FASTA format.

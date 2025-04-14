@@ -22,9 +22,14 @@ FIG-Bioinformatics-Course/
 
 ## Exercise
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then got to the terminal-windown if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 1. From the data set that you sorted from the previous exercises, choose one control sample that you want to look into. We will be referring to this sample as "Control Sample A" for the purposes of this exercise. It is recommended that you do not change the name of this sample file to Control Sample A, as it will be used in your model and keeping the SRA ID number in tact will allow you to more easily keep track of its metadata and origins for the model. To help you keep track of this sample, you can search for every instance of "Control Sample A" through VSCode. To do this, go to the left hand navigation bar and click on the search icon below the file explorer icon. You can then replace each instance of "Control Sample A" with the SRA ID of the sample you have chosen using the two text boxes that appear in the search menu. Feel free to do this for every instance of "Control Sample A" in the course as it will be the same sample that you use for all exercises.
 
