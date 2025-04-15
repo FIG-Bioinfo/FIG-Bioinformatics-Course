@@ -27,7 +27,7 @@ These are instructions on how to download the course through github. If you have
 
 7. Type `pwd` to verify that you are in the folder that you want to install the course under.
 
-8. Next, to download the course material, type `git clone https://github.com/vparrello/FIG-Bioinformatics-Course.git` inside your terminal.
+8. Next, to download the course material, type `git clone https://github.com/FIG-Bioinfo/FIG-Bioinformatics-Course` inside your terminal.
 
 9. Type `exit` to leave the terminal-window.
 
