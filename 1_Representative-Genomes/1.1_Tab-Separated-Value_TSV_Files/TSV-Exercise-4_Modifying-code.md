@@ -33,8 +33,26 @@ has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
 to the course home.
 
-1. Ask Grimoire to tell you how `tsv_headers.py` works by "attaching" the file to your question regarding how the code works before submitting it. (You "attach" a file to a prompt by saying _"I am going to attach a program that I would like to work on with you",_ then click on the "paperclip" icon at the left of the "Messages" box (AKA the "prompt"), select the program to upload, and finally click the "enter" icon at the right of the prompt.) If attaching the file does not work, try copying and pasting the contents of the file into the "Messages" box. Then, ask Grimoire to translate the attached code into "pseudocode", and explain the program to you "line-by-line". Insert the pseudocode and Grimoire's explanation into the beginning of `tsv_headers.py` as a "block-comment" for future reference.
+1. First, enter the following into Grimoire's "Messages" box (AKA the 
+"prompt"), but do not hit the "Submit" button (the one that looks like a "Right-arrow"):
+
+```
+I am going to attach a program that I would like to work on with you
+```
+
+2. Next, click on the "paperclip" icon at the left of the "Messages" box, which will open up the file-selector popup.
+Select the program `Code/tsv_headsers.py`, and finally click the "Submit" icon at the right of the prompt.
+The action you have just performed is called "attaching" the file
+to the prompt, and you will often do this in future exercises.
+
+**NOTE:** If attaching the file does not work, try copying and pasting the contents of the file into the "Messages" box.
+
+3. Ask Grimoire to translate the attached code for `tsv_headers.py` into "pseudocode",
+and explain the program to you "line-by-line".
+Insert the pseudocode and Grimoire's explanation into the beginning of `tsv_headers.py` as a "block-comment" for future reference.
+
 * NOTE: "single-line comments" consist of anything that follows a `#` character through the end of the current line.
+
 * Multiline "block-comments" are most easily constructed by placing three single-quotes or double-quotes by themselves on the lines preceding and following the text of the "block-comment", like this:
 ```
         """
@@ -45,7 +63,7 @@ to the course home.
         """
 ```
 
-2. In your previous exercises, your program used what are known as "positional arguments", which work like this:
+4. In your previous exercises, your program used what are known as "positional arguments", which work like this:
 
     ``` python3 program_name arg1 arg2 arg3 ... ```
 
@@ -68,7 +86,7 @@ to the course home.
     This will act as a "backup" of the original program, in case you need to revert to it.
 
 
-3. In this exercise you are going to revise the `tsv_headers.py` program to add named arguments and a new use-case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements to your code.
+5. In this exercise you are going to revise the `tsv_headers.py` program to add named arguments and a new use-case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements to your code.
 
 ```
 I have uploaded a program that I'd like you to modify. Please make the following revisions to the tsvheaders program:
@@ -82,9 +100,9 @@ I have uploaded a program that I'd like you to modify. Please make the following
 * The program can accept an optional argument '-n' to specify the "total number of selected data-columns that will be printed to STDOUT", e.g. -n 4 means "Print a TOTAL of 4 selected columns to STDOUT". Please note that this argument specifies the TOTAL number of columns to be printed to STDOUT --- it does _NOT_ specify the maximum column-number to be printed! If this optional argument is not specified, then the program should print all of the  elected columns in the input datafile.
 ```
     
-4. Save the modified program as in previous exercises. 
+6. Save the modified program as in previous exercises. 
 
-5. Once you have finished with these revisions, the program should be able to take the following prompt from the terminal:
+7. Once you have finished with these revisions, the program should be able to take the following prompt from the terminal:
     
     ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 3 ```
     
