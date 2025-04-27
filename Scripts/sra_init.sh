@@ -1,5 +1,4 @@
 #!/bin/bash
-
 if [[ "$(uname -s)" == "Linux" || "$(uname -s)" == "Darwin" ]]; then
     export PATH="$COURSE_HOME/NCBI/sratoolkit/bin:$COURSE_HOME/NCBI/edirect:$PATH"
     vdb-config --set "/repository/user/main/public/root=$COURSE_HOME/NCBI/public"
