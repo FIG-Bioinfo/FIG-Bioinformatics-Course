@@ -409,6 +409,8 @@ FodyWeavers.xsd
 # Ignores specific to the course
 /Code/*
 !Code/.keep
+/MyData/*
+!MyData/.keep
 /NCBI/*
 !NCBI/.keep
 Tmp/hammer-creator_prompt.txt
