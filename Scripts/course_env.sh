@@ -51,6 +51,13 @@ SRA_INIT_SCRIPT="$COURSE_HOME/Scripts/sra_init.sh"
 if [ -d "$SRATOOLS_DIR" ]; then
   if [ -f "$SRA_INIT_SCRIPT" ]; then
     source "$SRA_INIT_SCRIPT"
+
+    # === Validate SRA config is respected ===
+    if ! grep -q "$COURSE_HOME/NCBI/public" <(vdb-config -p); then
+      echo "[WARNING] vdb-config root appears misconfigured. Resetting..." >&2
+      vdb-config --set "/repository/user/main/public/root=$COURSE_HOME/NCBI/public"
+    fi
+
   else
     echo "Warning: Expected sra_init.sh script not found at '$SRA_INIT_SCRIPT'" >&2
   fi

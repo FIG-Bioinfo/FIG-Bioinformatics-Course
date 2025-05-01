@@ -1,34 +1,39 @@
 ########################################################################
 #...Prompt that generated this program:
 """
-Write a Python script named `sra_fastq_download.py` that performs the following:
+Please write a Python script named `sra_fastq_download.py` that performs the following:
 
 - Accepts the following command-line arguments:
-  - `-i` / `--id-file` (required): Path to a text file containing a list of SRA IDs (one per line)
-  - `-d` / `--download-directory` (required): Directory where extracted FASTQ files should be stored
-  - `-c` / `--sra-cache` (optional): Directory to cache `.sra` files. If not specified, use the environment variable `COURSE_HOME`, falling back to `~/NCBI/public/sra`
-  - `-D` / `--Debug` (optional flag): Print debug messages to STDERR
+  - `-i` or `--id-file` (required): Path to a text file containing a list of SRA IDs (one per line)
+  - `-d` or `--download-directory` (required): Directory where extracted FASTQ files should be stored
+  - `-c` or `--sra-cache` (optional): Directory to cache `.sra` files. If not specified, use the environment variable `COURSE_HOME`, falling back to `~/NCBI/public/sra`
+  - `-D` or `--Debug` (optional flag): Print debug messages to STDERR
 
 Behavior:
 
 1. For each SRA ID:
-   - Download the `.sra` file using `prefetch` into the cache directory.
-   - Extract the SRA file using `fasterq-dump` into this path:
-     `{download_directory}/{sra_id}/FASTQ/`
-   - If `fasterq-dump` fails, skip and warn.
-   - All output directories must be created if missing.
+   - Download the `.sra` file using `prefetch` into the cache directory
+   - Extract the `.sra` file using `fasterq-dump` into:
+     {download_directory}/{sra_id}/FASTQ/
+   - If `fasterq-dump` fails, skip and print a warning
+   - Create any missing output directories as needed
 
-2. Print all `[INFO]` messages to STDERR.
-3. If debug is enabled, print `[DEBUG]` messages showing shell commands executed.
-4. At the end, print a summary of total SRA IDs and successful FASTQ extractions.
+2. Print all `[INFO]` messages to STDERR
+3. If debug is enabled, also print `[DEBUG]` messages showing the shell commands executed
+4. After processing all SRA IDs, print a summary showing:
+   - Total SRA IDs requested
+   - Number of successful FASTQ extractions
 
 Implementation constraints:
-- Use `subprocess.run()` to call `prefetch` and `fasterq-dump`
-- Use `os.environ.get("COURSE_HOME", os.path.expanduser("~"))` to get cache root if `--sra-cache` is not given.
-- Do not extract to FASTA. Do not convert or delete `.sra` files.
-- The script must be production-ready and runnable as:
+
+- Use `subprocess.run()` to call both `prefetch` and `fasterq-dump`
+- Use `os.environ.get("COURSE_HOME", os.path.expanduser("~"))` to determine the default SRA cache path if `--sra-cache` is not specified
+- Do not convert to FASTA or delete `.sra` files
+- The script must be production-ready, modular, and runnable like this:
+
   ```bash
   python sra_fastq_download.py -i my_ids.txt -d ./outputs
+  ```
 """
 
 ########################################################################
@@ -36,28 +41,28 @@ Implementation constraints:
 """
 FUNCTION main():
     PARSE command-line arguments:
-        id_file ← required string input
-        download_directory ← required string input
-        sra_cache ← optional string input (default: COURSE_HOME/NCBI/public/sra)
-        debug ← boolean flag
+        id_file <- required string input
+        download_directory <- required string input
+        sra_cache <- optional string input (default: COURSE_HOME/NCBI/public/sra)
+        debug <- boolean flag
 
     CALL process_sra_list(id_file, download_directory, sra_cache, debug)
 
 
 FUNCTION process_sra_list(id_file, download_directory, sra_cache, debug):
-    sra_ids ← READ non-empty trimmed lines from id_file
-    total ← LENGTH of sra_ids
-    success_count ← 0
+    sra_ids <- READ non-empty trimmed lines from id_file
+    total <- LENGTH of sra_ids
+    success_count <- 0
 
     FOR EACH sra_id IN sra_ids:
         PRINT "[INFO] Processing sra_id..."
 
-        success ← download_sra(sra_id, sra_cache, debug)
+        success <- download_sra(sra_id, sra_cache, debug)
         IF NOT success:
             PRINT "[WARNING] Failed to download sra_id. Skipping."
             CONTINUE
 
-        success ← extract_fastq(sra_id, sra_cache, download_directory, debug)
+        success <- extract_fastq(sra_id, sra_cache, download_directory, debug)
         IF success:
             INCREMENT success_count
 
@@ -65,29 +70,29 @@ FUNCTION process_sra_list(id_file, download_directory, sra_cache, debug):
 
 
 FUNCTION download_sra(sra_id, sra_cache, debug):
-    cache_dir ← sra_cache OR get_default_cache_dir()
+    cache_dir <- sra_cache OR get_default_cache_dir()
     ENSURE cache_dir exists
-    command ← "prefetch --output-directory cache_dir sra_id"
+    command <- "prefetch --output-directory cache_dir sra_id"
     RETURN run_command(command, debug)
 
 
 FUNCTION extract_fastq(sra_id, sra_cache, download_directory, debug):
-    sra_file ← locate_sra_file(sra_id, sra_cache)
+    sra_file <- locate_sra_file(sra_id, sra_cache)
     IF sra_file DOES NOT exist:
         PRINT "[WARNING] SRA file not found after download"
         RETURN FALSE
 
-    output_dir ← download_directory + "/" + sra_id + "/FASTQ"
+    output_dir <- download_directory + "/" + sra_id + "/FASTQ"
     ENSURE output_dir exists
 
-    command ← "fasterq-dump --split-files --outdir output_dir sra_file"
+    command <- "fasterq-dump --split-files --outdir output_dir sra_file"
     RETURN run_command(command, debug)
 
 
 FUNCTION locate_sra_file(sra_id, sra_cache):
-    cache_dir ← sra_cache OR get_default_cache_dir()
-    expected_path ← cache_dir + "/" + sra_id + ".sra"
-    alternate_path ← cache_dir + "/" + sra_id + "/" + sra_id + ".sra"
+    cache_dir <- sra_cache OR get_default_cache_dir()
+    expected_path <- cache_dir + "/" + sra_id + ".sra"
+    alternate_path <- cache_dir + "/" + sra_id + "/" + sra_id + ".sra"
 
     IF expected_path EXISTS:
         RETURN expected_path

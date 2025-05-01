@@ -24,19 +24,19 @@ Use only Python’s built-in `open()` and string operations to perform the conve
 """
 FUNCTION main():
     PARSE command-line argument:
-        directory ← required argument, path to top-level directory containing SRA-ID subdirectories
+        directory <- required argument, path to top-level directory containing SRA-ID subdirectories
 
     CALL process_sra_dir(directory)
 
 
 FUNCTION process_sra_dir(root_dir):
-    total ← 0
-    converted ← 0
+    total <- 0
+    converted <- 0
 
     FOR EACH sra_id IN LIST_DIRECTORY(root_dir):
-        sra_path ← CONCAT(root_dir, "/", sra_id)
-        fastq_dir ← CONCAT(sra_path, "/FASTQ")
-        fasta_dir ← CONCAT(sra_path, "/FASTA")
+        sra_path <- CONCAT(root_dir, "/", sra_id)
+        fastq_dir <- CONCAT(sra_path, "/FASTQ")
+        fasta_dir <- CONCAT(sra_path, "/FASTA")
 
         IF fastq_dir IS NOT A DIRECTORY:
             CONTINUE TO NEXT sra_id
@@ -47,12 +47,12 @@ FUNCTION process_sra_dir(root_dir):
             IF NOT file_name ENDS_WITH ".fastq":
                 CONTINUE
 
-            fastq_path ← CONCAT(fastq_dir, "/", file_name)
-            fasta_name ← REPLACE_EXTENSION(file_name, ".fasta")
-            fasta_path ← CONCAT(fasta_dir, "/", fasta_name)
+            fastq_path <- CONCAT(fastq_dir, "/", file_name)
+            fasta_name <- REPLACE_EXTENSION(file_name, ".fasta")
+            fasta_path <- CONCAT(fasta_dir, "/", fasta_name)
 
-            PRINT_INFO("Converting fastq_path → fasta_path")
-            success ← convert_fastq_to_fasta(fastq_path, fasta_path)
+            PRINT_INFO("Converting fastq_path -> fasta_path")
+            success <- convert_fastq_to_fasta(fastq_path, fasta_path)
 
             IF success:
                 INCREMENT converted
@@ -67,15 +67,15 @@ FUNCTION convert_fastq_to_fasta(fastq_path, fasta_path):
         OPEN fasta_path FOR WRITING AS fa
 
         LOOP:
-            header ← READ_LINE(fq)
-            seq ← READ_LINE(fq)
-            plus ← READ_LINE(fq)
-            qual ← READ_LINE(fq)
+            header <- READ_LINE(fq)
+            seq <- READ_LINE(fq)
+            plus <- READ_LINE(fq)
+            qual <- READ_LINE(fq)
 
             IF header IS EMPTY OR seq IS EMPTY OR qual IS EMPTY:
                 BREAK LOOP
 
-            fasta_header ← ">" + REMOVE_PREFIX(header, "@")
+            fasta_header <- ">" + REMOVE_PREFIX(header, "@")
             WRITE_LINE(fa, fasta_header)
             WRITE_LINE(fa, TRIM(seq))
 
@@ -146,7 +146,7 @@ def process_sra_dir(root_dir):
             fasta_name = os.path.splitext(filename)[0] + ".fasta"
             fasta_path = os.path.join(fasta_dir, fasta_name)
 
-            print_info(f"Converting {fastq_path} → {fasta_path}")
+            print_info(f"Converting {fastq_path} -> {fasta_path}")
             if convert_fastq_to_fasta(fastq_path, fasta_path):
                 converted += 1
             total += 1
