@@ -43,36 +43,23 @@ fi
 # === 5. Extend PATH for Scripts and Code ===
 export PATH="$COURSE_HOME/Scripts:$COURSE_HOME/Code:$PATH"
 
-# === 6. Setup NCBI tools and SRA config ===
+# === 6. Setup NCBI tools initialization ===
 export NCBI_HOME="$COURSE_HOME/NCBI"
 SRATOOLS_DIR="$NCBI_HOME/sratoolkit"
+SRA_INIT_SCRIPT="$COURSE_HOME/Scripts/sra_init.sh"
 
 if [ -d "$SRATOOLS_DIR" ]; then
-  # Extend PATH with sratoolkit and edirect
-  if [[ "$(uname -s)" == "Linux" || "$(uname -s)" == "Darwin" ]]; then
-    export PATH="$NCBI_HOME/sratoolkit/bin:$NCBI_HOME/edirect:$PATH"
-    ROOT_PATH="$NCBI_HOME/public"
+  if [ -f "$SRA_INIT_SCRIPT" ]; then
+    source "$SRA_INIT_SCRIPT"
+
+    # === Validate SRA config is respected ===
+    if ! grep -q "$COURSE_HOME/NCBI/public" <(vdb-config -p); then
+      echo "[WARNING] vdb-config root appears misconfigured. Resetting..." >&2
+      vdb-config --set "/repository/user/main/public/root=$COURSE_HOME/NCBI/public"
+    fi
+
   else
-    export PATH="$(cygpath -w "$NCBI_HOME/sratoolkit/bin"):$(cygpath -w "$NCBI_HOME/edirect"):$PATH"
-    ROOT_PATH="$(cygpath -w "$NCBI_HOME/public")"
-  fi
-
-  # Force override and cleanup of legacy paths
-  vdb-config --set "/repository/user/main/public/root=$ROOT_PATH"
-  vdb-config --set "/repository/user/ad/public/root=$ROOT_PATH"
-  vdb-config --set "/repository/user/ad/public/apps/sra/volumes/sraAd=$ROOT_PATH"
-
-  # Persist config
-  vdb-config --save
-
-  # Confirm result
-  echo "[INFO] vdb-config root set to:"
-  vdb-config -p | grep root
-
-  # Validate config
-  if ! grep -q "$ROOT_PATH" <(vdb-config -p); then
-    echo "[WARNING] vdb-config root appears misconfigured. Resetting..." >&2
-    vdb-config --set "/repository/user/main/public/root=$ROOT_PATH"
+    echo "Warning: Expected sra_init.sh script not found at '$SRA_INIT_SCRIPT'" >&2
   fi
 else
   echo "SRA Toolkit is not yet installed --- please execute \"python Scripts/install_sra_toolkit.py\"" >&2
