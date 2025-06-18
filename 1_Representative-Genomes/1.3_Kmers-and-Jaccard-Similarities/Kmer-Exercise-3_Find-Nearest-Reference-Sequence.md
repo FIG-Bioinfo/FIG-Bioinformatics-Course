@@ -49,7 +49,7 @@ to the course home.
 
 4. Run the program as follows:
 ```
-python3 Code/find_nearest_reference.py -K 8 -R Data/rep10.seed_proteins.faa < Data/test-nearest.faa > Data/test-nearest.jaccard.tab
+python Code/find_nearest_reference.py -K 8 -R Data/rep10.seed_proteins.faa < Data/test-nearest.faa > Data/test-nearest.jaccard.tab
 ```
     **Note: `rep10.seed_proteins.faa` is a data file that was created in FASTA-Exercise-2. If you get a `File Not Found Error`, try recreating the file `rep10.seed_proteins.faa` using that exercise.
      

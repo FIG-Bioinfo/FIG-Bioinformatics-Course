@@ -17,14 +17,18 @@ indentation is again used to represent directory-levels:
 ```
 FIG-Bioinformatics-Course/
 ├── 1_Representative-Genomes/
-│   └── 1.1_Tab-Separated-Value_(TSV)_Files
+│   └── 1.1_Tab-Separated-Value_TSV_Files
 │       └── TSV-Exercise-3_Working-with-TSVs.md   (You are here)
 ├── Data/
 │   └── rep200.list.tbl
+├── MyData/                        (Target directory for output)
 └── Templates/
     ├── command_line_kung.py
     └── command_line_fu.py
 ```
+
+The program you will be developing in this exercise will be writing its output
+to the subdirectory `MyData/`, since the `Data/` directory is not writable.
 
 ## Exercises:
 
@@ -82,19 +86,19 @@ then click on the `Save` menu-item to save your program.
 that you opened earlier, and type the following to run your command:
 
     ```
-    python3 Code/command_line_kung.py genome_id genome_name domain genus species rep_id score distance < Data/rep200.list.tbl > Data/kung.out
+    python Code/command_line_kung.py genome_id genome_name domain genus species rep_id score distance < Data/rep200.list.tbl > MyData/kung.out
     ```
 
     (**NOTE:** The above should all be typed as a single line, even though your browser may have wrapped it around onto multiple lines on the screen.)
 
-    If the program completes without errors, use the "File Explorer" to open `Data/kung.out`, and verify that it has extracted the selected columns in the selected order.
+    If the program completes without errors, use the "File Explorer" to open `MyData/kung.out`, and verify that it has extracted the selected columns in the selected order.
 
 7. If there is an error, copy the error-message into your "Paste" buffer, then tell Grimoire that the code reported an error, paste in the error-message preceeded and followed by "triple quotes", and ask it to suggest possible fixes for the problem. (There is a good chance that if you ask Grimoire to implement its suggested fixes, it will be able to do so, in which case copy the new code, replace the old code with the new code, and go back to step 6.)
 
 8. Once you can get your `command_line_kung.py` program to run without throwing error-messages, try it again with the following command. This invocation should throw a warning message that you've asked for a nonexistent data-field, and then exit.
     
     ```
-    python3 Code/command_line_kung.py genome genome_name representative_id score distance < Data/rep200.list.tbl 
+    python Code/command_line_kung.py genome genome_name representative_id score distance < Data/rep200.list.tbl 
     ```
 
 9. Grimoire understands the concept of an "unordered" (or "bulleted") list, within which (in most cases) the order of the list-items (usually) doesn't matter (unless there are item-dependencies), and it generates its answers to your prompts by examining all of the preceeding prompts and answers within a "Context Window" that is roughly 8000 words long. Hence, you should be able to shuffle the items within the "bulleted list" prompt you entered in exercise (3.) above, and Grimoire will (usually) still generate functionally-equivalent code. Please try this experiment, to see how (if at all) Grimoire changes its generated pseudocode and code after shuffling the "bullet points", and then paste the pseudocode and code into the template-file `command_line_fu.py`.
@@ -102,7 +106,7 @@ that you opened earlier, and type the following to run your command:
 10. Finally, try executing the second program, but do not worry if this version does not succeed:
 
     ```
-    python3 Code/command_line_fu.py genome_id genome_name domain genus species rep_id score distance < Data/rep200.list.tbl > Data/fu.out
+    python Code/command_line_fu.py genome_id genome_name domain genus species rep_id score distance < Data/rep200.list.tbl > MyData/fu.out
     ```
     
 * Bonus: Can you write your own similar tests for `command_line_fu.py`? 

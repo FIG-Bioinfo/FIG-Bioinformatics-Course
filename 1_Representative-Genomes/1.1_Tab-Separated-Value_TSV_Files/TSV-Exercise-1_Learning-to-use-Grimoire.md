@@ -33,7 +33,7 @@ The following exercises are intended to get you used to interacting with "Grimoi
 "Grimoire", at <https://chat.openai.com/g/g-n7Rs0IK86-grimoire>
 
 Below is a visual schematic representation of the "Directory tree" for this section of the course. (See the first exercise below if you are unfamiliar with the concept of a "Directory Tree".) Indentation is used to represent subdirectory-levels, and items that end in `/` mean "directory that has this name"; otherwise, the item is a program or data file. In addition to the file you are currently reading, you will also need the files `bindict.tbl` and `tsv_headers.py`,
-which are respectively in the `Data/` and `Code/` directories underneath the main directory `FIG-Bioinformatics-Course/`:
+which are respectively in the `Data/` and `Templates/` directories underneath the main directory `FIG-Bioinformatics-Course/`:
 
 ```
 FIG-Bioinformatics-Course/
@@ -42,7 +42,7 @@ FIG-Bioinformatics-Course/
 ├── Data/
 │   └── bindict.tbl
 └── 1_Representative-Genomes/
-    └── 1.1_Tab-Separated-Value_(TSV)_Files/
+    └── 1.1_Tab-Separated-Value_TSV_Files/
         ├── TSV-Exercise-1_Learning-to-use-Grimoire.md  (you are here)
         └── Solutions/
             └── tsv_headers_solution.py
@@ -127,8 +127,8 @@ Grimoire has probably already shown you an example of how to run this program du
 that contains something similar to the following:
 
 ```
-✅ COURSE_HOME is: /Users/yourUsername/Projects/FIG-Bioinformatics-Course
-🔁 Use the command 'cdcourse' anytime to return to this root.
+COURSE_HOME is: /Users/yourUsername/Projects/FIG-Bioinformatics-Course
+Use the command 'cdcourse' anytime to return to this root.
 
 yourMachineName:FIG-Bioinformatics-Course yourUsername$ 
 ```
@@ -155,10 +155,10 @@ We have included instructions on how to install `gitbash` within the `0_Getting-
 * To run your program, enter the following command and hit the `Return` key:
 
 ```
-    python3 Code/tsv_headers.py < Data/bindict.tbl
+    python Code/tsv_headers.py < Data/bindict.tbl
 ```
 
-The above command asks the `python3` program-interpreter to run the program `Code/tsv_headers.py`, reading its data from the file `Data/bindict.tbl`.
+The above command asks the `python` program-interpreter to run the program `Code/tsv_headers.py`, reading its data from the file `Data/bindict.tbl`.
 
 **NOTE:** The above command should be entered as a single line,
 even if your browser might have wrapped it onto two lines.
@@ -184,22 +184,22 @@ that Grimoire wrote for you, but it should be functionally equivalent.
 To test out the Solution program, run the following command:
 
 ```
-python3 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions/tsv_headers_Ex1_solution.py < Data/bindict.tbl
+python 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions/tsv_headers_Ex1_solution.py < Data/bindict.tbl
 ```
 
 If you experience the following error:
 
 ```
-$ python3 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions/tsv_headers_solution.py < Data/bindict.tbl
+$ python 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions/tsv_headers_solution.py < Data/bindict.tbl
 Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Manage App Execution Aliases.
 ```
-You can fix it by changing `python3` to `python` in the command.
+You can fix it by changing `python` to `python` in the command.
 python 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions/tsv_headers_solution.py < Data/bindict.tbl
 
 If you experience the following error:
 
 ```
-C:\Users\parre\AppData\Local\Programs\Python\Python312\python.exe: can't open file 'C:\\Users\\parre\\OneDrive\\Documents\\Projects\\FIG-Bioinformatics-Course\\1_Representative-Genomes\\1.1_Tab-Separated-Value_TSV_Files\\Solutions\\tsv_headers_solution.py': [Errno 2] No such file or directory
+C:\Users\parre\AppData\Local\Programs\Python\python12\python.exe: can't open file 'C:\\Users\\parre\\OneDrive\\Documents\\Projects\\FIG-Bioinformatics-Course\\1_Representative-Genomes\\1.1_Tab-Separated-Value_TSV_Files\\Solutions\\tsv_headers_solution.py': [Errno 2] No such file or directory
 ```
 
 It means that the spelling of one of your file paths is incorrect.

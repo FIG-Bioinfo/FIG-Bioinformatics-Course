@@ -10,14 +10,16 @@ In almost every program that is written by a human, there will usually be an err
 ```
 FIG-Bioinformatics-Course/
 ├── 1_Representative-Genomes/
-│   └── TSV-Exercise-5_Fixing-Syntax-Errors.md   (you are here)
-├── Code/
+│   └── 1.1_Tab-Separated-Value_TSV_Files/
+│       └── TSV-Exercise-5_Fixing-Syntax-Errors.md   (you are here)
+├── Templates/
 │   ├── error_message1.py
 │   ├── error_message2.py
 │   ├── error_message3.py
 │   ├── error_message4.py
 │   ├── error_message5.py
 │   └── error_message_final.py
+├── Code/           (Directory holding your working copies of code)
 └── Data/
     ├── bindict.tbl
     ├── data.tbl
@@ -44,53 +46,90 @@ to the course home.
     * Attribute errors
     * Type errors
 
-2. Inside the Code directory, we have include a set of files that are designed to throw specific error-messages. Each filename has the form `error_messageN.py` where `N` is a number. Open up the first file `error_message1.py`, which contains 3 syntax errors; run this program to see which error messages are reported. 
+2. Inside the `Templates/` directory, we have include a set of files that are designed to throw specific error-messages. Each filename has the form `error_messageN.py` where `N` is a number. To work on these files,
+you will first need to copy them to the `Code/` directory as follows:
 
-3. Open up the first file `error_message1.py`, which contains 3 syntax errors. Notice that when you open this file in VSCode, it will highlight the 3 lines that contain errors in red with a squiggly line under the text. Look for the squiggly lines and see if you can identify which lines they are on.
+```
+cp Templates/error_message* Code/
+```
 
-4. Computing languages are very strict about syntax. If you forget to add a colon at the end of a line, or forget to add a quotation mark around a string, the program will not run. Go ahead and run `error_message1.py` and notice the following error message that gets printed in the command line: 
+`cp` is the "copy" command, and it copies things from its first argument to its last argument. In this case, it is copying everything that matches
+the _pattern_ `Templates/error_message*` into the directory `Code/`.
+The first argument is a _pattern_, not a filename, because it contains the "wild card" character `*` that matches one or more of any character,
+so `Templates/error_message*` matches any file in the directory `Templates/`
+that begins with `error_message` followed by any number of characters.
 
-    ```
-    python3 Code/error_message1.py
-    ```
+3. Now, please run the first program `error_message1.py` by going to the terminal window
+and typing:
+
+```
+   python Code/error_message1.py
+```
+
+Python should respond with a series of error messages that report that this program
+contains 3 syntax errors.
+
+4. Open up the first file `Code/error_message1.py`, which contains 3 syntax errors.
+Notice that when you open this file in VSCode, it will highlight the 3 lines
+that contain errors in red with a squiggly line under the text.
+Look for the squiggly lines and see if you can identify which lines they are on.
+
+5. Computing languages are very strict about syntax. If you forget to add a colon at the end of a line, or forget to add a quotation mark around a string, the program will not run. Go ahead and run `error_message1.py` and notice the following error message that gets printed in the command line: 
+
+```
+    python Code/error_message1.py
+```
 You will see a message that looks like this:
 
-    ```   
-    File "C:\Users\Directory\FIG-Bioinformatics-Course\Code\error_message1.py", line 5
+```   
+    File "FIG-Bioinformatics-Course\Code\error_message1.py", line 5
         if len(sys.argv) != 2
                          ^
     SyntaxError: expected ':'
-    ```
+```
+
 This is Python's way of trying to help you figure out what went wrong. The first part of the message tells you the name of the file that contains the error. That is pretty self-explanatory for us right now because we are only using one program. But once you start using more programs and having them talk to each other, this part of the message will become more important. The end of that same line tells you what line number inside of the file that contains the error. And then it prints that line out for you and puts an arrow in the exact location of where the program stopped running. The last part of the message is the actual error message that you need to fix. In this case, Python is telling you that you forgot to add a colon at the end of line 5. Thankfully, this means that the error is easy to fix! As all we have to do is add a colon to the end of line 5 to fix the error. Go ahead and do this and run the program again. 
 
 
-5. If you remember there were 3 syntax errors in the file. Therefore if you got the following output, you have found the second syntax error effecting your program.
+6. Recall that there were 3 syntax errors in the file.
+Therefore if you got the following output, you have found the second syntax error affecting your program.
     
-    ```
-    File "C:\Users\Directory\FIG-Bioinformatics-Course\Code\error_message1.py", line 12
+```
+    File "FIG-Bioinformatics-Course\Code\error_message1.py", line 12
         with open(filename, newline='') as file
                                            ^
     SyntaxError: expected ':'
-    ```
-This error message is telling you almost the exact same thing as the first error message. The difference here is that the error is on a different line of the file. Notice that there was already a red squiggly line at the end of line 12 before you ran your program. This is VSCode's way of highlighting the error for you. Now go ahead and add a colon to the end of line 12 to fix the error. If you feel confident enough, you can go ahead and fix the last syntax error as well. You will know you have fixed all the errors when you run the program and get one of the following outputs:
+```
 
-    ```
+This error message is telling you almost the exact same thing as the first error message. The difference here is that the error is on a different line of the file. Notice that there was already a red squiggly line at the end of line 12 before you ran your program. This is VSCode's way of highlighting the error for you. Now go ahead and add a colon to the end of line 12 to fix the error. If you feel confident enough, you can go ahead and fix the last syntax error as well. You will know you have fixed all the errors when you run the program and get the following outputs:
+
+* Running the program using `python Code/error_message1.py` should return
+
+```
     Usage: python tsv_headers.py <filename>
-    ```
-    ***Note: This next printout was created using Data/bindict.tbl as the input file.***
-    ```
+```
+
+(The above response is because `error_message1.py` is actually an editted version
+of `tsv_headers.py`, which expects a filename argument.)
+
+* Running the program using `python Code/error_message1.py Data/bindict.tbl`
+should return
+
+```
     Field names in the TSV file are:
     genome_id
     genome_name
     RepGen.200
     RepGen.100
     RepGen.50
-    ```
+```
 
-6. Each `error_messageN.py` file has been constructed to throw a different error. Most of them require a data file argument when being called from the command line. If you get a message that looks like:
+7. Each `error_messageN.py` file has been constructed to throw a different error. Most of them require a data file argument when being called from the command line. If you get a message that looks like:
+
 ```
 Usage: python tsv_headers.py <filename>
 ```
+
 then add `Data/bindict.tbl` to the end of your command to see if the program now works. Use the table below to keep track of which errors appeared and how to fix them. You can use this table as "quick reference" when debugging future programs.
 
 Use Grimoire and the printed messages in the command line to help you identify and fix the errors in each file. If you get stuck, use `error_message1.py` as a template to help you fix the errors in the other files.

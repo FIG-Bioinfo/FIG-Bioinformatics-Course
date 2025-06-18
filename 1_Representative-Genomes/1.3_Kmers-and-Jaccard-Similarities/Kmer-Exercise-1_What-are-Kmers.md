@@ -107,7 +107,7 @@ Experiment with different values for `-K`. Then, see how the output changes  whe
 These files are pretty small and should be easy to see what the kmers will be. If you are not sure, you can run the program with the `-K` argument set to a small value, such as 2 or 3. Below is an example of a command that you can use to run the program with `-K` set to 20 just like the hammers will be:
 
 ```
-python3 Code/extract_kmers_from_fasta.py -K 20 -t dna < Data/good-bad_dna.fna
+python Code/extract_kmers_from_fasta.py -K 20 -t dna < Data/good-bad_dna.fna
 ```
 The output will include a list of Kmers and the sequence-ID that they came from. This is a great starting point for creating files to see what the data structure of your sequence data is. If you output to the terminal for the above command, the printout of the output should be the following: 
 
@@ -152,7 +152,7 @@ Invalid Kmers found: 11
 8. Remember that you can alrways redirect the output of the program to a file.  You can do this by adding `> Data/output.txt` to the end of the command. Be careful to not use the same output file name twice, as this will overwrite the previous file and you will lose your previous work. 
 
 ```
-python3 Code/extract_kmers_from_fasta.py -K 20 -t dna < Data/good-bad_dna.fna > Data/dna_kmers_output.tsv
+python Code/extract_kmers_from_fasta.py -K 20 -t dna < Data/good-bad_dna.fna > Data/dna_kmers_output.tsv
 ```
 Find the example output of the above command in the `1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions` subdirectory. See if your output file is the same as the example output file. No matter what, the following data should still be printed to the terminal:
 
@@ -165,7 +165,7 @@ Invalid Kmers found: 11
 9. Run the same command for the protein file. Use the `-K` argument to set the Kmer length to 20.
 
 ```
-python3 Code/extract_kmers_from_fasta.py -K 20 -t protein < Data/good-bad_proteins.faa > Data/protein_kmers_output.tsv
+python Code/extract_kmers_from_fasta.py -K 20 -t protein < Data/good-bad_proteins.faa > Data/protein_kmers_output.tsv
 ```
 Find the example output of the above command in the `1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions` subdirectory. Regardless of the output file's success, the following data should still be printed to the terminal:
 

@@ -64,7 +64,7 @@ pip install pandas
 
 3. We suggest that you initially run your program with the following arguments:
     ```
-    python3 Code/protein_vs_dna_jaccard.py --protK 8 --dnaK 9 --data Data/rep10.seqs.tbl
+    python Code/protein_vs_dna_jaccard.py --protK 8 --dnaK 9 --data Data/rep10.seqs.tbl
     ```
 
 4. Note that the "scatter-plot" of score-pairs indicates that in general a larger protein jaccard-similarity implies a larger DNA jaccard-similarity, albeit the correlation is not "tight", i.e. the pairs do not all fall close to the same straight line. Also, there are many instances where the protein similarity is zero even though the DNA similarity is nonzero, and vice-versa. 

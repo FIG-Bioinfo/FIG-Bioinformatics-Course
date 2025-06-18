@@ -10,12 +10,13 @@ Editing your tools/programs to support various different use-cases makes your ow
 ```
 FIG-Bioinformatics-Course/
 ├── 1_Representative-Genomes/
-│   └── 1.1_Tab-Separated-Value_\(TSV\)_Files/
+│   └── 1.1_Tab-Separated-Value_TSV_Files/
 │       ├── TSV-Exercise-4_Modifying-code.md   (you are here)
 │       └── Solutions/
 │           └── tsv_headers_Ex4_solution.py
-├── Code/
+├── Templates/
 │   └── tsv_headers.py
+├── Code/       (Directory holding your working copies of code)
 └── Data/
     ├── bindict.tbl
     ├── data.tbl
@@ -65,17 +66,17 @@ Insert the pseudocode and Grimoire's explanation into the beginning of `tsv_head
 
 4. In your previous exercises, your program used what are known as "positional arguments", which work like this:
 
-    ``` python3 program_name arg1 arg2 arg3 ... ```
+    ``` python program_name arg1 arg2 arg3 ... ```
 
     Python programs also support "named arguments", which work like this:
 
-    ``` python3 program_name -a argA -b argB -c argC ... ```
+    ``` python program_name -a argA -b argB -c argC ... ```
 
     Named arguments have the advantage over positional arguments that they can be either optional or mandatory, and unlike positional arguments, their order doesn't matter.
 
     Named arguments can have a "long form" as well as a short form; "long form" arguments look like this:
     
-    ``` python3 program_name --nameA argA --nameB argB --nameC argC ... ```
+    ``` python program_name --nameA argA --nameB argB --nameC argC ... ```
 
     Ask Grimoire to tell you more about "short form" and "long form" named arguments, and ask it to give you some examples; then ask it any questions that you might have about named arguments.
 
@@ -104,7 +105,7 @@ I have uploaded a program that I'd like you to modify. Please make the following
 
 7. Once you have finished with these revisions, the program should be able to take the following prompt from the terminal:
     
-    ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 3 ```
+    ``` python Code/tsv_headers.py -i Data/data.tbl -n 3 ```
     
     and it should return the output:
     ``` sample  1033731.3       1034345.3```
@@ -114,14 +115,14 @@ I have uploaded a program that I'd like you to modify. Please make the following
 
 If you are successful at revising your program, you should see the following output from each of the following commands. (NOTE: once again, commands should be entered as a single line, even if they appear to wrap over multiple lines of the screen):
 
-* ``` python3 Code/tsv_headers.py -i Data/data.tbl -n 4 -s 20 ```
+* ``` python Code/tsv_headers.py -i Data/data.tbl -n 4 -s 20 ```
 
     ``` 1423720.3       203120.7        2049039.65      206672.9```
 
-* ``` python3 Code/tsv_headers.py -i Data/rep200.list.tbl -n 5 -s i ```
+* ``` python Code/tsv_headers.py -i Data/rep200.list.tbl -n 5 -s i ```
 
     ```genome_id       domain  species rep_id  distance```
 
-* ``` python3 Code/tsv_headers.py -i Data/bindict.tbl ```
+* ``` python Code/tsv_headers.py -i Data/bindict.tbl ```
 
     ``` genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50 ```

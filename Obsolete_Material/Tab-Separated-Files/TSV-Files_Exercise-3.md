@@ -23,7 +23,7 @@ tsv_header.py
     * The program can take the -m argument to see by what factor it will skip the columns.This is optional (print every 4th, 8th, or every other column as examples)
     
 3. Once you have finished, it should be able to take this prompt from the terminal:
-    ' python3 tsv_header -i data.tbl -n 8 -m 4 
+    ' python tsv_header -i data.tbl -n 8 -m 4 
     And come back with 
     1042156.4 1121445.4
 This data file has over 2000 columns and can take a long time to load in applications. Bonus points if you can do this entire program without opening the file yourself.
@@ -31,11 +31,11 @@ This data file has over 2000 columns and can take a long time to load in applica
 ## Solution Check instructions:
 If you are successful, you will have the following output for the related commands
 
-' python3 tsv_header -i data.tbl -n 7 
+' python tsv_header -i data.tbl -n 7 
 * sample	1033731.3	1034345.3	1042156.4	1105031.3	1118060.3	1121370.3
-' python3 tsv_header -i data.tbl -n 4 -m 20
+' python tsv_header -i data.tbl -n 4 -m 20
 * 1496.3893 203120.7 40545.1270 563192.3
-' python3 tsv_header -i rep200.list.tbl -n 5 -m 2
+' python tsv_header -i rep200.list.tbl -n 5 -m 2
 * genome_name genus rep_id distance
-' python3 tsv_header -i bindict.tbl 
+' python tsv_header -i bindict.tbl 
 * genome_id	genome_name	RepGen.200	RepGen.100	RepGen.50

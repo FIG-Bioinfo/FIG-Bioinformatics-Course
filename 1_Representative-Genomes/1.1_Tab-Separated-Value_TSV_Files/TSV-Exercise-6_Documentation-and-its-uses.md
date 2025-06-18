@@ -13,8 +13,9 @@ Now that we have created our program, we will need to prepare it for outside use
 FIG-Bioinformatics-Course/
 ├── 1_Representative-Genomes/
 │   └── TSV-Exercise-6_Documentation-and-its-uses.md (you are here)
-├── Code/
+├── Templates/
 │   └── tsv_headers.py
+├── Code/       (Directory holding your working copies of code)
 └── Data/
     ├── bindict.tbl
     ├── data.tbl

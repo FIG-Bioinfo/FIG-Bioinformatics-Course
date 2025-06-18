@@ -15,7 +15,7 @@ If you are unsure of how to find this setting, please refer to the "Download Ins
 ```
 FIG-Bioinformatics-Course/
 ├── 1_Representative-Genomes/
-│   └── 1.1_Tab-Separated-Value_(TSV)_Files/
+│   └── 1.1_Tab-Separated-Value_TSV_Files/
 │       └── TSV-Exercise-Exercise-2_Python-Datatypes.md  (you are here)
 └── Scripts/
     ├── python_datatypes_interactive_exercise.py
@@ -103,7 +103,7 @@ Reentering an old key with a new value will update the key's value.
 
 10. Because "dictionaries" are such an important tool for writing programs, we have included a separate interactive exercise on use of dictionaries. Please launch this exercise as follows:
 ```
-    python3 Scripts/dictionary_interactive_exercise.py
+    python Scripts/dictionary_interactive_exercise.py
 ```
 The execise will welcome you, provide a brief description of what a "dictionary" is, and then prompt you regarding whether you wish to `add a key-value pair`, `delete a key`, or `quit`. After each operation that you enter, the program will display the new contents of the dictionary. Please experiment by adding an assortment of key-value pairs, deleting keys (and their associated values),
 and re-adding old keys with new values, and observe how the contents of the dictionary changes after each operation. Once you think you have a good understanding of how the "add" and "delete" operations alter the contents of the dictionary, you can leave the exercise by typing `q` or `quit`.

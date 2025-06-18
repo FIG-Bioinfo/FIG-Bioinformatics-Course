@@ -119,7 +119,7 @@ END
 
 ########################################################################
 # Code for 'build_representative_set_solution.py'
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import argparse
 import re

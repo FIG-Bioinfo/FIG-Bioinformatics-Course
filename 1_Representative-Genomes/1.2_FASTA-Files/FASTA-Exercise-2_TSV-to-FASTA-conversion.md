@@ -40,7 +40,7 @@ In this exercise, you will first create a program that will reformat a 3-column 
 
 If you use your script `Code/tsv_headers.py` on the file `Data/rep10.seqs.tbl`, you should see something like this:
 ```
-% python3 Code/tsv_headers.py -i Data/rep10.seqs.tbl 
+% python Code/tsv_headers.py -i Data/rep10.seqs.tbl 
 Field names in the TSV file are:
 genome_id
 genome_name
@@ -60,7 +60,7 @@ Use VScode to save the program to a file named `3col_to_fasta.py` within the `Co
 
 3. Use `cmd_tsv_select_columns.py` from TSV-Ex-3 to select the columns 'genome_id', 'genome_name', and 'seed_protein', and "pipe" the output to `3col_to_fasta.py`:
 ```
-python3 Code/cmd_tsv_select_columns.py genome_id genome_name seed_protein < Data/rep10.seqs.tbl | python3 Code/3col_to_fasta.py > Data/rep10.seed_proteins.faa
+python Code/cmd_tsv_select_columns.py genome_id genome_name seed_protein < Data/rep10.seqs.tbl | python Code/3col_to_fasta.py > Data/rep10.seed_proteins.faa
 ```
 
 * NOTE: The above should all be entered on a single command-line, even though your browser has probably split this command across several lines.

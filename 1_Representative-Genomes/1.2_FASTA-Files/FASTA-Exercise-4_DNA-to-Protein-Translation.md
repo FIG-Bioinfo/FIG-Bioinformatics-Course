@@ -70,7 +70,7 @@ in this prompt; why is that?
 
 6. Run the program on the file `Data/Sample1.fasta`:
     ```
-    python3 Code/translate-DNA_simple.py < Data/Sample1.fasta > Data/Result1.faa
+    python Code/translate-DNA_simple.py < Data/Sample1.fasta > Data/Result1.faa
     ```
 Note that we are recommending a file-extension of `.faa` to remind you that the translation is an Amino-Acid FASTA file.
 

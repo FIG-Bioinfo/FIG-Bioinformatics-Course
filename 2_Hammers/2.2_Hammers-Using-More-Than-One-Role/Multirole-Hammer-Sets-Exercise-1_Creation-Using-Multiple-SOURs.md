@@ -221,7 +221,7 @@ Again use VScode to paste the pseudocode and code into the template
 To run the command for your 'myrep10' genomes, enter the following:
 
 ```
-    python3 Code/hammer_creator_multirole.py -K 20 < Data/myrep10.five_roles.dna-sequences.fna > Data/myrep10.five_roles.hammers.tbl
+    python Code/hammer_creator_multirole.py -K 20 < Data/myrep10.five_roles.dna-sequences.fna > Data/myrep10.five_roles.hammers.tbl
 ```
 
 
@@ -234,7 +234,7 @@ have been fetched from BV-BRC, run them through the program
 `fasta_reader.py` that you created in `FASTA-Exercise-3`:
 
 ```
-python3 Code/fasta_reader.py < Data/myrep10.five_roles.dna-sequences.solution.fna > /dev/null
+python Code/fasta_reader.py < Data/myrep10.five_roles.dna-sequences.solution.fna > /dev/null
 ```
 
 The result printed to `STDERR` should be:

@@ -56,7 +56,7 @@ Instuctions for installing the BV-BRC app are located in `O_Getting-Stated/0_Ins
 
 3. Use your command `find_nearest_reference.py` to compare the sequence you just fetched to `myrep10`:
 ```
-    python3 Code/find_nearest_reference.py -K 8 -R Data/myrep10.faa < Data/mystery_PheS.faa
+    python Code/find_nearest_reference.py -K 8 -R Data/myrep10.faa < Data/mystery_PheS.faa
 ```
 Which representative genome was reported in the RepSet-description column?
 

@@ -165,12 +165,12 @@ so you will first need to change directory
 to the course directory.
 
 ```
-python3 Code/get_contigs_for_genomes.py -G Data/myrep10.genomes.tab -D Data/Myrep10_Genomes
+python Code/get_contigs_for_genomes.py -G Data/myrep10.genomes.tab -D Data/Myrep10_Genomes
 ```
 
 (Again, remember that all of the above should be entered on a single line, even if it looks like it's wrapped across multiple lines on your screen.
 also, please note that inside the BV-BRC app, it is necessary to specify
-the `python3` interpretor, because the BV-BRC app defaults to `python version 2`,
+the `python` interpretor, because the BV-BRC app defaults to `python version 2`,
 not `python version 3`.)
 
 The genome-fetching process will take some time,
@@ -184,7 +184,7 @@ Once you have your set of genome contigs,
 it's time to run the filtering program:
 
 ```
-python3 Code/filter_hammer_candidates.py -D Data/Myrep10_Genomes < Data/myrep10.PheS.hammers.tbl > Data/myrep10.PheS.hammers.filtered.tbl
+python Code/filter_hammer_candidates.py -D Data/Myrep10_Genomes < Data/myrep10.PheS.hammers.tbl > Data/myrep10.PheS.hammers.filtered.tbl
 ```
 (Again, beware line-wrapping!)
 

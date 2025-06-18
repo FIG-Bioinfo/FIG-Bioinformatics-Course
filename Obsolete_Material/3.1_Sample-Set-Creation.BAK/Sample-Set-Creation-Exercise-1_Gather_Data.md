@@ -196,7 +196,7 @@ echo SRR8933535 > Data/sra_test.tbl
 Then invoke your download-program as follows:
 
 ```
-python3 Code/sra_download.py -i Data/sra_test.tbl -c Data/SRA_Cache -d Data/SRA_Test
+python Code/sra_download.py -i Data/sra_test.tbl -c Data/SRA_Cache -d Data/SRA_Test
 ```
 
 If the program completes successfully, then the "disk-usage" command
