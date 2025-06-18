@@ -1,16 +1,34 @@
-Please write a python script that accepts a base path and
-target directory as arguments, then reads a list of SRA-IDs from STDIN,
-and iterates over the IDs executing the following pair of commands
-to fetch data from a remote repository:
-"""
-p3-cp ws:{base_path}/.{sra_id}/{sra_id}_1_ptrim.fq.gz {target_dir}
-"""
-and
-"""
-p3-cp ws:{base_path}/.{sra_id}/{sra_id}_2_ptrim.fq.gz {target_dir}
-"""
+Write a complete and production-ready Python script named
+`fetch_job_fastq_from_BVBRC.py` that performs the following tasks:
 
-The program should print a progress-message to STDERR
-indicating the SRA-ID that it is currently fetching,
-and should handle failed attempts gracefully while printing
-a warning to STDERR.
+1. Accept two command-line arguments:
+   - `base_path`: a remote base-path on the BV-BRC repository
+   - `target_path`: a local directory path where data will be stored
+
+2. Verify that the external command-line tool `p3-cp` is available
+   in the system path.
+   - If missing, print an error message to STDERR reminding the user
+     to run the script in the `BV-BRC.app` environment,
+     then exit with a non-zero status.
+
+3. Read a list of SRA IDs from STDIN (one per line).
+
+4. For each SRA ID:
+   - Create a subdirectory `{target_path}/{sra_id}` if it does not exist.
+   - For each paired-end file:
+     - Determine the target file path:  
+       `{target_path}/{sra_id}/{sra_id}_1_ptrim.fq.gz` and  
+       `{target_path}/{sra_id}/{sra_id}_2_ptrim.fq.gz`
+     - If the target file already exists, print a message to STDERR
+       that the file exists and skip the download.
+     - If it does not exist:
+       - Print a message to STDERR:  
+         `Fetching data for SRA-ID: {sra_id}, pair {1|2}`
+       - Run `p3-cp` to download the corresponding file from:  
+         `ws:{base_path}/.{sra_id}/{sra_id}_{1|2}_ptrim.fq.gz`
+       - If the command fails, print a warning to STDERR.
+
+5. The script must fail gracefully and continue processing remaining SRA IDs
+even if some downloads fail.
+
+Use appropriate error handling and clear user feedback messages.

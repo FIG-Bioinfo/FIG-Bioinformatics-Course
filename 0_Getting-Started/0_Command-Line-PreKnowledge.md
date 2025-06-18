@@ -88,13 +88,13 @@ cp filename duplicatefilename
 ```
 cp data.tbl datacopy.tbl
 ```
-To copy a file to another directory
+To copy a file from one directory to another directory
 ```
-cp filename path/to/directory
+cp Source/path/to/original/file.txt Destination/path/for/copy/
 ```
 *Example:*
 ```
-cp data.tbl FIG-Bioinformatics-Course/Data/
+cp Data/xmatrix_example.tsv FIG-Bioinformatics-Course/MyData/
 ```
 
 8. Delete (remove) a file

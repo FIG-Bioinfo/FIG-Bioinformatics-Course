@@ -31,9 +31,14 @@ In addition to the space on your computer, your reading of the FASTA files will 
 
 ## Exercise
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then go to the terminal-window if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 1. In this lesson, you will be downloading more data, then sorting it into two categories. You will need places to put all that data you will sort, so you will be creating two folders in the data directory of your course: one folder for 'Diseased' and one folder for 'Controls'. This classification is based on the metadata of the samples, which you will be using to sort the data.
 

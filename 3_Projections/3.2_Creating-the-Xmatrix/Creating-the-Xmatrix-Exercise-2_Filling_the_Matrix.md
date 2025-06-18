@@ -5,29 +5,39 @@ Objective: Fill the universal template with the correct data.
 Now that we have an xmatrix template, we can populate it with the presence or absence of the genomes in each sample making our dataset ready for machine learning. After we have the xmatrix populated, we can then explore it programmatically to find the best parameters for our model. And hopefully tease out a pattern that we can use to classify new samples.
 
 ## Materials
-[Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-[NCBI](https://www.ncbi.nlm.nih.gov/)
-[SRAToolkit Download FASTA Documentation](https://www.ncbi.nlm.nih.gov/books/NBK242621/)
-[BV-BRC](https://bv-brc.org/)
-[BV-BRC CLI Reference Documentation](https://www.bv-brc.org/docs/cli_tutorial/command_list/index.html)
+
+* [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
+
+* [NCBI](https://www.ncbi.nlm.nih.gov/)
+
+* [SRAToolkit Download FASTA Documentation](https://www.ncbi.nlm.nih.gov/books/NBK242621/)
+
+* [BV-BRC](https://bv-brc.org/)
+
+* [BV-BRC CLI Reference Documentation](https://www.bv-brc.org/docs/cli_tutorial/command_list/index.html)
 
 ```
 FIG-Bioinformatics-Course/
 ├── 3_Projections/
-    └── 3.2_Creating-the-Xmatrix/
-        └── Creating-the-Xmatrix-Exercise-1_Universal_Template.md (you are here)
+│   └── 3.2_Creating-the-Xmatrix/
+│       └── Creating-the-Xmatrix-Exercise-1_Universal_Template.md (you are here)
 └── Data/
     └── Controls/
-        └── hammer_report_controls.tsv
+    │   └── hammer_report_controls.tsv
     └── Diseased/
         └── hammer_report_diseased.tsv
 ```
 
 ## Exercise
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then go to the terminal-window if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 
 1. We will now need to populate the xmatrix with the presence or absence of the genomes in each sample. We will do this by using the hammer reports for each sample and populating them into the xmatrix. Using Grimoire to support your work, write a program that will take a hammer report and populate a new row in the xmatrix for each sample. It must have the following requirements:

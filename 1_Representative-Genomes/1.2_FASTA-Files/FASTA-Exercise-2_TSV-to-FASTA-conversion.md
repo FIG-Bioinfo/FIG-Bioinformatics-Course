@@ -26,16 +26,21 @@ FIG-Bioinformatics-Course/
 
 #### Exercise: 
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then go to the terminal-window if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 1. In bioinformatics we are often faced with the need to extract data from files and convert these data from the format produced by one program to a different format that is needed by some other program.
 In this exercise, you will first create a program that will reformat a 3-column tab-separated file into a FASTA-formatted file. You will then use the program `cmd_tsv_select_columns.py` that you created in `TSV-Ex-3` to extract 3 selected columns from a tab-separated file that contains both genome and sequence-data, and "pipe" them to the program that converts the 3-column data into FASTA format.
 
 If you use your script `Code/tsv_headers.py` on the file `Data/rep10.seqs.tbl`, you should see something like this:
 ```
-% python3 Code/tsv_headers.py -i Data/rep10.seqs.tbl 
+% python Code/tsv_headers.py -i Data/rep10.seqs.tbl 
 Field names in the TSV file are:
 genome_id
 genome_name
@@ -55,7 +60,7 @@ Use VScode to save the program to a file named `3col_to_fasta.py` within the `Co
 
 3. Use `cmd_tsv_select_columns.py` from TSV-Ex-3 to select the columns 'genome_id', 'genome_name', and 'seed_protein', and "pipe" the output to `3col_to_fasta.py`:
 ```
-python3 Code/cmd_tsv_select_columns.py genome_id genome_name seed_protein < Data/rep10.seqs.tbl | python3 Code/3col_to_fasta.py > Data/rep10.seed_proteins.faa
+python Code/cmd_tsv_select_columns.py genome_id genome_name seed_protein < Data/rep10.seqs.tbl | python Code/3col_to_fasta.py > Data/rep10.seed_proteins.faa
 ```
 
 * NOTE: The above should all be entered on a single command-line, even though your browser has probably split this command across several lines.

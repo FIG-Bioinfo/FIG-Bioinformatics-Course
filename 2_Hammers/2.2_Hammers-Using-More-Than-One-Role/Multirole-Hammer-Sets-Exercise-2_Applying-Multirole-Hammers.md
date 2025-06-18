@@ -133,7 +133,7 @@ Then using VScode, paste the prompt, pseudocode, and code into the code-template
 2. To run the program on `MysteryGenome1.fna`, enter the following:
 
 ```
-python3 Code/hammer_compare_multirole.py -H Data/myrep10.five_roles.hammers.tbl -G Data/myrep10.genome.tbl < Data/MysteryGenome1.fna > Data/MysteryGenome1.myrep10.five-role-hammers-hits.tbl
+python Code/hammer_compare_multirole.py -H Data/myrep10.five_roles.hammers.tbl -G Data/myrep10.genome.tbl < Data/MysteryGenome1.fna > Data/MysteryGenome1.myrep10.five-role-hammers-hits.tbl
 ```
 
 The resulting output table is:
@@ -150,7 +150,7 @@ with the minimum role-fraction set to 0
 so that all hits will be accepted:
 
 ```
-python3 Code/hammer_compare_multirole.py -H Data/myrep10.five_roles.hammers.tbl -G Data/myrep10.genome.tbl -F 0.0 < Data/MysteryGenome1.fna > Data/MysteryGenome1.myrep10.five-role-hammers-hits.no-threshold.tbl
+python Code/hammer_compare_multirole.py -H Data/myrep10.five_roles.hammers.tbl -G Data/myrep10.genome.tbl -F 0.0 < Data/MysteryGenome1.fna > Data/MysteryGenome1.myrep10.five-role-hammers-hits.no-threshold.tbl
 ```
 
 The output-file contains 35 lines (34 hits plus the header-line);

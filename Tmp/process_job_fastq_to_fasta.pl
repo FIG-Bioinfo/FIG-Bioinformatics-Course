@@ -35,7 +35,7 @@ while (my $file = readdir($dh)) {
         my $prefix = $1;
 
         # Construct system command
-        my $command = "gunzip -c WGS/FASTQ/$dirname/$file | python3 $ENV{HOME}/bin/convert_fastq_to_fasta.py > WGS/FASTA/$dirname/$prefix.fna";
+        my $command = "gunzip -c WGS/FASTQ/$dirname/$file | python $ENV{HOME}/bin/convert_fastq_to_fasta.py > WGS/FASTA/$dirname/$prefix.fna";
 
         # Execute the system command
         print "Executing: $command\n";

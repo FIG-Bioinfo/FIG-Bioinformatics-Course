@@ -31,12 +31,12 @@ Data/rep200.list.tbl
     * Note: Grimoire does not know your file system so it might not catch every detail. If you come across a "File Not Found" error, that is because it cannot find the data file. You would need to use the "Absolute Path" of the file. Grimoire can teach you how to find the Absolute Path of the file. You got this!!
 
 6. In order to run the program, go to the Terminal Menu at the top of VS code and click on New Terminal to open a new terminal underneath your code. Then you want to type in the following to run your command:
-    'python3 command_line_kung genome_id genome_name domain genus species rep_id score distance
+    'python command_line_kung genome_id genome_name domain genus species rep_id score distance
 Also try it with the second program but do not worry if this one does not succeed:
-    'python3 command_line_fu genome_id genome_name domain genus species rep_id score distance
+    'python command_line_fu genome_id genome_name domain genus species rep_id score distance
 
 7. If your command_line_kung program did not succeed, go back to step 3. If it did, then try it again with this command. This one should throw a warning message and then stop the program completely
-    'python3 command_line_kung genome genome_name representative_id score distance
+    'python command_line_kung genome genome_name representative_id score distance
     * Bonus: Can you write your own similar test for command_line_fu? 
 
 8. Once you have verified that the program succeeded in both 6 and 7, go ahead and save it as "cmd_tsv_header.py" to remind you that this one uses the ComManD line. Congratulations on making your own program using Grimoire!
