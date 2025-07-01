@@ -165,7 +165,7 @@ so you will first need to change directory
 to the course directory.
 
 ```
-python Code/get_contigs_for_genomes.py -G Data/myrep10.genomes.tab -D Data/Myrep10_Genomes
+python Code/get_contigs_for_genomes.py -G MyData/myrep10.genomes.tab -D MyData/Myrep10_Genomes
 ```
 
 (Again, remember that all of the above should be entered on a single line, even if it looks like it's wrapped across multiple lines on your screen.
@@ -184,7 +184,7 @@ Once you have your set of genome contigs,
 it's time to run the filtering program:
 
 ```
-python Code/filter_hammer_candidates.py -D Data/Myrep10_Genomes < Data/myrep10.PheS.hammers.tbl > Data/myrep10.PheS.hammers.filtered.tbl
+python Code/filter_hammer_candidates.py -D MyData/Myrep10_Genomes < MyData/myrep10.PheS.hammers.tbl > MyData/myrep10.PheS.hammers.filtered.tbl
 ```
 (Again, beware line-wrapping!)
 
@@ -204,7 +204,7 @@ let's repeat the tests in `Hammer-Exercise-2` and `Hammer-Exercise-3` using the 
 #### Reanalysis of MysteryGenome1
 
 ```
-python Code/hammer_compare.py -H Data/myrep10.PheS.hammers.filtered.tbl -G Data/myrep10.genomes.tbl < Data/MysteryGenome1.fna > Data/MysteryGenome1.myrep10.filtered_PheS_hammer_report.tbl
+python Code/hammer_compare.py -H MyData/myrep10.PheS.hammers.filtered.tbl -G MyData/myrep10.genomes.tbl < Data/MysteryGenome1.fna > MyData/MysteryGenome1.myrep10.filtered_PheS_hammer_report.tbl
 ```
 
 You will find upon opening the hammer-report that
@@ -235,7 +235,7 @@ To make a quick check that the genome-fetching process ran correctly,
 you can execute the following command:
 
 ```
-ls -1 Data/Myrep10_Genomes/ | wc -l
+ls -1 MyData/Myrep10_Genomes/ | wc -l
 ```
 
 `ls -1` means "List the contents of the directory in single-column format";<br>
