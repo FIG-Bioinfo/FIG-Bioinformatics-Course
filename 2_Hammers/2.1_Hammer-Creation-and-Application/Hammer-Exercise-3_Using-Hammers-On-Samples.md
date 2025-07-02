@@ -17,6 +17,7 @@ FIG-Bioinformatics-Course/
 ├── 2_Hammers
 │   └── 2.1_Hammer-Creation-and-Application/
 │       └── Hammer-Exercise-3_Using-Hammers-on-Samples.md (you are here)
+└── MyData/
 └── Data/
     ├── MysterySample1.fna
     ├── myrep10.hammers.tbl   (output from Hammer-Exercise-1)
@@ -34,7 +35,7 @@ has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
 to the course home.
 
-1. If necessary, please review your `Code/hammer_creator.py` tool
+1. If necessary, please review your `Templates/hammer_creator.py` tool
 for its inputs and usage.
 If you'd like, you can run it on `Data/MysteryGenome2.fasta`
 to help review the workflow covered in the the previous lesson;
@@ -42,10 +43,10 @@ you can find the expected results below in the `Self-Check` section.
 
 2. Next we will use this same process to find the hammer counts
 for a "Mystery Sample" containing 3 genomes.
-Run your `Code/hammer_compare.py` using the hammers from `myrep10`:
+Run your `Templates/hammer_compare.py` using the hammers from `myrep10`:
 
 ```
-python Code/hammer_compare.py -H Data/myrep10.hammers.tbl -G Data/myrep10.genomes.tbl < Data/MysterySample1.fna > Data/MysterySample1.rep10.hammer-hits.tbl
+python Templates/hammer_compare.py -H MyData/myrep10.hammers.tbl -G MyData/myrep10.genomes.tbl < Data/MysterySample1.fna > MyData/MysterySample1.rep10.hammer-hits.tbl
 ```
 * NOTE: The data-file for this exercise is about twice as large as `MysteryGenom1.fna`,
 so it will take significantly longer to run.
