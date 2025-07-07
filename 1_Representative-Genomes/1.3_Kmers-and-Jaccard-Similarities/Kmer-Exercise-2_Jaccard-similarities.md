@@ -24,9 +24,14 @@ FIG-Bioinformatics-Course/
 
 ## Exercises:
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then go to the terminal-window if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 1. Prepare Grimoire for this session as in the previous exercise by once again entering the prompt:
 
@@ -112,10 +117,10 @@ diff file1 file2
 The following commands will create solution outputs from the solution programs:
 
 ```
-python3 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/kmer_jaccard_similarities_solution.py -K 20 -f Data/Sample1.fasta > 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/Sample1_jaccard_output_solution2.tsv
+python 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/kmer_jaccard_similarities_solution.py -K 20 -f Data/Sample1.fasta > 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/Sample1_jaccard_output_solution2.tsv
 
-python3 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/kmer_jaccard_similarities_solution.py -K 10 -f Data/Sample1.fasta > 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/Sample1_10mers_jaccard_output_solution2.tsv
+python 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/kmer_jaccard_similarities_solution.py -K 10 -f Data/Sample1.fasta > 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/Sample1_10mers_jaccard_output_solution2.tsv
 
-python3 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/num_kmers_vs_jaccard_solution.py -k 20 -f Data/Sample1.fasta > 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/Sample1_20mers_compare_solution2.tsv
+python 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/num_kmers_vs_jaccard_solution.py -k 20 -f Data/Sample1.fasta > 1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/Sample1_20mers_compare_solution2.tsv
 ```
  

@@ -35,9 +35,14 @@ You will use the CLI to fetch the PheS sequence from a "Mystery Genome" and then
 
 ## Exercises:
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then go to the terminal-window if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 1. Please install the `BV-BRC Command-Line Interface` application if you have not already done so.
 Instuctions for installing the BV-BRC app are located in `O_Getting-Stated/0_Installing-the-BV-BRC-app`.
@@ -51,7 +56,7 @@ Instuctions for installing the BV-BRC app are located in `O_Getting-Stated/0_Ins
 
 3. Use your command `find_nearest_reference.py` to compare the sequence you just fetched to `myrep10`:
 ```
-    python3 Code/find_nearest_reference.py -K 8 -R Data/myrep10.faa < Data/mystery_PheS.faa
+    python Code/find_nearest_reference.py -K 8 -R Data/myrep10.faa < Data/mystery_PheS.faa
 ```
 Which representative genome was reported in the RepSet-description column?
 

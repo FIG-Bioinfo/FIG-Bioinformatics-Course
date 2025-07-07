@@ -61,7 +61,7 @@ In the next exercise, we will explore additional factors that contribute to hamm
 
 Result of running:
 ```
-python3 2_Hammers/2.1_Hammer-Creation-and-Application/Solutions/hammer_creator_solution.py -K 20 < 2_Hammers/2.2_Hammer-Tuning/Solutions/myrep10.five_roles.dna-sequences.solution.fna > 2_Hammers/2.2_Hammer-Tuning/Solutions/myrep10.five_roles.hammers.solution.tbl
+python 2_Hammers/2.1_Hammer-Creation-and-Application/Solutions/hammer_creator_solution.py -K 20 < 2_Hammers/2.2_Hammer-Tuning/Solutions/myrep10.five_roles.dna-sequences.solution.fna > 2_Hammers/2.2_Hammer-Tuning/Solutions/myrep10.five_roles.hammers.solution.tbl
 
 Number of sequences read: 705
 Number of K-mers processed: 1265411
@@ -72,7 +72,7 @@ Number of hammers: 1259711
 
 Result of running:
 ```
-time python3 2_Hammers/2.1_Hammer-Creation-and-Application/Solutions/hammer_creator_solution.py -K 20 < 2_Hammers/2.2_Hammer-Tuning/Solutions/myrep50.five_roles.dna-sequences.solution.fna >  2_Hammers/2.2_Hammer-Tuning/Solutions/myrep50.five_roles.hammers.solution.tbl
+time python 2_Hammers/2.1_Hammer-Creation-and-Application/Solutions/hammer_creator_solution.py -K 20 < 2_Hammers/2.2_Hammer-Tuning/Solutions/myrep50.five_roles.dna-sequences.solution.fna >  2_Hammers/2.2_Hammer-Tuning/Solutions/myrep50.five_roles.hammers.solution.tbl
 Number of sequences read: 4600
 Number of K-mers processed: 8083245
 Number of hammers: 7923293

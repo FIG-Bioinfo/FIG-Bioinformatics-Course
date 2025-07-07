@@ -1,6 +1,6 @@
 # Installing the BV-BRC Command-Line Interface
 
-During some of the later exercises in this course, you will need to fetch genomic and metagenomic data from [BV-BRC, the "Bacteial and Viral Bioinformatics Center"](https://www.bv-brc.org/) via its "Command-Line Interface" application.
+During some of the later exercises in this course, you will need to fetch genomic and metagenomic data from [BV-BRC, the "Bacterial and Viral Bioinformatics Center"](https://www.bv-brc.org/) via its "Command-Line Interface" application.
 The following instructions will walk you through BV-BRC registration, downloading the CLI app, and logging in to BV-BRC.
 
 1. In order to access the data at BV-BRC, you will first need to register. Please go to

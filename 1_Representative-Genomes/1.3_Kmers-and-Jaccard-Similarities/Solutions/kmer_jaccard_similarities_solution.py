@@ -24,16 +24,16 @@ BEGIN program
         RETURN set of all substrings of length k from sequence
 
     FUNCTION compute_jaccard_and_common_kmers(seq1, seq2, k):
-        kmers1 ← generate_kmers(seq1, k)
-        kmers2 ← generate_kmers(seq2, k)
+        kmers1 <- generate_kmers(seq1, k)
+        kmers2 <- generate_kmers(seq2, k)
 
-        common_kmers ← intersection of kmers1 and kmers2
-        union_kmers ← union of kmers1 and kmers2
+        common_kmers <- intersection of kmers1 and kmers2
+        union_kmers <- union of kmers1 and kmers2
 
         IF union_kmers is not empty:
-            jaccard_similarity ← size of common_kmers / size of union_kmers
+            jaccard_similarity <- size of common_kmers / size of union_kmers
         ELSE:
-            jaccard_similarity ← 0
+            jaccard_similarity <- 0
 
         RETURN size of common_kmers, jaccard_similarity
 
@@ -43,21 +43,21 @@ BEGIN program
             EXIT with status 1
 
         TRY:
-            k ← convert second argument to integer
+            k <- convert second argument to integer
         CATCH ValueError:
             PRINT "Kmer-length must be an integer." to STDERR
             EXIT with status 1
 
-        sequences ← parse FASTA sequences from STDIN
-        total_pairs ← 0
-        nonzero_pairs ← 0
+        sequences <- parse FASTA sequences from STDIN
+        total_pairs <- 0
+        nonzero_pairs <- 0
 
         FOR each unique pair (seq1, seq2) in combinations(sequences, 2):
-            total_pairs ← total_pairs + 1
-            common_kmers, jaccard ← compute_jaccard_and_common_kmers(seq1.sequence, seq2.sequence, k)
+            total_pairs <- total_pairs + 1
+            common_kmers, jaccard <- compute_jaccard_and_common_kmers(seq1.sequence, seq2.sequence, k)
 
             IF common_kmers > 0:
-                nonzero_pairs ← nonzero_pairs + 1
+                nonzero_pairs <- nonzero_pairs + 1
                 PRINT seq1.id, seq2.id, common_kmers, jaccard to STDOUT (tab-separated)
 
         PRINT "Total pairs:", total_pairs to STDERR

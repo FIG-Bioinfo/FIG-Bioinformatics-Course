@@ -24,9 +24,14 @@ FIG-Bioinformatics-Course
 
 ## Exercises
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then go to the terminal-window if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 1. Attach the `Definitions.html` file as in previous exercises, again using the prompt:
     ```
@@ -44,7 +49,7 @@ Type `source ~/.bashrc` into your command line to reset your path to the Course 
 
 4. Run the program as follows:
 ```
-python3 Code/find_nearest_reference.py -K 8 -R Data/rep10.seed_proteins.faa < Data/test-nearest.faa > Data/test-nearest.jaccard.tab
+python Code/find_nearest_reference.py -K 8 -R Data/rep10.seed_proteins.faa < Data/test-nearest.faa > Data/test-nearest.jaccard.tab
 ```
     **Note: `rep10.seed_proteins.faa` is a data file that was created in FASTA-Exercise-2. If you get a `File Not Found Error`, try recreating the file `rep10.seed_proteins.faa` using that exercise.
      

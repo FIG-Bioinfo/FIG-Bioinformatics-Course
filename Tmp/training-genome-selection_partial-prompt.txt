@@ -1,0 +1,19 @@
+I have two sets of genomes derived from metagenomic samples.
+Half of the samples are from disease patients,
+and the other half are from control subjects.
+
+Foreach sample, each genome is associated with a score,
+but the scores are not normalized, so they cannot be compared
+between samples, only within samples. We do not know what threshold
+separates "significant" scores from "noise" scores.
+The threshold may well depend on the size of the sample,
+and may therefore differ from sample to sample.
+
+There are many more genomes in the list from in each sample
+than there are samples. 
+
+Given the above description of our data, what method would you recommend
+that we use to construct a classifier that would estimate whether
+a new sample is more likely to be from a disease patient
+than from a control subject?
+

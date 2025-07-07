@@ -1,0 +1,28 @@
+Assuming that the SRA toolkit is installed in the user's path,
+please write a Python script named 'sra_download.py'
+that takes the following mandatory named inputs:
+
+* -i or --id-file --- Name of a file containing a list of SRA-IDs in its first column.
+
+* -d or --download-directory --- name of an output directory to write processed data-files to.
+
+In addition, the script should support the following optional argument:
+
+* -c or --sra-cache --- name of an optional cache-directory to be used by SRA commands such as 'prefetch'.
+
+Foreach SRA-ID, the script should print a message to STDERR
+indicating that it is fetching that SRA-ID,
+then use the SRA-toolkit's 'prefetch' command to fetch the FASTQ
+or FASTA file associated with that SRA-ID,
+and finally print a message to STDERR indicating
+the size of the downloaded file, whether it was FASTQ or FASTA,
+and whether it was single-ended or paired-end if the download
+was successful, else print a warning-message if the download failed.
+
+Next, if the download was successful, and if the SRA-entry
+is a set of paired-end reads, the script should used SRA-tools
+to split the FASTQ file into left and right reads.
+
+Finally, the script should print to STDERR the number of SRA-entries
+requested, the number of entries where the download succeeded,
+and the numbers of single-ended and paired-end entries downloaded.

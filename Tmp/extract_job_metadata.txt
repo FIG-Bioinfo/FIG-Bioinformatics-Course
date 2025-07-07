@@ -1,0 +1,16 @@
+Please write a python script that:
+
+* Accepts a directory-name as a mandatory argument;
+
+* Tests the directory to see if it exists;
+
+* Reads the regular filenames in the directory, skipping "dotfiles";
+
+* Foreach file,
+    - Read the file as a JSON object containing a list
+        of key-value-pair dictionaries;
+    - Foreach dictionary, extract the fields 'accession', 'run_id',
+        'platform_name', 'library_strategy', 'library_layout', 'size',
+        and prints the extracted fields to STDOUT as a
+        tab-separated-value file with header-line.
+

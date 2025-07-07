@@ -26,9 +26,14 @@ FIG-Bioinformatics-Course
 ## Exercises
 
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then go to the terminal-window if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 1. Attach the `Definitions.html` file as in previous exercises, again using the prompt:
     ```
@@ -59,7 +64,7 @@ pip install pandas
 
 3. We suggest that you initially run your program with the following arguments:
     ```
-    python3 Code/protein_vs_dna_jaccard.py --protK 8 --dnaK 9 --data Data/rep10.seqs.tbl
+    python Code/protein_vs_dna_jaccard.py --protK 8 --dnaK 9 --data Data/rep10.seqs.tbl
     ```
 
 4. Note that the "scatter-plot" of score-pairs indicates that in general a larger protein jaccard-similarity implies a larger DNA jaccard-similarity, albeit the correlation is not "tight", i.e. the pairs do not all fall close to the same straight line. Also, there are many instances where the protein similarity is zero even though the DNA similarity is nonzero, and vice-versa. 

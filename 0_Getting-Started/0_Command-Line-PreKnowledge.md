@@ -1,5 +1,7 @@
 # Command Line Pre-Knowledge
 
+TEST
+
 This will be your hub for basics of the command line that you will need to know as you traverse this course. Use this as your "cheat sheet" when working with the command line. If this is your first interaction with such a thing, make sure you keep this handy!
 
 ## Basics to know when working in a command line
@@ -39,6 +41,12 @@ ls -la
 ls 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions
 ```
 Note that command-options can often be combined as in the above example, where 'ls -la' is equivalent to 'ls -l -a'.
+
+List files and directories in the current directory in "long format" (`-l` option), including "hidden" files (`-a` option, which you can remember as `'a' for 'all'`)
+```
+ls -la
+```
+Note that command-options can often be combined as in the above example, where `ls -la` is equivalent to `ls -l -a`.
 
 2. Navigate to the named folder
 ```
@@ -82,13 +90,13 @@ cp filename duplicatefilename
 ```
 cp data.tbl datacopy.tbl
 ```
-To copy a file to another directory
+To copy a file from one directory to another directory
 ```
-cp filename path/to/directory
+cp Source/path/to/original/file.txt Destination/path/for/copy/
 ```
 *Example:*
 ```
-cp data.tbl FIG-Bioinformatics-Course/Data/
+cp Data/xmatrix_example.tsv FIG-Bioinformatics-Course/MyData/
 ```
 
 8. Delete (remove) a file
@@ -145,8 +153,9 @@ tail -n 10 data.tbl
 ```
 df -h
 ```
-You can remember this command as 'diskspace free'.
-2. Display the size of a file or directory, as a summary ('-s') and in human-readable form ('-h').
+You can remember this command as `diskspace free`
+
+2. Display the size of a file or directory, as a 'summary' (`-s`) and in "human-readable" form (`-h`)
 ```
 du -sh path/or/directory
 ```
@@ -176,7 +185,6 @@ gunzip filename.gz
 ```
 gunzip data.tbl.gz
 ```
-Note this will result in an uncompressed file named 'data.tbl'
 
 3. Decompress a file to STDOUT
 ```

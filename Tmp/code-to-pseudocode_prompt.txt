@@ -1,0 +1,1 @@
+Please translate your code to pseudocode in a structured, language-agnostic format.

@@ -1,7 +1,7 @@
 ########################################################################
 #...Prompt that generated this program:
 """
-Please write a python program named 'hammer_creator_advanced.py' that will:
+Please write a python program named 'hammer_creator_multirole.py' that will:
 
 * Accept as '-K' a mandatory integer Kmer-length command-line argument;
         
@@ -133,7 +133,7 @@ from collections import defaultdict
 def main():
     # Parse command-line arguments
     if len(sys.argv) != 3 or sys.argv[1] != '-K':
-        print("Usage: python hammer_creator_advanced.py -K <Kmer-length>", file=sys.stderr)
+        print("Usage: python hammer_creator_multirole.py -K <Kmer-length>", file=sys.stderr)
         sys.exit(1)
 
     try:

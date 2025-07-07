@@ -5,30 +5,40 @@ Objective: Create the universal table and template for the data with the columns
 Now that you have curated your data, the next step is to create a universal XMatrix template. This template will serve as the foundation for organizing your genomic data in a structured format, which is essential for subsequent analysis and machine learning applications. Once we have our template and populate it with data, we can begin to explore the data and find patterns that we can use to classify new samples.
 
 ## Materials
-[Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
-[NCBI](https://www.ncbi.nlm.nih.gov/)
-[SRAToolkit Download FASTA Documentation](https://www.ncbi.nlm.nih.gov/books/NBK242621/)
-[BV-BRC](https://bv-brc.org/)
-[BV-BRC CLI Reference Documentation](https://www.bv-brc.org/docs/cli_tutorial/command_list/index.html)
+
+* [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
+
+* [NCBI](https://www.ncbi.nlm.nih.gov/)
+
+* [SRAToolkit Download FASTA Documentation](https://www.ncbi.nlm.nih.gov/books/NBK242621/)
+
+* [BV-BRC](https://bv-brc.org/)
+
+* [BV-BRC CLI Reference Documentation](https://www.bv-brc.org/docs/cli_tutorial/command_list/index.html)
 
 ```
 FIG-Bioinformatics-Course/
 ├── 3_Projections/
-    └── 3.2_Creating-the-Xmatrix/
-        └── Creating-the-Xmatrix-Exercise-1_Universal_Template.md (you are here)
-└── Code/
-    └── xmatrix_feature_set.py
-    └── xmatrix_populate_samples.py
+│   └── 3.2_Creating-the-Xmatrix/
+│       └── Creating-the-Xmatrix-Exercise-1_Universal_Template.md (you are here)
+├── Code/
+│   ├── xmatrix_feature_set.py
+│   └── xmatrix_populate_samples.py
 └── Data/
-    └── Controls/
+    ├── Controls/
     └── Diseased/
 ```
 
 ## Exercise
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then go to the terminal-window if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 The idea of the random forest classifier is that it takes a large number of decision trees and averages their results. Each decision tree looks at a random subset of the data and makes a prediction. The more trees there are, the more accurate the prediction is. This means that we need to give the machine learning algorithm a large set of data so that it can make more decision trees which gives us a more accurate prediction. 
 

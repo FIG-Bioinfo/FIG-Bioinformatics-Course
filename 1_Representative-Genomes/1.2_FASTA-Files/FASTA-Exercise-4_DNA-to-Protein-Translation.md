@@ -22,16 +22,23 @@ FIG-Bioinformatics-Course/
 │       ├── Result1.intermediate.faa
 │       └── Result1.biopython.faa
 ├── Code/
+├── Scripts/
 │   └── translate-DNA.py
+└── MyData/
 └── Data/
     └── Sample1.fasta
 ```
 
 ## Exercises:
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then go to the terminal-window if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 
 1. With only a few exceptions (most notably during the replication of "retroviruses" such as HIV), information in cells flows in one direction: From DNA, to RNA, to Proteins. This one-way flow of molecular information has become known as the "Fundamental Dogma of Molecular Biology". Ask Grimoire to explain this "Fundamental Dogma" to you in more detail. If Grimoire uses terms that are unfamiliar to you, ask it to explain those terms as well.
@@ -65,11 +72,11 @@ in this prompt; why is that?
 
 6. Run the program on the file `Data/Sample1.fasta`:
     ```
-    python3 Code/translate-DNA_simple.py < Data/Sample1.fasta > Data/Result1.faa
+    python Code/translate-DNA_simple.py < Data/Sample1.fasta > MyData/Result1.faa
     ```
 Note that we are recommending a file-extension of `.faa` to remind you that the translation is an Amino-Acid FASTA file.
 
-Normally, there is something that outputs into the terminal when you run a program. In this case, the program outputs into a file. That means that if your program is working correctly, you should see the contents of `Data/Result1.faa` in the `Data/` directory and not in your terminal. Instead, the terminal should just show your mouse cursor blinking next to an empty line. If you want your program to output something into the terminal to tell you that it is done, add the following line of code to the end of your program.
+Normally, there is something that outputs into the terminal when you run a program. In this case, the program outputs into a file. That means that if your program is working correctly, you should see the contents of `MyData/Result1.faa` in the `MyData/` directory and not in your terminal. Instead, the terminal should just show your mouse cursor blinking next to an empty line. If you want your program to output something into the terminal to tell you that it is done, add the following line of code to the end of your program.
 ```
 print("Done!")
 ```
@@ -162,6 +169,6 @@ assuming that your `bash` or `gitbash` shell starts out from the main directory,
 ```
 cd 1_Representative-Genomes/1.2_FASTA-Files/
 
-python python Solutions/translate-DNA_biopython.solution.py --table 11 < ../../Data/Sample1.fasta > ../../Data/Result1.biopython.faa
+python Solutions/translate-DNA_biopython.solution.py --table 11 < ../../Data/Sample1.fasta > ../../MyData/Result1.biopython.faa
 ```
 

@@ -1,0 +1,2 @@
+prefetch SRAid
+fastq-dump --split-files SRAid

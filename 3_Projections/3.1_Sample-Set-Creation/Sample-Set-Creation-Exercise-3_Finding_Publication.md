@@ -26,9 +26,14 @@ This lesson will accomplish the same goal as the previous lesson, but it will be
 
 ## Exercise
 
-*ALWAYS RESET YOUR PATH* 
-
-Type `source ~/.bashrc` into your command line to reset your path to the Course directory before starting each exercise.
+Launch VScode, and open the course-folder
+if VScode has not already done so automatically.
+Then go to the terminal-window if it is open,
+else launch a new terminal.
+You should see a message indicating that `COURSE_HOME`
+has been set to the course-folder, and that the
+`cdcourse` command will always bring you back
+to the course home.
 
 1. Travel to the http://www.ncbi.nlm.nih.gov/ and search for your topic. This time, click on the PubMed link.
 
@@ -47,13 +52,13 @@ Type `source ~/.bashrc` into your command line to reset your path to the Course 
 
 7. This will give you a list of all the samples from that project in a search. Notice that this author gave us the courtesy of labelling each sample with the disease state in its name. Not every author will do this, so I am going to continue to find the metadata. Plus it will make our lives easier when we are sorting the data later. 
 
-8. Click on a single sample and see the Study, Sample, Library, and Runs sections. Click on the "all runs" link in the Study section to grab all the samples from that study.
+8. If you click on a single sample and see the Study, Sample, Library, and Runs sections. This page has everything we want. The metadata for the process, information on collection, and even all the metadata in a list. But we need to be able to download the metadata for all these samples to do research with them. Go back to the previous page where you had your search results from the full 700+ samples. 
 
-9. This page has everything we want. The metadata for the process, information on collection, and even all the metadata in a list. Go ahead and find the Select box and download the metadata using the "Metadata" button. 
+9. Right above the search results is a white box with the option to view all of the data in an expanded table. This will take all of our search results and organize their metadata to be able to see it well. However, the more results you load in Run Selector, the longer it will take to load the entire table. Therefore, know that you will have to click that "Send results to Run selector" link and it will be a minute or two before you start seeing all of the data.
 
-Notice that the table you just downloaded is also pictured on this website. You can see it has columns like "Age_at_collection", "Bases", "Bytes", and "Case_status". This Case_status column is what we want; the disease state of the sample. So even if the author had not named each sample with its disease status, we can use this column to help us sort the data.
+10. In this page, you can see the metadata for the processing of the samples and the metadata on content of the samples themselves. This is a great resource to use when you are searching for more data, but for now, let us download this metadata into a file that we can use. Click on the "Metadata" button to get the "SraRunTable.csv" file in your downloads folder. If your browser is not loading or the download is taking too long, you can find the file in our `Data/` directory of this course.
 
-10. Go ahead and open your new SraRunTable.csv file. Notice that you now have 700+ samples that you could use to run your model. This is the power of finding a publication that is relevant to your topic. They will do a lot of the work of sorting your data for you. 
+ Go ahead and open your new SraRunTable.csv file. Notice that you now have 700+ samples that you could use to run your model. This is the power of finding a publication that is relevant to your topic. They will do a lot of the work of sorting your data for you. 
 
 11. Keep in mind that not every publication or academic paper will have the data you need readily available. Many will have data from an alternate source, data upon request, repeated data from a previous publication, or contextualize their data into graphs that are hard to parse. This makes it harder in general to find data through publications and requires more complex problem solving to gather. Below are links to examples of some papers on the Parkinson's Disease topic that have less optimal data availability. Use this to help determine if the publications you find are suitable for your needs.
     1. https://pubmed.ncbi.nlm.nih.gov/39955398/
