@@ -9,17 +9,17 @@ A common task in bioinformatics is to determine which sequence in a reference da
 [Grimoire](https://chat.openai.com/g/g-n7Rs0IK86-grimoire)
 
 ```
-FIG-Bioinformatics-Course
+FIG-Bioinformatics-Course/
 ├── Definitions.html
 ├── Data/
-│   └── rep10.seed_proteins.faa
-└── 1_Representative-Genomes
-    └── 1.3_Kmers-and-Jaccard-Similarities
-        ├── Kmer-Exercise-3_Finding-Nearest-Neighbors.md (you are here)
-        ├── Data/
-        │   └── test-nearest.faa
-        └── Solutions
+│   ├── rep10.seed_proteins.faa
+│   └── test-nearest.faa
+└── 1_Representative-Genomes/
+    └── 1.3_Kmers-and-Jaccard-Similarities/
+        ├── Kmer-Exercise-3_Finding-Nearest-Neighbors.md   # You are here
+        └── Solutions/
             └── find_nearest_reference_solution.py
+
 ```
 
 ## Exercises

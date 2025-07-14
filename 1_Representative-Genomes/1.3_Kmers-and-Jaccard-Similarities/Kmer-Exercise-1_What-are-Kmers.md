@@ -29,14 +29,15 @@ FIG-Bioinformatics-Course/
 ├── Definitions.html
 └── 1_Representative-Genomes/
     └── 1.3_Kmers-and-Jaccard-Similarities/
-        ├── Kmer-Exercise-1_What-are-Kmers.md  (You are here)
-        ├── Code/     (where you will save your own code)
+        ├── Kmer-Exercise-1_What-are-Kmers.md       # You are here
+        ├── Code/                                   # Save your own code here
         ├── Data/
         │   ├── good-bad_dna.fna
         │   └── good-bad_proteins.faa
         └── Solutions/
             ├── Kmer-Exercise-1_Solutions.md
             └── extract_kmers_from_fasta_solution.py
+
 ```
 
 ## Exercises:

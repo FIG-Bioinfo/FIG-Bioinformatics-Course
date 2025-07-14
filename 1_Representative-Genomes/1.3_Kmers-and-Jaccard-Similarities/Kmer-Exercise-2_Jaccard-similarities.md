@@ -11,15 +11,16 @@ Comparing and contrasting sequences is the main way that scientists find pattern
 ```
 FIG-Bioinformatics-Course/
 ├── Definitions.html
+├── Code/
+│   └── kmer_jaccard_similarities.py
+├── Data/
+│   └── Sample1.fasta
 └── 1_Representative-Genomes/
-    ├── Code/
-    │   └── kmer_jaccard_similarities.py
-    ├── Data/
-    │   └── Sample1.fasta
     └── 1.3_Kmers-and-Jaccard-Similarities/
-        ├── Kmer-Exercise-2_Jaccard-similarities.md  (you are here)
+        ├── Kmer-Exercise-2_Jaccard-similarities.md    # You are here
         └── Solutions/
             └── kmer_jaccard_similarities_solution.py
+
 ```
 
 ## Exercises:
