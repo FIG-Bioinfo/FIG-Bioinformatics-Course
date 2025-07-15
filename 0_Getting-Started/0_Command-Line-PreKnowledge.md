@@ -1,5 +1,7 @@
 # Command Line Pre-Knowledge
 
+TEST
+
 This will be your hub for basics of the command line that you will need to know as you traverse this course. Use this as your "cheat sheet" when working with the command line. If this is your first interaction with such a thing, make sure you keep this handy!
 
 ## Basics to know when working in a command line

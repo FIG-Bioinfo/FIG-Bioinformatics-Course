@@ -19,6 +19,7 @@ FIG-Bioinformatics-Course/
 │           └── rep10.seqs.seed_dna.solution.tbl
 ├── Templates/
 │   └── fasta_reader.py
+└── MyData/
 └── Data/
     └── Sample1.fasta
 ```
@@ -94,7 +95,6 @@ if there is an `import BioPython` line in your code. If you see this line,
 you will need to open a terminal and run the following `pip` command to install it:
 ``` pip install biopython ```
 
-
 8. Ask Grimoire to explain line-by-line how the program works.
 
 9. Use the VScode terminal-window to run the program `Code/fasta_reader.py`
@@ -116,14 +116,14 @@ Run `fasta_reader.py` on `rep10.seed_proteins.faa`,
 and save the TSV-output as follows:
 
 ```
-python Code/fasta_reader.py < Data/rep10.seed_proteins.faa > Data/rep10.seed_proteins.genomes-and-lengths.tab
+python Scripts/fasta_reader.py < MyData/rep10.seed_proteins.faa > MyData/rep10.seed_proteins.genomes-and-lengths.tab
 ```
 
 * *Bonus Exercise 2:* Repeat the procedure from FASTA-Ex-2,
 but this time extract the field `seed_dna` instead of `seed_protein`:
 
 ```
-python Code/cmd_tsv_select_columns.py genome_id genome_name seed_dna < Data/rep10.seqs.tbl | python Code/3col_to_fasta > Data/rep10.seed_dna.fna
+python Scripts/cmd_tsv_select_columns.py genome_id genome_name seed_dna < Data/rep10.seqs.tbl | python Code/3col_to_fasta > MyData/rep10.seed_dna.fna
 ```
 
 (Note that this time we have used the file-extension ".fna"
@@ -133,7 +133,7 @@ instead of "amino-acid" data.)
 Now, run `fasta_reader.py` on `rep10.seed_dna.fna`:
 
 ```
-python Code/fasta_reader.py < Data/rep10.seed_dna.fna > Data/rep10.seed_dna.genomes-and-lengths.tab
+python Scripts/fasta_reader.py < MyData/rep10.seed_dna.fna > MyData/rep10.seed_dna.genomes-and-lengths.tab
 ```
 
 Compare the files `rep10.seed_proteins.genomes-and-lengths.tab`

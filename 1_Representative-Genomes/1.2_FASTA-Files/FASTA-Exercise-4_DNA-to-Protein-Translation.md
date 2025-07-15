@@ -22,7 +22,9 @@ FIG-Bioinformatics-Course/
 │       ├── Result1.intermediate.faa
 │       └── Result1.biopython.faa
 ├── Code/
+├── Scripts/
 │   └── translate-DNA.py
+└── MyData/
 └── Data/
     └── Sample1.fasta
 ```
@@ -70,11 +72,11 @@ in this prompt; why is that?
 
 6. Run the program on the file `Data/Sample1.fasta`:
     ```
-    python Code/translate-DNA_simple.py < Data/Sample1.fasta > Data/Result1.faa
+    python Code/translate-DNA_simple.py < Data/Sample1.fasta > MyData/Result1.faa
     ```
 Note that we are recommending a file-extension of `.faa` to remind you that the translation is an Amino-Acid FASTA file.
 
-Normally, there is something that outputs into the terminal when you run a program. In this case, the program outputs into a file. That means that if your program is working correctly, you should see the contents of `Data/Result1.faa` in the `Data/` directory and not in your terminal. Instead, the terminal should just show your mouse cursor blinking next to an empty line. If you want your program to output something into the terminal to tell you that it is done, add the following line of code to the end of your program.
+Normally, there is something that outputs into the terminal when you run a program. In this case, the program outputs into a file. That means that if your program is working correctly, you should see the contents of `MyData/Result1.faa` in the `MyData/` directory and not in your terminal. Instead, the terminal should just show your mouse cursor blinking next to an empty line. If you want your program to output something into the terminal to tell you that it is done, add the following line of code to the end of your program.
 ```
 print("Done!")
 ```
@@ -167,6 +169,6 @@ assuming that your `bash` or `gitbash` shell starts out from the main directory,
 ```
 cd 1_Representative-Genomes/1.2_FASTA-Files/
 
-python python Solutions/translate-DNA_biopython.solution.py --table 11 < ../../Data/Sample1.fasta > ../../Data/Result1.biopython.faa
+python Solutions/translate-DNA_biopython.solution.py --table 11 < ../../Data/Sample1.fasta > ../../MyData/Result1.biopython.faa
 ```
 

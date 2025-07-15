@@ -15,6 +15,7 @@ FIG-Bioinformatics-Course/
 ├── 2_Hammers
 │   └── 2.1_Hammers-Creation-and-Application/
 │       └── Hammers-Exercise-1_Creating-Hammers.md (you are here)
+└── MyData/
 └── Data/
     ├── myrep10.genomes-and-lengths.txt
     └── myrep50.genomes-and-lengths.txt
@@ -64,7 +65,7 @@ and to identify which genomes are present in a "Metagenomic Sample" (sample cont
 1. To fetch the DNA sequences for your RepGenSet `myrep10`, please open the BV-BRC app and enter the following pipeline. (Remember that you must enter the entire pipeline as a single command-line, even though as displayed below it wraps across multiple lines on your screen.):
 
 ```
-p3-get-genome-features --selective --input Data/myrep10.genomes.tbl --col genome_id --eq product,'Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)' --attr patric_id | p3-get-feature-sequence --dna --col feature.patric_id > Data/myrep10.PheS.dna_sequences.fna
+p3-get-genome-features --selective --input MyData/myrep10.genomes.tbl --col genome_id --eq product,'Phenylalanyl-tRNA synthetase alpha chain (EC 6.1.1.20)' --attr patric_id | p3-get-feature-sequence --dna --col feature.patric_id > MyData/myrep10.PheS.dna_sequences.fna
 ```
 2. To make a set of hammers for the selected SOUR, we extract all of the DNA 20-mers that occur exactly once in exactly one genome. How do you think one might do that?
 * Hint: Can you remember which datatype would be appropriate for associating a string with the number of times that it occurs?
@@ -87,14 +88,14 @@ p3-get-genome-features --selective --input Data/myrep10.genomes.tbl --col genome
     * Finally, please print to 'STDERR' the number of sequences that were read, the number of Kmers that were processed, and the number of Kmers that were hammers, and then exit.
 ```
 
-Paste Grimoire's program into the code-template `Code/hammer_creator.py`.
+Paste Grimoire's program into the code-template `Templates/hammer_creator.py`.
 Note that the template includes a "block comment" section reserved for the program's pseudocode, so paste in Grimoire's pseudocode if it generated it, else ask it to generate pseudocode for the program if it didn't. Once you are done copying and pasting, save the code using the "Save" menu-item under the "File" menu.
 
 3. To build the set of hammers, invoke the code that Grimoire created as follows:
 
 ```
-python Code/hammer_creator.py -K 20 < Data/myrep10.PheS.dna_sequences.fna
-> Data/myrep10.PheS.hammers.tbl
+python Templates/hammer_creator.py -K 20 < MyData/myrep10.PheS.dna_sequences.fna
+> MyData/myrep10.PheS.hammers.tbl
 ```
 
 4. BONUS: Build hammers for `myrep50`.

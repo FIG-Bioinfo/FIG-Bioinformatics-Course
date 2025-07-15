@@ -11,6 +11,7 @@ FIG-Bioinformatics-Course/
 ├── 2_Hammers 
 │   └── 2.1_Hammer-Creation-and_Application/
 │       └── Hammer-Exercise-2_Using-Hammers-on-Genomes.md (you are here)
+└── MyData/
 └── Data/
     ├── MysteryGenome1.fna
     ├── myrep10.PheS.hammers.tbl
@@ -69,12 +70,12 @@ Ask Grimoire to write a program named `hammer_compare.py` that will:
     
 Finally, please ask Grimoire to translate the python code into pseudocode.
 
-2. Once Grimoire is done, please paste its pseudocode and code into `Code/hammer_compare.py` and save it as usual.
+2. Once Grimoire is done, please paste its pseudocode and code into `Templates/hammer_compare.py` and save it as usual.
 
 3. Run your script on the `MysteryGenome1.fna`:
 
 ```
-python Code/hammer_compare.py -H Data/myrep10.PheS.hammers.tbl -G Data/myrep10.genomes.tbl < Data/MysteryGenome1.fna > Data/MysteryGenome1.hammer_report.tbl
+python Templates/hammer_compare.py -H MyData/myrep10.PheS.hammers.tbl -G MyData/myrep10.genomes.tbl < Data/MysteryGenome1.fna > MyData/MysteryGenome1.hammer_report.tbl
 ```
 
 The result should be a table of representative genome-IDs and their names followed by how many hammers from that representative hit the "Mystery Genome". Take the genome-ID with the top number of hits as the most probable representative for the "Mystery Genome".
