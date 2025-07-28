@@ -14,6 +14,8 @@
 
 1. Hammer Creation and Application - A way to look up what a genome could be without knowing the whole thing.
 
+2. Hammers Using More Than One Role - (description needed)
+
 
 ## 3. Projections
 
@@ -33,10 +35,8 @@ by Dr. Steven R. Gundry, MD
 
 * ["The Singularity Is Nearer"](https://books.google.com/books/about/The_Singularity_Is_Nearer.html?id=xtYhEAAAQBAJ) by Ray Kurzweil
 
-* ["Artificial Intelligence - A Guide for Thinking Humans"](https://www.google.com/books/edition/Artificial_Intelligence/65iEDwAAQBAJ?hl=en&gbpv=0)
-by Melanie Mitchell
+* ["Artificial Intelligence - A Guide for Thinking Humans"](https://www.google.com/books/edition/Artificial_Intelligence/65iEDwAAQBAJ?hl=en&gbpv=0) by Melanie Mitchell
 
 * ["Probiotics: A Story About  Hope"](https://books.google.com/books/about/Probiotics.html?id=m7Lf0AEACAAJ) by Gregor Reid
 
-* [The Catalyst - RNA and the quest to unlock life's deepest secrets](https://books.google.com/books/about/The_Catalyst_RNA_and_the_Quest_to_Unlock.html?id=TizXEAAAQBAJ)
-by Thomas Cech
+* [The Catalyst - RNA and the quest to unlock life's deepest secrets](https://books.google.com/books/about/The_Catalyst_RNA_and_the_Quest_to_Unlock.html?id=TizXEAAAQBAJ) by Thomas Cech

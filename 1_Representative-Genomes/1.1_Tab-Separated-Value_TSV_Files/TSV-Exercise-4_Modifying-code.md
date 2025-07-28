@@ -28,7 +28,7 @@ FIG-Bioinformatics-Course/
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
@@ -87,7 +87,7 @@ Insert the pseudocode and Grimoire's explanation into the beginning of `tsv_head
     This will act as a "backup" of the original program, in case you need to revert to it.
 
 
-5. In this exercise you are going to revise the `tsv_headers.py` program to add named arguments and a new use-case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements to your code.
+5. In this exercise you are going to revise the `tsv_headers.py` program to add named arguments and a new use-case. Use the following prompt in Grimoire to make improvements to your code:
 
 ```
 I have uploaded a program that I'd like you to modify. Please make the following revisions to the tsvheaders program:

@@ -33,8 +33,7 @@ These are instructions on how to download the course through github. If you have
 
 10. Use the "Open Folder" item under the "File" menu again, this time to open the course folder.
 
-11. Launch a new terminal-window; this time,
-you should see something like:
+11. Launch a new terminal-window; this time, you should see something like:
 
     ✅ COURSE_HOME is: /Users/yourUsername/Project/FIG-Bioinformatics-Course<br>
     🔁 Use 'cdcourse' anytime to return to this root.

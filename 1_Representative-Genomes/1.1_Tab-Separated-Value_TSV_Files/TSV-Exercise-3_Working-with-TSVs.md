@@ -4,7 +4,7 @@ Objective: Use Grimoire to create a command-line program that reads and operates
 
 This exercise focuses on creating a program that accepts a list of column-names as command-line arguments, reads a TSV-file from STDIN, extracts the columns whose header-names match the argument list, and writes those columns to STDOUT. (For example, suppose that we have a TSV-file that has 15 columns, but we only care about the data contained in 3 of these columns.)
 
-You will be going through the normal development process of a programmer, which is similar to the process of a writer, namely, Outline, Draft, Edit, Review, and then Publish. We will start with a description of the program, express that description as "Pseudo-code", Create the program, Debug for errors, Test output quality, and then Publish. See if you can tell which step you are in as you do the exercise.
+You will be going through the normal development process of a programmer, which is similar to the process of a writer: *outline*, *draft*, *edit*, *review*, and then *publish*. We will start with a description of the program, express that description as "Pseudo-code", *create* the program, *debug* for errors, *test* output quality, and then *publish*. See if you can tell which step you are in as you do the exercise.
 
 ## Materials: 
 
@@ -35,7 +35,7 @@ to the subdirectory `MyData/`, since the `Data/` directory is not writable.
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
@@ -53,7 +53,7 @@ cp Templates/command_line_fu.py   Code/
 
 3. Ask Grimoire to write an example-program that will accept a list of keywords as its command-line arguments. Then ask Grimoire to explain its code to you "line-by-line" if it did not do so.
 
-4. You will now ask Grimoire (or "prompt" Grimoire, as it is also called)  to create a custom Python program to accomplish a specific set of tasks. Below is a list of program requirements, features, and functionalities that we would like Grimoire to implement; create your own prompt asking Grimoire to implement this list of features and functions for you:
+4. You will now ask Grimoire (or "prompt" Grimoire, as it is also called) to create a custom Python program to accomplish a specific set of tasks. Below is a list of program requirements, features, and functionalities that we would like Grimoire to implement; create your own prompt asking Grimoire to implement this list of features and functions for you:
 
     * The program should be written in python.
     * The program should read a tab-separated file from STDIN with a header-line as the first line.
@@ -93,7 +93,7 @@ that you opened earlier, and type the following to run your command:
 
     If the program completes without errors, use the "File Explorer" to open `MyData/kung.out`, and verify that it has extracted the selected columns in the selected order.
 
-7. If there is an error, copy the error-message into your "Paste" buffer, then tell Grimoire that the code reported an error, paste in the error-message preceeded and followed by "triple quotes", and ask it to suggest possible fixes for the problem. (There is a good chance that if you ask Grimoire to implement its suggested fixes, it will be able to do so, in which case copy the new code, replace the old code with the new code, and go back to step 6.)
+7. If there is an error, copy the error-message into your "Paste" buffer, then tell Grimoire that the code reported an error, paste in the error-message preceeded and followed by "triple quotes", and ask it to suggest possible fixes for the problem. (There is a good chance that if you ask Grimoire to implement its suggested fixes, it will be able to do so, in which case copy the new code, replace the old code with the new code, save it, and go back to step 6.)
 
 8. Once you can get your `command_line_kung.py` program to run without throwing error-messages, try it again with the following command. This invocation should throw a warning message that you've asked for a nonexistent data-field, and then exit.
     
