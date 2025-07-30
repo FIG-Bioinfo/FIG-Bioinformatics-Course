@@ -185,7 +185,7 @@ If you experience the following error:
 $ python 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions/tsv_headers_solution.py < Data/bindict.tbl
 Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Manage App Execution Aliases.
 ```
-You can fix it by changing `python` to `python` in the command: 
+You can fix it by changing `python` to `python3` in the command: 
 python 1_Representative-Genomes/1.1_Tab-Separated-Value_TSV_Files/Solutions/tsv_headers_solution.py < Data/bindict.tbl
 
 If you experience the following error:
