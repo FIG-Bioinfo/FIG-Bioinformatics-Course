@@ -22,7 +22,7 @@ FIG-Bioinformatics-Course/
 ├── Code/           (Directory holding your working copies of code)
 └── Data/
     ├── bindict.tbl
-    ├── data.tbl
+    ├── xmatrix_example.tsv
     └── rep200.list.tbl   
 ```
 
