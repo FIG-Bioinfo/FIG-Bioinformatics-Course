@@ -109,7 +109,7 @@ I have uploaded a program that I'd like you to modify. Please make the following
     
     and it should return the output:
     ``` sample  1033731.3       1034345.3```
-* NOTE: The file `xmatrix_example.tsv` has over 2000 columns, and so can take a long time to load in applications. Bonus points if you can perform the entire program-revision without opening up the program file to edit it yourself.
+ *Bonus points if you can perform the entire program-revision without opening up the program file to edit it yourself.*
 
 ## Solution Check instructions:
 
