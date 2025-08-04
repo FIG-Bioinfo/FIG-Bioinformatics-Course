@@ -1,8 +1,7 @@
 # Command Line Pre-Knowledge
 
-TEST
 
-This will be your hub for basics of the command line that you will need to know as you traverse this course. Use this as your "cheat sheet" when working with the command line. If this is your first interaction with such a thing, make sure you keep this handy!
+This will be your hub for basics of the command line that you will need to know as you traverse this course. Use this as your "cheat sheet" when working with the command line; if this is your first interaction with such a thing, make sure you keep this handy!
 
 ## Basics to know when working in a command line
 1. There is no spell check in the command line; this means if there is anything misspelled, the terminal will not catch it and your command will likely throw an error!
@@ -18,11 +17,11 @@ This will be your hub for basics of the command line that you will need to know 
 
 6. If there is a command you don't understand, just ask Grimoire! Many times Grimoire will give you a very long explanation of a command, but the first couple paragraphs will be the most helpful.
 
-7. Any command that does not have a file path (we will explain what a file path is later in this document) will assume that you are already in the directory you need to be in. If the file or files you need for your command are in a different directory, your command will need a file path to get there.
+7. Any command that does not have a file path (directions to a file) will assume that you are already in the directory you need to be in. If the file or files you need for your command are in a different directory, your command will need a file path to get there.
 
 
 # Basic commands to use
-While practice is important, some examples of these commands contain real files and paths. If you want to practice commands, create your own testing files; this is to keep you from removing or losing important files. 
+While practice is important, some examples of these commands contain real files and paths. This is so you have a better understanding using the actual visuals in this course. If you want to practice commands, create your own testing files; this is to keep you from removing or losing important files. 
 
 ## File and Directory Commands
 1. List files and directories in the current directory in "long format" ('-l' option), including "hidden" files ('-a' option, which you can remember as 'a' for 'all').
@@ -76,7 +75,7 @@ mv oldname newname
 ```
 *Example:*
 ```
-mv data.tbl dataNew.tbl
+mv xmatrix_example.tsv dataNew.tbl
 ``` 
 6. Clear all text in the terminal
 ```
@@ -88,7 +87,7 @@ cp filename duplicatefilename
 ```
 *Example:*
 ```
-cp data.tbl datacopy.tbl
+cp xmatrix_example.tsv datacopy.tbl
 ```
 To copy a file from one directory to another directory
 ```
@@ -105,8 +104,9 @@ rm filename
 ```
 *Example:*
 ```
-rm data.tbl
+rm xmatrix_example.tsv
 ```
+Note that this is a useful but damaging command. Use with caution!
 
 9. List all commands entered during a session
 ```
@@ -120,7 +120,7 @@ cat filename
 ```
 *Example:*
 ```
-cat data.tbl
+cat xmatrix_example.tsv
 ```
 2. View file content one screen at a time
 ```
@@ -128,7 +128,7 @@ less filename
 ```
 *Example:*
 ```
-less data.tbl
+less xmatrix_example.tsv
 ```
 3. View the first 10 lines of a file
 ```
@@ -136,7 +136,7 @@ head -n 10 filename
 ```
 *Example:*
 ```
-head -n 10 data.tbl
+head -n 10 xmatrix_example.tsv
 ```
 
 4. View the last 10 line of a file
@@ -145,7 +145,7 @@ tail -n 10 filename
 ```
 *Example:*
 ```
-tail -n 10 data.tbl
+tail -n 10 xmatrix_example.tsv
 ```
 
 ## Disk and System Monitoring
@@ -174,16 +174,16 @@ gzip filename
 ```
 *Example:*
 ```
-gzip data.tbl
+gzip xmatrix_example.tsv
 ```
-Note this will result in a smaller file renamed 'data.tbl.gz'.
+Note this will result in a smaller file renamed 'xmatrix_example.tsv.gz'.
 2. Decompress a file and convert to a different kind of file
 ```
 gunzip filename.gz
 ```
 *Example:*
 ```
-gunzip data.tbl.gz
+gunzip xmatrix_example.tsv.gz
 ```
 
 3. Decompress a file to STDOUT
@@ -192,11 +192,11 @@ gunzip -c filename.gz
 ```
 *Example:*
 ```
-gunzip -c data.tbl.gz
+gunzip -c xmatrix_example.tsv.gz
 ```
 The '-c' command-option is most often used when "piping" the contents of the decompresssed file to another command; for example, to view the first 10 lines of a compressed file, you could type:
 ```
-gunzip -c data.tbl.gz | head -n 10
+gunzip -c xmatrix_example.tsv.gz | head -n 10
 ```
 We will explain what it means to "pipe" the output of a command to the input of another command in a later lesson.
 

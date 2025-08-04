@@ -18,7 +18,7 @@ Each forward slash acts as a seperator between landmarks. These are the stops on
 FIG-Bioinformatics-Course/1_Representative-Genomes/TSV-Exercise-0_Understanding-File-Paths.md
 ```
 
-This would be the file path to get to this document. In the next section, how we made this file path will be explained.
+This would be the file path to get to this document. You can see how each landmark follows into the next to reach the ending point, which is the file.
 
 ## How to use file paths
 In order to get to the course syllabus, you have to drop down the menu of the course, then the `0_Getting-Started directory`, then the course syllabus is right in there! This is how we reach it in the Explorer section of VSCode. Reaching it through the terminal is very similar.
@@ -74,6 +74,6 @@ Another common error you might see is:
 bash: command not found
 ```
 
-This could also be a result of a misspelled command, or wrong command. Check that your command is correct and the punctuation around it is also correct. You can look back on the command cheat sheet at the beginning of this document.
+This could also be a result of a misspelled command, or wrong command. Check that your command is correct and the punctuation around it is also correct. You can look back on the command cheat sheet (0_Command-Line-PreKnowledge.md) in the Getting Started directory of this course.
 
 If you've run into any unknown error while following along in your terminal, retrace your steps; if you still don't know what went wrong, ask Grimoire!

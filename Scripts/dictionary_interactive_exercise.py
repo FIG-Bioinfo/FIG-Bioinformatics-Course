@@ -35,7 +35,7 @@ def main():
     print("Entering a key with a new value replaces its old value.")
     print("Deleting a key will also delete its value.")
     print("Deleting a key that does not exist will throw an error.\n")
-    input("Hit 'Enter' when you are read to begin...")
+    input("Hit 'Enter' when you are ready to begin...")
         
     dictionary = {}
     

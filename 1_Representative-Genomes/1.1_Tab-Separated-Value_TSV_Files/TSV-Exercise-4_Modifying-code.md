@@ -19,7 +19,7 @@ FIG-Bioinformatics-Course/
 ├── Code/       (Directory holding your working copies of code)
 └── Data/
     ├── bindict.tbl
-    ├── data.tbl
+    ├── xmatrix_example.tsv
     └── rep200.list.tbl
 ```
 
@@ -28,7 +28,7 @@ FIG-Bioinformatics-Course/
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
@@ -87,7 +87,7 @@ Insert the pseudocode and Grimoire's explanation into the beginning of `tsv_head
     This will act as a "backup" of the original program, in case you need to revert to it.
 
 
-5. In this exercise you are going to revise the `tsv_headers.py` program to add named arguments and a new use-case. Use what you learned about Command Line Arguments and Grimoire prompts to make the following improvements to your code.
+5. In this exercise you are going to revise the `tsv_headers.py` program to add named arguments and a new use-case. Use the following prompt in Grimoire to make improvements to your code:
 
 ```
 I have uploaded a program that I'd like you to modify. Please make the following revisions to the tsvheaders program:
@@ -105,17 +105,17 @@ I have uploaded a program that I'd like you to modify. Please make the following
 
 7. Once you have finished with these revisions, the program should be able to take the following prompt from the terminal:
     
-    ``` python Code/tsv_headers.py -i Data/data.tbl -n 3 ```
+    ``` python Code/tsv_headers.py -i Data/xmatrix_example.tsv -n 3 ```
     
     and it should return the output:
     ``` sample  1033731.3       1034345.3```
-* NOTE: The file `data.tbl` has over 2000 columns, and so can take a long time to load in applications. Bonus points if you can perform the entire program-revision without opening up the program file to edit it yourself.
+ *Bonus points if you can perform the entire program-revision without opening up the program file to edit it yourself.*
 
 ## Solution Check instructions:
 
 If you are successful at revising your program, you should see the following output from each of the following commands. (NOTE: once again, commands should be entered as a single line, even if they appear to wrap over multiple lines of the screen):
 
-* ``` python Code/tsv_headers.py -i Data/data.tbl -n 4 -s 20 ```
+* ``` python Code/tsv_headers.py -i Data/xmatrix_example.tsv -n 4 -s 20 ```
 
     ``` 1423720.3       203120.7        2049039.65      206672.9```
 
