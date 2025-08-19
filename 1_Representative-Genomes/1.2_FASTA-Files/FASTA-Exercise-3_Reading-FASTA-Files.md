@@ -15,9 +15,10 @@ FIG-Bioinformatics-Course/
 │       ├── FASTA-Exercise-3_Reading-FASTA-Files.md (you are here)
 │       └── Solutions/
 │           ├── fasta_reader_solution.py
-│           ├── rep10.seqs.seed_proteins.solution.tbl
-│           └── rep10.seqs.seed_dna.solution.tbl
+│           ├── rep10.seed_proteins.solution.tbl
+│           └── rep10.seed_dna.solution.tbl
 ├── Code/
+    └── fasta_reader.py      (you will create this)
 ├── Templates/
 │   └── fasta_reader.py
 └── MyData/
