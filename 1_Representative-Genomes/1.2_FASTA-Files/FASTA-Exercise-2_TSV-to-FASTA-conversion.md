@@ -18,7 +18,7 @@ FIG-Bioinformatics-Course/
 │           ├── rep10.seqs.seed_proteins.solution.tbl
 │           └── rep10.seqs.seed_proteins.alternate_solution.tbl
 ├── Code/
-├── Scripts/
+├── Templates/
 │   ├── cmd_tsv_select_columns.py
 │   └── tsv_headers.py
 └── MyData/
@@ -31,7 +31,7 @@ FIG-Bioinformatics-Course/
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back

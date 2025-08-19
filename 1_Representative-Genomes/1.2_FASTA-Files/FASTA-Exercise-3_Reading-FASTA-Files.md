@@ -2,7 +2,7 @@
 
 Objective: Use Grimoire to write a program that reads and operates on FASTA-formatted sequence-data.
 
-FASTA files are a common format used to store and transmit bioinformatic sequence data. This means that we need to not only understand how these data are represented inside the file, but also have an effective way reading FASTA data and extracting information from it. This exercise creates a rudimentary program that can read a FASTA file, and report a set of summary statistics on the file's contents.
+FASTA files are a common format used to store and transmit bioinformatic sequence data. This means that we need to understand how these data are represented inside the file and also have an effective way of reading FASTA data and extracting information from it. This exercise creates a rudimentary program that can read a FASTA file, and report a set of summary statistics on the file's contents.
 
 ## Materials: 
 
@@ -18,7 +18,7 @@ FIG-Bioinformatics-Course/
 │           ├── rep10.seqs.seed_proteins.solution.tbl
 │           └── rep10.seqs.seed_dna.solution.tbl
 ├── Code/
-├── Scripts/
+├── Templates/
 │   └── fasta_reader.py
 └── MyData/
 └── Data/
@@ -30,7 +30,7 @@ FIG-Bioinformatics-Course/
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
@@ -44,11 +44,11 @@ to the course home.
 
     * WARNING: Grimoire sometimes forgets that the "sequence-ID" stops at the first "whitespace character", and that the rest of the record-header after the sequence-ID is considered a "description" of the sequence, not a part of its ID, so if you see additional text after the sequence-ID in the TSV output-table, you will need to remind Grimoire that it should not include the sequence-description in its TSV output.
 
-4. Copy the pseudocode to the clipboard, and then use VScode to save the pseudocode to the pseudocode section of the program template `Scripts/fasta_reader.py` 
+4. Copy the pseudocode to the clipboard, and then use VScode to save the pseudocode to the pseudocode section of the program template `Templates/fasta_reader.py` 
 
-5. Copy the program itself to the clipboard, and then use VScode to save the program to the code section of the template `Scripts/fasta_reader.py`.
+5. Copy the program itself to the clipboard, and then use VScode to save the program to the code section of the template `Templates/fasta_reader.py`.
 
-***Note:*** The program may throw an error when you run it if you have not yet installed the BioPython module. You will know if this is necessary if the `import BioPython` line is in your code.If this happens, run the following pip command to install it:
+***Note:*** The program may throw an error when you run it if you have not yet installed the BioPython module. You will know if this is necessary if the `import BioPython` line is in your code. If this happens, run the following pip command to install it:
 ```
 pip install biopython
 ```
@@ -56,7 +56,7 @@ pip install biopython
 
 6. Ask Grimoire to explain line-by-line how the program works.
 
-7. Use the VScode terminal-window to run the program `Scripts/fasta_reader.py` on the file `Data/Sample1.fasta`.
+7. Use the VScode terminal-window to run the program `Templates/fasta_reader.py` on the file `Data/Sample1.fasta`.
     * Grimoire should have given you an example of how to run the program, but if it didn't, please ask it to show you how. 
     * If you are working within a Windows environment, you should specify that in your questions.
 
@@ -66,18 +66,18 @@ pip install biopython
 
 * Bonus Exercise 1: In FASTA-Ex-2, you extracted a FASTA-file from a TSV-file, which you saved as `rep10.seed_proteins.faa`. Run `fasta_reader.py` on `rep10.seed_proteins.faa`, and save the TSV-output as follows:
 ```
-python Scripts/fasta_reader.py < MyData/rep10.seed_proteins.faa > MyData/rep10.seed_proteins.genomes-and-lengths.tab
+python Templates/fasta_reader.py < MyData/rep10.seed_proteins.faa > MyData/rep10.seed_proteins.genomes-and-lengths.tab
 ```
 
 * Bonus Exercise 2: Repeat the procedure from FASTA-Ex-2, but this time extract the field `seed_dna` instead of `seed_protein`:
 ```
-python Scripts/cmd_tsv_select_columns.py genome_id genome_name seed_dna < Data/rep10.seqs.tbl | python Code/3col_to_fasta > MyData/rep10.seed_dna.fna
+python Templates/cmd_tsv_select_columns.py genome_id genome_name seed_dna < Data/rep10.seqs.tbl | python Code/3col_to_fasta > MyData/rep10.seed_dna.fna
 ```
 (Note that this time we have used the file-extension ".fna" instead of ".faa", because we are extracting "nucleic-acid" data instead of "amino-acid" data.)
 
 Now, run `fasta_reader.py` on `rep10.seed_dna.fna`:
 ```
-python Scripts/fasta_reader.py < MyData/rep10.seed_dna.fna > MyData/rep10.seed_dna.genomes-and-lengths.tab
+python Templates/fasta_reader.py < MyData/rep10.seed_dna.fna > MyData/rep10.seed_dna.genomes-and-lengths.tab
 ```
 Compare the files `rep10.seed_proteins.genomes-and-lengths.tab` to `rep10.seed_dna.genomes-and-lengths.tab`. You should notice that for each protein-sequence, the corresponding DNA-sequence is 3 times longer; this is because 3 DNA characters translate to a single amino-acid character. We will explore the concept of "sequence translation" further in the next exercise.
 
