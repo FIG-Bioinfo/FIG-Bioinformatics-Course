@@ -2,7 +2,7 @@
 
 Objective: Learn how to translate DNA sequences into protein sequences.
 
-We have mention that there are three fundamental types of biological sequences (DNA, RNA, and protein), and that each type of sequence has its own "alphabet". We will now learn how cells translate genes encoded in DNA to proteins that are composed of amino-acids.
+We have mentioned that there are three fundamental types of biological sequences (DNA, RNA, and protein), and that each type of sequence has its own "alphabet". We will now learn how cells translate genes encoded in DNA to proteins that are composed of amino-acids.
 
 
 ## Materials: 
@@ -22,8 +22,7 @@ FIG-Bioinformatics-Course/
 │       ├── Result1.intermediate.faa
 │       └── Result1.biopython.faa
 ├── Code/
-├── Scripts/
-│   └── translate-DNA.py
+│   └── translate-DNA_simple.py (you will create this)
 └── MyData/
 └── Data/
     └── Sample1.fasta
@@ -34,7 +33,7 @@ FIG-Bioinformatics-Course/
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
@@ -57,7 +56,7 @@ in this prompt; why is that?
     automatically recognize that an uppercase and lowercase sequence
     contain the same information. There is no guarantee that a given
     DNA file will be in uppercase rather than lowercase, and indeed
-    your data-file `Sample1.fasta` is indeed in lowercase. Without
+    your data-file `Sample1.fasta` is in lowercase. Without
     standardizing the case, it is likely that the code will translate
     every codon as 'X' for "Unknown".
 
@@ -99,7 +98,7 @@ We have also included the code that Grimoire generated as `Solutions/translate-D
     about the other two START codons, so we must remind it.
 
     * The 3 "STOP codons" are represented as `*`, but are not actually
-    translated, they form the "period" that ends a "genetic sentence",
+    translated; they form the "period" that ends a "genetic sentence",
     and so by convention we do not include them in a translation.
     However the code that Grimoire wrote does indeed translate the
     STOP codons as `*`, and so we must instruct it not to.

@@ -2,7 +2,7 @@
 
 Objective: Use Grimoire to write a program that reads and operates on FASTA-formatted sequence-data.
 
-FASTA files are a common format used to store and transmit bioinformatic sequence data. This means that we need to not only understand how these data are represented inside the file, but also have an effective way reading FASTA data and extracting information from it. This exercise creates a rudimentary program that can read a FASTA file, and report a set of summary statistics on the file's contents.
+FASTA files are a common format used to store and transmit bioinformatic sequence data. This means that we need to understand how these data are represented inside the file and also have an effective way of reading FASTA data and extracting information from it. This exercise creates a rudimentary program that can read a FASTA file, and report a set of summary statistics on the file's contents.
 
 ## Materials: 
 
@@ -15,8 +15,10 @@ FIG-Bioinformatics-Course/
 │       ├── FASTA-Exercise-3_Reading-FASTA-Files.md (you are here)
 │       └── Solutions/
 │           ├── fasta_reader_solution.py
-│           ├── rep10.seqs.seed_proteins.solution.tbl
-│           └── rep10.seqs.seed_dna.solution.tbl
+│           ├── rep10.seed_proteins.solution.tbl
+│           └── rep10.seed_dna.solution.tbl
+├── Code/
+    └── fasta_reader.py      (you will create this)
 ├── Templates/
 │   └── fasta_reader.py
 └── MyData/
@@ -29,7 +31,7 @@ FIG-Bioinformatics-Course/
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
@@ -78,6 +80,16 @@ to a file in the target directory having the same name as the source file.)
 that you made in Step 4, then copy and paste the prompt you entered into Grimoire
 into the "Prompt" section of the template.
 
+
+4. Copy the pseudocode to the clipboard, and then use VScode to save the pseudocode to the pseudocode section of the program template `Templates/fasta_reader.py` 
+
+5. Copy the program itself to the clipboard, and then use VScode to save the program to the code section of the template `Templates/fasta_reader.py`.
+
+***Note:*** The program may throw an error when you run it if you have not yet installed the BioPython module. You will know if this is necessary if the `import BioPython` line is in your code. If this happens, run the following pip command to install it:
+```
+pip install biopython
+```
+
 6. Copy the pseudocode Grimoire generated to the clipboard,
 by copy-and-paste if Grimoire displayed the pseudocode inline in the chat,
 or by clicking on the "Copy" widget if Grimoire displayed the pseudocode
@@ -88,12 +100,6 @@ of the program template `Code/fasta_reader.py`
 7. Copy the program itself from Grimoire's code-box or canvas to the clipboard,
 and then use VScode to save the program to the "Code" section of the template
 `Code/fasta_reader.py`.
-
-***Note:*** The program may throw an error when you run it if you have
-not yet installed the BioPython module. You will know whether this is necessary
-if there is an `import BioPython` line in your code. If you see this line,
-you will need to open a terminal and run the following `pip` command to install it:
-``` pip install biopython ```
 
 8. Ask Grimoire to explain line-by-line how the program works.
 
@@ -106,9 +112,13 @@ you will need to open a terminal and run the following `pip` command to install 
     * If you are working within a Windows environment, you should
       specify that in your questions.
 
-10. Ask Grimoire to tell you about the BioPython module and its uses. 
+10. Use the VScode terminal-window to run the program `Templates/fasta_reader.py` on the file `Data/Sample1.fasta`.
+    * Grimoire should have given you an example of how to run the program, but if it didn't, please ask it to show you how. 
+    * If you are working within a Windows environment, you should specify that in your questions.
 
-11. Ask Grimoire to rewrite your program to use the BioPython module. 
+11. Ask Grimoire to tell you about the BioPython module and its uses. 
+
+12. Ask Grimoire to rewrite your program to use the BioPython module. 
 
 * *Bonus Exercise 1:* In FASTA-Ex-2, you extracted a FASTA-file
 from a TSV-file, which you saved as `rep10.seed_proteins.faa`.
@@ -116,14 +126,14 @@ Run `fasta_reader.py` on `rep10.seed_proteins.faa`,
 and save the TSV-output as follows:
 
 ```
-python Scripts/fasta_reader.py < MyData/rep10.seed_proteins.faa > MyData/rep10.seed_proteins.genomes-and-lengths.tab
+python Templates/fasta_reader.py < MyData/rep10.seed_proteins.faa > MyData/rep10.seed_proteins.genomes-and-lengths.tab
 ```
 
 * *Bonus Exercise 2:* Repeat the procedure from FASTA-Ex-2,
 but this time extract the field `seed_dna` instead of `seed_protein`:
 
 ```
-python Scripts/cmd_tsv_select_columns.py genome_id genome_name seed_dna < Data/rep10.seqs.tbl | python Code/3col_to_fasta > MyData/rep10.seed_dna.fna
+python Templates/cmd_tsv_select_columns.py genome_id genome_name seed_dna < Data/rep10.seqs.tbl | python Code/3col_to_fasta > MyData/rep10.seed_dna.fna
 ```
 
 (Note that this time we have used the file-extension ".fna"
@@ -133,7 +143,7 @@ instead of "amino-acid" data.)
 Now, run `fasta_reader.py` on `rep10.seed_dna.fna`:
 
 ```
-python Scripts/fasta_reader.py < MyData/rep10.seed_dna.fna > MyData/rep10.seed_dna.genomes-and-lengths.tab
+python Templates/fasta_reader.py < MyData/rep10.seed_dna.fna > MyData/rep10.seed_dna.genomes-and-lengths.tab
 ```
 
 Compare the files `rep10.seed_proteins.genomes-and-lengths.tab`
