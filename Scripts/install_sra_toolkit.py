@@ -77,11 +77,28 @@ def download_and_extract_zip(url, extract_to):
                 print(f"Extracted: {target_path}")
 
 def download_and_extract_tar(url, extract_to):
-    """Download and extract a tar file from a URL."""
+    """Download and extract a tar file from a URL, flattening the top-level directory."""
     import tarfile
     with urlopen(url) as response:
         with tarfile.open(fileobj=BytesIO(response.read()), mode="r:gz") as tar_ref:
-            tar_ref.extractall(path=extract_to)
+            members = tar_ref.getmembers()
+            for member in members:
+                # Skip the top-level directory itself
+                if member.isdir() and len(Path(member.name).parts) == 1:
+                    continue
+
+                # Remove the top-level directory from the member's path
+                member_path = Path(member.name)
+                stripped_path = member_path.relative_to(member_path.parts[0]) if len(member_path.parts) > 1 else member_path
+
+                # Update the member's name to the stripped path
+                member.name = str(stripped_path)
+
+                # Extract the member to the target directory
+                tar_ref.extract(member, path=extract_to)
+
+                # Log extraction process (optional for debugging)
+                print(f"Extracted: {extract_to / stripped_path}")
 
 def add_to_path(new_path):
     """Add a directory to the user-level system PATH if it's not already present."""
