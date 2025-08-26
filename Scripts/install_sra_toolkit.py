@@ -14,11 +14,12 @@ else:
 
 def install_sra_toolkit_user(top_dir):
     """Install the SRA Toolkit and EDirect in user mode if they are not already installed."""
-    bin_dir = Path(top_dir)
+    #install_dir = Path(top_dir)
+    install_dir = Path(top_dir)
         
-    sra_toolkit_dir = bin_dir / "sratoolkit"
+    sra_toolkit_dir = install_dir / "sratoolkit"
     fastq_dump_path = sra_toolkit_dir / "bin" / "fastq-dump"
-    edirect_dir = bin_dir / "edirect"
+    edirect_dir = install_dir / "edirect"
     esearch_path = edirect_dir / "esearch"
 
     if fastq_dump_path.exists():
@@ -43,9 +44,9 @@ def install_sra_toolkit_user(top_dir):
     else:
         print("Installing EDirect tools in user mode...")
         if sys.platform == "win32":
-            subprocess.run(["powershell", "-Command", f"cd {bin_dir} ; Invoke-WebRequest -Uri https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/edirect.zip -OutFile edirect.zip ; Expand-Archive -Path edirect.zip -DestinationPath {bin_dir} ; Remove-Item edirect.zip"], check=True)
+            subprocess.run(["powershell", "-Command", f"cd {install_dir} ; Invoke-WebRequest -Uri https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/edirect.zip -OutFile edirect.zip ; Expand-Archive -Path edirect.zip -DestinationPath {install_dir} ; Remove-Item edirect.zip"], check=True)
         else:
-            subprocess.run(["sh", "-c", f"mkdir -p {bin_dir} && cd {bin_dir} && curl -O https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/edirect.zip && unzip -o edirect.zip && rm edirect.zip"], check=True)
+            subprocess.run(["sh", "-c", f"mkdir -p {install_dir} && cd {install_dir} && curl -O https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/edirect.zip && unzip -o edirect.zip && rm edirect.zip"], check=True)
         
         print("EDirect tools installed successfully.")
 
@@ -76,10 +77,28 @@ def download_and_extract_zip(url, extract_to):
                 print(f"Extracted: {target_path}")
 
 def download_and_extract_tar(url, extract_to):
-    """Download and extract a tar file from a URL."""
+    """Download and extract a tar file from a URL, flattening the top-level directory."""
+    import tarfile
     with urlopen(url) as response:
-        with taropen(fileobj=BytesIO(response.read()), mode="r:gz") as tar_ref:
-            tar_ref.extractall(path=extract_to)
+        with tarfile.open(fileobj=BytesIO(response.read()), mode="r:gz") as tar_ref:
+            members = tar_ref.getmembers()
+            for member in members:
+                # Skip the top-level directory itself
+                if member.isdir() and len(Path(member.name).parts) == 1:
+                    continue
+
+                # Remove the top-level directory from the member's path
+                member_path = Path(member.name)
+                stripped_path = member_path.relative_to(member_path.parts[0]) if len(member_path.parts) > 1 else member_path
+
+                # Update the member's name to the stripped path
+                member.name = str(stripped_path)
+
+                # Extract the member to the target directory
+                tar_ref.extract(member, path=extract_to)
+
+                # Log extraction process (optional for debugging)
+                print(f"Extracted: {extract_to / stripped_path}")
 
 def add_to_path(new_path):
     """Add a directory to the user-level system PATH if it's not already present."""
@@ -108,42 +127,25 @@ def add_to_path(new_path):
             profile.write(f'\nexport PATH="{new_path_str}:$PATH"\n')
 
 def process_path(arguments):
-    # Review path provided by user.
-    # If no path provided, revert to a predefined subdirectory name with full path based on the OS.
+    # If a path is provided, use it; otherwise, install in the NCBI directory under the course root directory.
     if len(arguments) > 1:
         bin_dir = Path(arguments[1])
         if not bin_dir.is_dir():
-            # The follow method of presenting the message to the user is to keep the 
-            # formatting in the terminal clean and left justified. Python methods such 
-            # as triple quotes (f""" """) causes multiple lines to be indented based
-            # on the indentation in the python code. 
             msg_line1 = f"Directory '{bin_dir}' does not exist."
-            msg_line2 = f"If you would like the program to use a default path"
-            msg_line3 = f"and subdirectory, run the program with no arguments."
+            msg_line2 = f"If you would like the program to use the script's directory,"
+            msg_line3 = f"run the program with no arguments."
             print(f"{msg_line1}\n\n{msg_line2}\n{msg_line3}", file=sys.stderr)
             exit(1)
         else:
             full_path = bin_dir
     else:
-        bin_dir = "SRA"
+        # Install in <course_root>/NCBI.
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        ncbi_dir = os.path.abspath(os.path.join(script_dir, '..', 'NCBI'))
         msg_line1 = f"No path provided."
-        msg_line2 = f"Default directory name of {bin_dir} will be used."
+        msg_line2 = f"Defaulting to the NCBI directory: {ncbi_dir}"
         print(f"{msg_line1}\n{msg_line2}")
-        
-        try:
-            # Determine the base path based on the operating system
-            if sys.platform.startswith("win"):
-                base_path = os.environ.get("LOCALAPPDATA") + "\\Programs"
-            elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
-                base_path = os.path.expanduser('~')
-            else:
-                raise EnvironmentError("Unsupported operating system.")
-
-            # Construct the full path to the new subdirectory
-            full_path = os.path.join(base_path, bin_dir)
-
-        except Exception as e:
-            print(f"An error occurred with directory path: {e}", file=sys.stderr)
+        full_path = ncbi_dir
 
     return full_path
 
