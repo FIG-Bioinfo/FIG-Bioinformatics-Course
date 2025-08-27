@@ -1,9 +1,9 @@
 # Kmer Exercise 4 - Protein vs DNA Kmers
 
 Objectives:
-1. Understand how the Jaccard-similarity computed using a DNA-sequence's protein translation correlates with the Jaccard-similarity computed using the DNA itself
+1. Understand how the Jaccard-similarity computed using a DNA-sequences' protein translation correlates with the Jaccard-similarity computed using the DNA itself.
 
-2. Get a better feel for the tradeoffs between "sensitivity" and "specificity"
+2. Get a better feel for the tradeoffs between "sensitivity" and "specificity".
 
 
 ## Materials: 
@@ -20,6 +20,8 @@ FIG-Bioinformatics-Course
         ├── Kmer-Exercise-4_Protein-vs-DNA-Kmers.md (you are here)
         └── Solutions
             └── protein_vs_dna_jaccard_solution.py
+├── Templates
+│   └── protein_vs_dna_jaccard.py
 ```
 
 ## Exercises
@@ -28,7 +30,7 @@ FIG-Bioinformatics-Course
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
