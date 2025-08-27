@@ -2,7 +2,7 @@
 
 Objective: Learn about the concept of "Jaccard similarities", and how they are used to compare sequences.
 
-Comparing and contrasting sequences is the main way that scientists find patterns within DNA and protein sequences. The Jaccard Similarity is a formula that we can use to determine how similar two sets (or groups of Kmers) are from each other. If two sequences that perform then same role are very similar, there is good chance that they from two closely-related species or genera. But if they are very different, the chances are high that they they are from two distantly-related species or genera. This lesson allows you to explore using the Jaccard Similarities Formula to estimate sequence-similarity using kmers.
+Comparing and contrasting sequences is the main way that scientists find patterns within DNA and protein sequences. The Jaccard Similarity is a formula that we can use to determine how similar two sets (or groups of Kmers) are from each other. If two sequences that perform the same role are very similar, there is a good chance that they are from two closely-related species or genera. But if they are very different, the chances are high that they are from two distantly-related species or genera. This lesson allows you to explore using the Jaccard Similarities Formula to estimate sequence-similarity using kmers.
 
 ## Materials: 
 
@@ -11,7 +11,7 @@ Comparing and contrasting sequences is the main way that scientists find pattern
 ```
 FIG-Bioinformatics-Course/
 ├── Definitions.html
-├── Code/
+├── Templates/
 │   └── kmer_jaccard_similarities.py
 ├── Data/
 │   └── Sample1.fasta
@@ -28,7 +28,7 @@ FIG-Bioinformatics-Course/
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
@@ -42,7 +42,7 @@ you don't need to respond to them, just learn them.
 I'm then going to ask you some questions.
 ```
 
-and again attaching the file `Definitions.html` using the "paperclip" icon before clicking the "Send message" ("Up-arrow") icon.
+and again attach the file `Definitions.html` using the "paperclip" icon before clicking the "Send message" ("Up-arrow") icon.
 
 2. Ask Grimoire "What is a 'Jaccard Similarity', and how is it used?"
 
@@ -62,9 +62,11 @@ and again attaching the file `Definitions.html` using the "paperclip" icon befor
 
 5. Ask Grimoire to translate the program into pseudocode.
 
-6. Use VScode to save the generated pseudocode and code into the stub-program `Code/kmer_jaccard_similarities.py`,
+6. Copy and paste the generated pseudocode and code into the file `Templates/kmer_jaccard_similarities.py`
 
-7. Use VScode to open a "terminal" window and run the program on the data-file `Sample1.fasta` using '20' as the value of `k`:
+7. Use VScode to save the file into the Code directory `Code/kmer_jaccard_similarities.py`,
+
+8. Use VScode to open a "terminal" window and run the program on the data-file `Sample1.fasta` using '20' as the value of `k`:
 
 ```
 python Code/kmer_jaccard_similarities.py -k 20 -f Data/Sample1.fasta > Data/Sample1_jaccard_output.tsv
@@ -75,7 +77,7 @@ The output file in `1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/
 
 * Notice that the number of pairs with nonzero similarity is less than the number of pairs of sequences; this is not an error, it means that many of the sequences do not have even a single 20-mer in common, which implies that our sample is diverse.
 
-8. Repeat the exercise with `k=10`, and note that now most of the jaccard-similarities are non-zero.
+9. Repeat the exercise with `k=10`, and note that now most of the jaccard-similarities are non-zero.
 
 ```
 python Code/kmer_jaccard_similarities.py -K 10 -f Data/Sample1.fasta > Data/Sample1_10mers_jaccard_output.tsv
@@ -85,11 +87,11 @@ This exercise illustrates that there is a tradeoff between "sensitivity" and "sp
 
 Output solution file for this step can be found in `1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/Sample1_10mers_jaccard_output_solution.tsv`. 
 
-9. Ask Grimoire to explain the difference between the concepts of "sensitivity" and "specificity", and how they are relevant in bioinformatics and in medicine.
+10. Ask Grimoire to explain the difference between the concepts of "sensitivity" and "specificity", and how they are relevant in bioinformatics and in medicine.
 
-10. In bioinformatics, we will often specify similarity-thresholds in terms of the number of Kmers that two sequences must have in common rather than in terms of their Jaccard-similarity.
+11. In bioinformatics, we will often specify similarity-thresholds in terms of the number of Kmers that two sequences must have in common rather than in terms of their Jaccard-similarity.
 
-11. Ask Grimoire to write a program `num_kmers_vs_jaccard.py` that takes a Kmer-length and a FASTA filename as command-line arguments. Be sure to mention for Grimoire to use the module `argparse` to parse the command-line arguments. Then for all pairs of sequences, plots the number of Kmers in common between them vs their jaccard-similarity. This will allow you to see how the number of Kmers in common and the jaccard-similarities vary with `k`.
+12. Ask Grimoire to write a program `num_kmers_vs_jaccard.py` that takes a Kmer-length and a FASTA filename as command-line arguments. Be sure to mention for Grimoire to use the module `argparse` to parse the command-line arguments. Then for all pairs of sequences, plots the number of Kmers in common between them vs their jaccard-similarity. This will allow you to see how the number of Kmers in common and the jaccard-similarities vary with `k`.
 
 Call the program with `k=20` and `Data/Sample1.fasta` as the FASTA file.
 ```
@@ -97,7 +99,7 @@ python Code/num_kmers_vs_jaccard.py -k 20 -f Data/Sample1.fasta
 ```
 Output solution file for this step can be found in `1_Representative-Genomes/1.3_Kmers-and-Jaccard-Similarities/Solutions/Sample1_20mers_num_kmers_vs_jaccard_solution.png`. Notice that it is a picture file of a scatter-plot. Therefore do not be surprised if a new window opens up when you run your program with a picture of a scatter-plot.
 
-12. Save this program as in exercise (5.), and then run it for various values of `k` to get a feel for how the number of Kmers in common and the jaccard-similarities vary with `k`. As in the previous exercise, you should see that larger `k` will result in fewer pairs of sequences with Kmers in common (also referred to as fewer "hits"), and also that fewer Kmers in common correlates with a smaller jaccard-similarity, so that larger `k` means smaller sensitivity (smaller scores) but also larger specificity (fewer hits).
+13. Save this program as in step (7.), and then run it for various values of `k` to get a feel for how the number of Kmers in common and the jaccard-similarities vary with `k`. As in the previous exercise, you should see that larger `k` will result in fewer pairs of sequences with Kmers in common (also referred to as fewer "hits"), and also that fewer Kmers in common correlates with a smaller jaccard-similarity, so that larger `k` means smaller sensitivity (smaller scores) but also larger specificity (fewer hits).
 
 ## Solution Check instructions:
 

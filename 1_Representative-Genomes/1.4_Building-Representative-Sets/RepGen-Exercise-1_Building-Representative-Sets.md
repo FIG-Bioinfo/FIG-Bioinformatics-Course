@@ -72,13 +72,13 @@ There are several algorithms for building RepSets. In this course, we will be us
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
 to the course home.
 
-1. Attach the `Definitions.html` file as in previous exercises.
+1. Attach the `Definitions.html` file in Grimoire as in previous exercises.
 
 2. The following prompt provides the program specification for the representative-set algorithm:
 
@@ -133,7 +133,7 @@ The language of "regular expressions" is quite complex, and constructing a regul
 Run the program as follows:
 
 ```
-python Code/build_representative_set.py -K 8 -S 10 -F Data/Universe.fasta -R Data/myrep10.faa -G Data/myrep10.genomes.tbl
+python3 Code/build_representative_set.py -K 8 -S 10 -F Data/Universe.fasta -R Data/myrep10.faa -G Data/myrep10.genomes.tbl
 ```
 
 5. Please repeat the previous step with a similarity-threshold of 50,

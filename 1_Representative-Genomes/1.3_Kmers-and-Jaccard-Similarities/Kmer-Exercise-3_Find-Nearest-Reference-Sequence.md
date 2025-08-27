@@ -12,7 +12,7 @@ A common task in bioinformatics is to determine which sequence in a reference da
 FIG-Bioinformatics-Course/
 ├── Definitions.html
 ├── Data/
-│   ├── rep10.seed_proteins.faa
+│   ├── rep10.seqs.seed_proteins.faa
 │   └── test-nearest.faa
 └── 1_Representative-Genomes/
     └── 1.3_Kmers-and-Jaccard-Similarities/
@@ -27,7 +27,7 @@ FIG-Bioinformatics-Course/
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back

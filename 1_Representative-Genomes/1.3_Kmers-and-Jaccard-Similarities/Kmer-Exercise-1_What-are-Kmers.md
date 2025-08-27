@@ -30,13 +30,14 @@ FIG-Bioinformatics-Course/
 └── 1_Representative-Genomes/
     └── 1.3_Kmers-and-Jaccard-Similarities/
         ├── Kmer-Exercise-1_What-are-Kmers.md       # You are here
-        ├── Code/                                   # Save your own code here
-        ├── Data/
-        │   ├── good-bad_dna.fna
-        │   └── good-bad_proteins.faa
         └── Solutions/
             ├── Kmer-Exercise-1_Solutions.md
             └── extract_kmers_from_fasta_solution.py
+├── Code/                                           # Save your own code here
+├── Data/
+    ├── good-bad_dna.fna
+    └── good-bad_proteins.faa
+
 
 ```
 
@@ -45,7 +46,7 @@ FIG-Bioinformatics-Course/
 Launch VScode, and open the course-folder
 if VScode has not already done so automatically.
 Then go to the terminal-window if it is open,
-else launch a new terminal.
+or launch a new terminal.
 You should see a message indicating that `COURSE_HOME`
 has been set to the course-folder, and that the
 `cdcourse` command will always bring you back
@@ -79,13 +80,13 @@ The following questions should be entered as individual prompts (or as Grimore p
 
   * Optional command-line argument short-form `-t`, long-form `--type`, whose values may either be `dna` or `protein`. Default type should be `dna`.
 
-  * If invoked with an argument `-h` or `--help`, the program should print a "help" message to STDERR describing the program, listing the argument names, showing whether an argument is mandatory or optional, and indicating that the data-file will be read from STDIN. The program  should then exit.
+  * If invoked with an argument `-h` or `--help`, the program should print a "help" message to STDERR describing the program, listing the argument names, showing whether an argument is mandatory or optional, and indicating that the data-file will be read from STDIN. The program should then exit.
 
   * The program shall read a FASTA-formated file from STDIN; you are allowed to use BioPython to read, write, and operate on sequences.
 
   * if the `--type` argument is specified, then if `--type` is `dna` the sequence should be converted to lower-case, else if `--type` is protein the sequence should be converted to upper-case.
 
-  * For each sequence, the program should extract all possible Kmers of length given by the Kmer-length argument, and write to STDOUT a two-column tab-separated file consisting of the Kmer and the sequence-ID that it came from .
+  * For each sequence, the program should extract all possible Kmers of length given by the Kmer-length argument, and write to STDOUT a two-column tab-separated file consisting of the Kmer and the sequence-ID that it came from.
 
   * If the `--type` argument is specified, then the Kmer should be checked before output for whether it contains characters that are not in the DNA or Protein alphabets, respectively, and invalid Kmers and the sequence-id they came from should be written to STDERR instead of STDOUT.
 
@@ -100,10 +101,6 @@ Use VScode to save `extract_kmers_from_fasta.py` in the `Code/` subdirectory.
 
 Experiment with different values for `-K`. Then, see how the output changes  when you specify the `--type` argument.
 * BONUS: What do you think will happen if you use the 'dna' type for the protein file, or the 'protein' type for the DNA file? Try it, and see if you have guessed correctly.
-
-7. Run `extract_kmers_from_fasta.py` on the following files, which will be found in subdirectory `Data/`.
-  * good-bad_dna.fna
-  * good-bad_proteins.faa
 
 These files are pretty small and should be easy to see what the kmers will be. If you are not sure, you can run the program with the `-K` argument set to a small value, such as 2 or 3. Below is an example of a command that you can use to run the program with `-K` set to 20 just like the hammers will be:
 
@@ -150,7 +147,7 @@ Sequences read: 3
 Kmers written to STDOUT: 22
 Invalid Kmers found: 11
 ```
-8. Remember that you can alrways redirect the output of the program to a file.  You can do this by adding `> Data/output.txt` to the end of the command. Be careful to not use the same output file name twice, as this will overwrite the previous file and you will lose your previous work. 
+8. Remember that you can always redirect the output of the program to a file.  You can do this by adding `> Data/output.txt` to the end of the command. Be careful to not use the same output file name twice, as this will overwrite the previous file and you will lose your previous work. 
 
 ```
 python Code/extract_kmers_from_fasta.py -K 20 -t dna < Data/good-bad_dna.fna > Data/dna_kmers_output.tsv
@@ -174,7 +171,7 @@ Find the example output of the above command in the `1_Representative-Genomes/1.
 Sequences read: 3
 Kmers written to STDOUT: 2
 Invalid Kmers found: 1
-```s
+```
 
 ## Solution Check instructions:
 
