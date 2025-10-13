@@ -1,0 +1,26 @@
+Please write a python program named 'get_seqs_for_roles_and_genomes.py' that:
+
+* Accepts the following three mandatory named arguments:
+  - Type-flag, short name '-T', long name '--type',
+    allowed values 'dna' or 'protein'.
+    
+  - Filename of a tab-separated-value list containing genome-IDs
+    short name '-G', long name '--genome-list'.
+
+  - Filename of a tab-separated-value list of roles,
+    short name '-R', long-name '--role-list'.
+
+* Reads the role-name file, skips the header-line,
+and loads the remainder of the second column into a list.
+
+* Foreach role in the role-list, print a progress-message to STDERR,
+and then execute the following two commands, piping the output of 'cmd1'
+to the input of 'cmd2', trapping any errors thrown by either command,
+and printing the output of 'cmd2' to STDOUT;
+note that the role can contain whitespace, and so this argument must be quoted:
+
+   cmd1 = f"p3-get-genome-features --selective --input {genomes_filename} --col genome_id --eq product,'{role}' --attr patric_id"
+
+   cmd2 = f"p3-get-feature-sequence --col feature.patric_id --{type}"
+
+If either command fails, print the trapped error-message to STDERR, and then exit.
