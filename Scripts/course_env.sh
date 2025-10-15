@@ -58,21 +58,17 @@ if [ -d "$SRATOOLS_DIR" ]; then
   fi
 
   # Force override and cleanup of legacy paths
-  vdb-config --set "/repository/user/main/public/root=$ROOT_PATH"
-  vdb-config --set "/repository/user/ad/public/root=$ROOT_PATH"
-  vdb-config --set "/repository/user/ad/public/apps/sra/volumes/sraAd=$ROOT_PATH"
-
-  # Persist config
-  vdb-config --save
+  vdb-config --set "/repository/user/main/public/root=$ROOT_PATH" 2>/dev/null || true
+  vdb-config --set "/repository/user/ad/public/root=$ROOT_PATH" 2>/dev/null || true
+  vdb-config --set "/repository/user/ad/public/apps/sra/volumes/sraAd=$ROOT_PATH" 2>/dev/null || true
 
   # Confirm result
-  echo "[INFO] vdb-config root set to:"
-  vdb-config -p | grep root
+  echo "[INFO] vdb-config root set to: $ROOT_PATH"
 
   # Validate config
-  if ! grep -q "$ROOT_PATH" <(vdb-config -p); then
+  if ! vdb-config -p 2>/dev/null | grep -q "$ROOT_PATH"; then
     echo "[WARNING] vdb-config root appears misconfigured. Resetting..." >&2
-    vdb-config --set "/repository/user/main/public/root=$ROOT_PATH"
+    vdb-config --set "/repository/user/main/public/root=$ROOT_PATH" 2>/dev/null || true
   fi
 else
   echo "SRA Toolkit is not yet installed --- please execute \"python Scripts/install_sra_toolkit.py\"" >&2

@@ -1,6 +1,5 @@
 Please write a python program named 'get_seqs_for_roles_and_genomes.py' that:
-
-* Accepts the following three mandatory named arguments:
+1.) accepts the following three mandatory named arguments:
   - Type-flag, short name '-T', long name '--type',
     allowed values 'dna' or 'protein'.
     
@@ -10,10 +9,15 @@ Please write a python program named 'get_seqs_for_roles_and_genomes.py' that:
   - Filename of a tab-separated-value file with header-line containing a list of roles,
     short name '-R', long-name '--role-list'.
 
-* Reads the role-name TSV file, determines the `role_name` column from the header-line,
+2.) Verifies that the external command-line tool `p3-login` is available
+in the system path; if this command is missing, print an error message to STDERR
+reminding the user that they must run this script in the `BV-BRC.app` environment,
+and that they must first login using `p3-login`. Then exit with a non-zero status.
+
+3.) Reads the role-name TSV file, determines the `role_name` column from the header-line,
 and loads the values for the `role_name` field of the remaining lines a list.
 
-* Foreach role in the role-list, print a progress-message to STDERR,
+4.) Foreach role in the role-list, print a progress-message to STDERR,
 and then execute the following pair of commands: 
 """
    cmd1 = f"p3-get-genome-features --selective --input {genomes_filename} --col genome_id --eq product,'{role}' --attr patric_id,product"
@@ -24,9 +28,9 @@ and
 """
    cmd2 = f"p3-get-feature-sequence --col feature.patric_id --{type}"
 """
+
 Note that the `role` string can contain whitespace, and so this argument-value must be quoted.
-   
-   - The outputs from each command are TSV files with header-line.
+Note that the outputs from each command are TSV files with header-line.
 
    - If either command fails, print the trapped error-message to STDERR and then exit.
    
@@ -47,20 +51,11 @@ Note that the `role` string can contain whitespace, and so this argument-value m
 	 
         -- Elsif the match is not exact, do not pass on this line to `cmd2`
 
-* The STDOUT stream from `cmd2` is a sequence of FASTA_formatted sequences,
+5.) The STDOUT stream from `cmd2` is a sequence of FASTA_formatted sequences,
 which should be counted and then passed to STDOUT of this driver-program,
 while the STDERR streams from `cmd1` and `cmd2` should be passed to STDERR
 of this driver-program.
 
-* Finally, the program should report the number of roles processed,
+6.) Finally, the program should report the number of roles processed,
 the number of genomes processed, and the number of FASTA sequences returned,
 and then exit.
-
-
-
-
-
-   
-
-
-
