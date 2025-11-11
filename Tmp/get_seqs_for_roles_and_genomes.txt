@@ -1,26 +1,61 @@
 Please write a python program named 'get_seqs_for_roles_and_genomes.py' that:
-
-* Accepts the following three mandatory named arguments:
+1.) accepts the following three mandatory named arguments:
   - Type-flag, short name '-T', long name '--type',
     allowed values 'dna' or 'protein'.
     
-  - Filename of a tab-separated-value list containing genome-IDs
+  - Filename of a tab-separated-value file with header-line containing a list of genome-IDs
     short name '-G', long name '--genome-list'.
 
-  - Filename of a tab-separated-value list of roles,
+  - Filename of a tab-separated-value file with header-line containing a list of roles,
     short name '-R', long-name '--role-list'.
 
-* Reads the role-name file, skips the header-line,
-and loads the remainder of the second column into a list.
+2.) Verifies that the external command-line tool `p3-login` is available
+in the system path; if this command is missing, print an error message to STDERR
+reminding the user that they must run this script in the `BV-BRC.app` environment,
+and that they must first login using `p3-login`. Then exit with a non-zero status.
 
-* Foreach role in the role-list, print a progress-message to STDERR,
-and then execute the following two commands, piping the output of 'cmd1'
-to the input of 'cmd2', trapping any errors thrown by either command,
-and printing the output of 'cmd2' to STDOUT;
-note that the role can contain whitespace, and so this argument must be quoted:
+3.) Reads the role-name TSV file, determines the `role_name` column from the header-line,
+and loads the values for the `role_name` field of the remaining lines a list.
 
-   cmd1 = f"p3-get-genome-features --selective --input {genomes_filename} --col genome_id --eq product,'{role}' --attr patric_id"
+4.) Foreach role in the role-list, print a progress-message to STDERR,
+and then execute the following pair of commands: 
+"""
+   cmd1 = f"p3-get-genome-features --selective --input {genomes_filename} --col genome_id --eq product,'{role}' --attr patric_id,product"
+"""
 
+and
+
+"""
    cmd2 = f"p3-get-feature-sequence --col feature.patric_id --{type}"
+"""
 
-If either command fails, print the trapped error-message to STDERR, and then exit.
+Note that the `role` string can contain whitespace, and so this argument-value must be quoted.
+Note that the outputs from each command are TSV files with header-line.
+
+   - If either command fails, print the trapped error-message to STDERR and then exit.
+   
+   - The STDOUT stream from `cmd1` will need to be filtered before it is passed to STDIN of `cmd2`:
+
+      ** The filter-function should pass the header-line from `cmd1` unchanged,
+        but it will need to determine which column of that header-line is named
+        `feature.product` in order to check subsequent lines.
+     
+      ** For the remaining lines of the `cmd1` STDOUT stream, the filter-function
+        should check whether the value in the `feature.product` field is an exact match
+	to the current `role` value,
+        since `cmd1` will also return products that are not exact matches to the role,
+	but merely contain the role as a substring.
+        
+        -- If the match between the `feature.product` field and the `role` is exact,
+           pass the line to the STDIN stream for `cmd2`;
+	 
+        -- Elsif the match is not exact, do not pass on this line to `cmd2`
+
+5.) The STDOUT stream from `cmd2` is a sequence of FASTA_formatted sequences,
+which should be counted and then passed to STDOUT of this driver-program,
+while the STDERR streams from `cmd1` and `cmd2` should be passed to STDERR
+of this driver-program.
+
+6.) Finally, the program should report the number of roles processed,
+the number of genomes processed, and the number of FASTA sequences returned,
+and then exit.
